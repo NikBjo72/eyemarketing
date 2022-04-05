@@ -1,6 +1,10 @@
 import { TitleBar } from "./ui/title-bar.js";
-import {ApplicationBase} from './framework/application-base.js';
-import {HomePage} from './Pages/home-page.js'
+import { ApplicationBase } from './framework/application-base.js';
+import { HomePage } from './Pages/home-page.js';
+import { BusinessPlanPage } from './Pages/business-plan-page.js';
+import { ProductIdeaPage } from "./Pages/product-idea-page.js";
+import { ContactPage } from "./Pages/contact-page.js";
+import { AppPage } from "./Pages/app-page.js";
 
 console.log('Hej från main.js');
 
@@ -10,20 +14,12 @@ export class Main extends ApplicationBase {
         super("Eye Marketing");
 
         this.addRoute('Hem', new HomePage(), true);
-        this.addRoute('Affärsplan', null);
-        this.addRoute('Produktidé', null);
-        this.addRoute('Kontakt', null);
-        this.addRoute('App', null);
+        this.addRoute('Affärsplan', new BusinessPlanPage());
+        this.addRoute('Produktidé', new ProductIdeaPage());
+        this.addRoute('Kontakt', new ContactPage());
+        this.addRoute('App', new AppPage());
     }
 }
 
 export let application = new Main();
 application.show($('body'));
-
-// let tb = new TitleBar ('Eye Marketing');
-// tb.addLink("Hem", "#");
-// tb.addLink("Affärsplan", "#");
-// tb.addLink("Produktidé", "#");
-// tb.addLink("Kontakt", "#");
-// tb.addLink("App", "#");
-// tb.appendToElement($('header'));

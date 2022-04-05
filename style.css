@@ -25,3 +25,6 @@
 .myButtonLinks{
     padding-right: 2rem;
 }
+.nav-link:hover {
+    cursor: pointer;
+}

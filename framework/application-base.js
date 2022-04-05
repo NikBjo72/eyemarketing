@@ -29,6 +29,11 @@ export class ApplicationBase {
     show(element) {
         this.titleBar.appendToElement(element);
 
+        this.titleBar.element.find('.nav-link').click((event) => {
+            let route = event.target.innerHTML;
+            this.activateRoute(route.trim());
+        });
+
         if (this.defaultRoute) {
             this.activateRoute(this.defaultRoute);
         }

@@ -7,4 +7,6 @@ export class Page extends BaseElement {
         this.pageTitle = pageTitle;
     }
 
+    // => *** Här kommer footer in. Hamnar då på alla sidor ***
+
 }

@@ -2,10 +2,10 @@ import {Page} from '../framework/page.js';
 import {Image} from '../ui/image.js';
 import {application} from '../main.js';
 
-export class HomePage extends Page {
+export class ProductIdeaPage extends Page {
     
     constructor() {
-        super('Hem');
+        super('Produktidé');
     }
 
     createElement() {
@@ -13,6 +13,6 @@ export class HomePage extends Page {
     }
 
     getElementString() {
-        return '<h2 style="text-align: center;">Startsida</h2>';
+        return '<h2 style="text-align: center;">Produktidé</h2>';
     }
 }

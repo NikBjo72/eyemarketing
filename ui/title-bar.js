@@ -19,10 +19,10 @@ export class TitleBar extends BaseElement {
         let links = '';
         let hamburgerLinks ='';
         for (let link of this.links) {
-            links += `  <a class="myButtonLinks" href="${link.href}">
+            links += `  <a class=" nav-link myButtonLinks">
                             <div class="my-btn">${link.title}</div>
                         </a>\n`;
-            hamburgerLinks += `<a class="mdl-navigation__link">
+            hamburgerLinks += ` <a class="mdl-navigation__link nav-link">
                                     ${link.title}
                                 </a>\n`;
         }
