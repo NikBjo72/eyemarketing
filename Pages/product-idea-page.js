@@ -10,9 +10,14 @@ export class ProductIdeaPage extends Page {
 
     createElement() {
         super.createElement();
+        let p = new Page('Eye Marketing - Produktidé');
     }
 
     getElementString() {
-        return '<h2 style="text-align: center;">Produktidé</h2>';
+        return `
+            <div>
+                <h2 style="text-align: center;">Produktidé</h2>
+            </div>
+            `;;
     }
 }

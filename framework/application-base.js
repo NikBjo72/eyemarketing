@@ -12,12 +12,12 @@ export class ApplicationBase {
     activateRoute(route) {
         let content = this.titleBar.element.find('.page-content');
         content.empty();
-
+        
         this.routeMap[route].appendToElement(content);
     }
 
-    addRoute(id, pageObject, defaultRoute = false) {
-        this.titleBar.addLink(id, '');
+    addRoute(id, pageObject, defaultRoute = false, href = '') {
+        this.titleBar.addLink(id, href);
 
         this.routeMap[id] = pageObject;
 
@@ -30,8 +30,17 @@ export class ApplicationBase {
         this.titleBar.appendToElement(element);
 
         this.titleBar.element.find('.nav-link').click((event) => {
-            let route = event.target.innerHTML;
+
+            let route ='';
+            let href = this.titleBar.links.find(e => e.title == event.target.innerHTML);
+            if (href.href != "") {
+                route = href.href;
+                window.open(route, '_blank');
+            } else {
+            route = event.target.innerHTML;
             this.activateRoute(route.trim());
+            }
+            
         });
 
         if (this.defaultRoute) {

@@ -1,6 +1,13 @@
 .mdl-layout__header{
     background-color: cadetblue !important;
 }
+.mdl-mini-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
 /* Button CSS */
 .my-btn{
     display: inline-block;

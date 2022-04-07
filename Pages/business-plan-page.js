@@ -10,9 +10,14 @@ export class BusinessPlanPage extends Page {
 
     createElement() {
         super.createElement();
+        let p = new Page('Eye Marketing - Affärsplan');
     }
 
     getElementString() {
-        return '<h2 style="text-align: center;">Affärsplan</h2>';
+        return `
+            <div>
+                <h2 style="text-align: center;">Affärsplan</h2>
+            </div>
+            `;
     }
 }

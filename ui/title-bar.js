@@ -23,7 +23,7 @@ export class TitleBar extends BaseElement {
                             <div class="my-btn">${link.title}</div>
                         </a>\n`;
             hamburgerLinks += ` <a class="mdl-navigation__link nav-link">
-                                    ${link.title}
+                                    <div>${link.title}</div>
                                 </a>\n`;
         }
 
@@ -50,7 +50,7 @@ export class TitleBar extends BaseElement {
                 <main class="mdl-layout__content">
                     <div class="page-content"><!-- Your content goes here --></div>
                 </main>
-                </div>
+            </div>
         `;
     }
 }

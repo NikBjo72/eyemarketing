@@ -9,9 +9,14 @@ export class Button extends BaseElement{
 
     getElementString() {
         return`
-        <a href="#">
-            <div class="my-btn">${this.title}</div>
-        </a>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                style="${this.styleString}">
+                ${this.title}
+            </button>
         `;
+    }
+
+    setStyleString(style) {
+        this.styleString = style;
     }
 }

@@ -17,7 +17,7 @@ export class Main extends ApplicationBase {
         this.addRoute('Affärsplan', new BusinessPlanPage());
         this.addRoute('Produktidé', new ProductIdeaPage());
         this.addRoute('Kontakt', new ContactPage());
-        this.addRoute('App', new AppPage());
+        this.addRoute('App', new AppPage(), false, 'app.html');
     }
 }
 
