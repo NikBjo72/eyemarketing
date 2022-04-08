@@ -82,6 +82,10 @@ h5 {
 .mdl-layout__header{
     background-color: #4d5059 !important;
 }
+#navEye {
+    margin-right: 1rem;
+    margin-top: -5px;
+}
 
 /* Header button CSS */
 .my-btn{
