@@ -65,7 +65,7 @@ export class BusinessPlanPage extends Page {
         c5.appendToElement(this.element);
 
         let img3 = new Image();
-        img3.fileName = '../images/Budget-tre-år_1800x653px.png';
+        img3.fileName = '../images/Budget_1800x653px.png';
         img3.id = 'imagePENG';
         img3.appendToElement(this.element);
     }
