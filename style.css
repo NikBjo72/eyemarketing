@@ -36,6 +36,47 @@ h5 {
 #headerBusinessPlanPage {
     color:#bdbdbd;
 }
+#contactPage {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center !important;
+    align-content: center;
+}
+.contactContainer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.contactIcons {
+    font-size: 38px !important;
+    margin-right: 1rem;
+}
+.contactText {
+    display: inline-block;
+}
+#imageAvatarNiklas {
+    max-width: 300px;
+    height: auto;
+}
+#niklasText {
+    text-align: center;
+}
+#imgLinkedIn {
+    display: inline-block;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 200px !important;
+    height: auto;
+}
+#imgCV {
+    display: inline-block;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 150px !important;
+    height: auto;
+}
+
 
 /* Header basic CSS */
 .mdl-layout__header{
