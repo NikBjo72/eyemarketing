@@ -15,8 +15,10 @@ export class ContactPage extends Page {
 
     getElementString() {
         return `
-            <div>
-                <h2 style="text-align: center;">Kontakt</h2>
+            <div id="contactPage" class="pageConatiner">
+                <h1 id="headerContaktPage" class="pageHeader"">KONTAKT</h1>
+                <span class="material-icons">home</span>
+                <span class="material-icons">email</span>
             </div>
             `;
     }

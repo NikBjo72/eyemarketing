@@ -5,11 +5,12 @@ export class Image extends BaseElement {
     constructor(fileName) {
         super();
         this.fileName = fileName;
+        this.id = null;
     }
     
     getElementString() {
         return `
-            <img src="${this.fileName}" style="width: 100%;" />
+            <img id="${this.id}"src="${this.fileName}" style="width: 100%;" />
         `;
     }
 }
