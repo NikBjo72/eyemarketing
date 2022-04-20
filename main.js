@@ -5,6 +5,7 @@ import { BusinessPlanPage } from './Pages/business-plan-page.js';
 import { ProductIdeaPage } from "./Pages/product-idea-page.js";
 import { ContactPage } from "./Pages/contact-page.js";
 import { AppPage } from "./Pages/app-page.js";
+import $ from "./node_modules/jquery/dist/jquery.js";
 
 console.log('Hej från main.js');
 

@@ -25,7 +25,7 @@ export class BusinessPlanPage extends Page {
         c1.appendToElement(this.element);
 
         let img1 = new Image();
-        img1.fileName = '../images/EM-brygga_1549x906px.png';
+        img1.fileName = 'EM_brygga_1549x906px';
         img1.id = 'imageDistrEM';
         img1.appendToElement(this.element);
 
@@ -36,7 +36,7 @@ export class BusinessPlanPage extends Page {
         c2.appendToElement(this.element);
 
         let img2 = new Image();
-        img2.fileName = '../images/PENG_1800x621px.png';
+        img2.fileName = 'PENG_1800x621px';
         img2.id = 'imagePENG';
         img2.appendToElement(this.element);
 
@@ -65,7 +65,7 @@ export class BusinessPlanPage extends Page {
         c5.appendToElement(this.element);
 
         let img3 = new Image();
-        img3.fileName = '../images/Budget_1800x653px.png';
+        img3.fileName = 'Budget_1800x653px';
         img3.id = 'imagePENG';
         img3.appendToElement(this.element);
     }

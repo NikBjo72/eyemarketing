@@ -1,7 +1,5 @@
 import {Page} from '../framework/page.js';
 import {Image} from '../ui/image.js';
-import {application} from '../main.js';
-import { Button } from '../ui/button.js';
 
 export class HomePage extends Page {
     
@@ -13,7 +11,7 @@ export class HomePage extends Page {
         super.createElement();
 
         let img = new Image();
-        img.fileName = '../images/Eye-Marketing_800x386px.png';
+        img.fileName = 'Eye_Marketing_800x386px';
         img.id = 'logoHomepage';
         img.appendToElement(this.element);
 

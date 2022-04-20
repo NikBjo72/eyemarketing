@@ -45,7 +45,7 @@ export class ProductIdeaPage extends Page {
         c1.appendToElement(this.element);
 
         let img1 = new Image();
-        img1.fileName = '../images/WBS_1800x620px.png';
+        img1.fileName = 'WBS_1800x620px';
         img1.id = 'imageDistrEM';
         img1.appendToElement(this.element);
     }
@@ -55,6 +55,6 @@ export class ProductIdeaPage extends Page {
             <div id="ProductIdeaPage" class="pageConatiner">
                 <h1  id="headerProducttIdeaPage" class="pageHeader">PRODUKTIDÉ</h1>
             </div>
-            `;;
+            `;
     }
 }

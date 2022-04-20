@@ -1,6 +1,13 @@
 {
+  "scripts": {
+    "start": "parcel *.html",
+    "build": "parcel build *.html"
+  },
   "dependencies": {
     "jquery": "^3.6.0",
     "material-design-lite": "^1.3.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.4.1"
   }
 }
