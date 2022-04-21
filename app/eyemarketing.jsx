@@ -1,6 +1,6 @@
 console.log('hej fån eyemarketing.js');
 import ReactDOM from "react-dom";
-import { App, Start } from "./start";
+import { Start } from "./Pages/start";
 
 const app = document.getElementById("root");
 ReactDOM.render(<Start />, root);

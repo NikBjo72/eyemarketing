@@ -24,6 +24,7 @@ export class Login extends React.Component {
 
     componentWillUnmount(){
         console.log("login did unmount")
+        this.props.background(false);
     }
 
     checkPassword = () => {
@@ -53,10 +54,10 @@ export class Login extends React.Component {
           <div id="loginContainer">
                 <div id="form">
                     {this.state.loginTries ? this.renderErrorMessage() : null }
-                    <input onChange = {this.emailOnChangeHandler} value = {this.state.email} type="email" placeholder='E-post adress'/>
+                    <input onChange = {this.emailOnChangeHandler} value = {this.state.email} type="email" placeholder='E-post'/>
                     <input onChange = {this.passwordOnChangeHandler} value = {this.state.password} type="password" placeholder='Lösenord'/>
                     <button onClick = {(e) => this.props.onClick(this.sendLoginAnswer())} id="loginBtn">Logga in</button>
-                </div> 
+                </div>
           </div>
         
       );

@@ -3,10 +3,17 @@
     background-color: #4d5059;
 }
 
-#start {
-    background-position: 50% 20%;
+/* #start {
+    background-position: 50% 40%;
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
+} */
+
+#background {
+    background-position: 50% 40%;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent !important; 
 }
 
 #loginContainer {
@@ -33,6 +40,21 @@
     position: fixed;
     width: 100vw;
     min-height: 5rem;
+}
+
+#footerContainer {
+    color: rgb(133, 133, 133);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 6.5vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    position: fixed;
+    width: 100vw;
+    min-height: 6rem;
+    bottom: 0px;
 }
 
 #form {
