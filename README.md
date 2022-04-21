@@ -7,5 +7,7 @@ Pitchsida för Eye Marketing
     2. Öppna mappen i terninalen och skriv: npm install
     3. För att starta applikationen skriv: npm start
 
+    Parcel Js - byggsystem
+
     God utvärdering!
 

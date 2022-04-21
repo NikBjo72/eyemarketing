@@ -1,16 +1,12 @@
 import React from 'react';
 
-export class Login extends React.Component {
+export class Logout extends React.Component {
 
     render() {
       return (
           <div id="logoutContainer">
-                <form>
-                    <button id="logoutBtn">Logga ut</button>
-                </form> 
+                <button onClick = {(e) => this.props.onClick(false)} id="logoutBtn">Logga ut</button>
           </div>
-        
       );
     }
-
 };
