@@ -18,30 +18,27 @@ export class Start extends React.Component {
         background: true
       }
     }
-    
   }
 
   handleClick = (loggedIn) => {
     if (loggedIn) {
-      this.setState({isLoggedIn: true}, () => {
-        this.saveIsLoggedIn();
-        console.log('Inloggad')});
+        this.updateState({isLoggedIn: true});
+        console.log('Inloggad');
     } else {
-      this.setState({isLoggedIn: false}, () => {
-        this.saveIsLoggedIn();
-        console.log('Fel användarnamn eller lösenord')
-      });
+        this.updateState({isLoggedIn: false});
+        console.log('Fel användarnamn eller lösenord');
     }
   }
 
-  saveIsLoggedIn = () => {
-    localStorage.setItem('state', JSON.stringify(this.state));
+  updateState = (newState) => {
+    this.setState(newState, () => 
+    localStorage.setItem('state', JSON.stringify(this.state))
+    );
   }
 
-  removeBackgroundAtLogin = (bool) => {
-    this.setState({background: bool}, () => {
-      console.log('no background')
-    });
+  updateBackground = (bool) => {
+    this.updateState({background: bool});
+    console.log('no background');
   }
 
   render() {
@@ -49,9 +46,9 @@ export class Start extends React.Component {
       <div id="start">
         {!this.state.isLoggedIn
           ?
-          <Login background = {this.removeBackgroundAtLogin} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
+          <Login background = {this.updateBackground} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
           :
-          <Logout background = {this.removeBackgroundAtLogin} onClick = {this.handleClick}/>
+          <Logout background = {this.updateBackground} onClick = {this.handleClick}/>
         }
           <Footer />
 
