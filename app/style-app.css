@@ -1,13 +1,70 @@
 *{
     margin: 0px;
     background-color: #4d5059;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-/* #start {
-    background-position: 50% 40%;
-    width: 100vw;
-    height: 100vh;
-} */
+#contentContainer {
+    border: solid 1px white;
+}
+
+#menu {
+    color: white;
+    width: 30%;
+    border: solid 1px white;
+}
+
+#browser {
+    padding: 1rem;
+    color: white;
+    width: 70%;
+    height: auto;
+    border: solid 1px white;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.colOne {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+.colTwo {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 3
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    line-height: 3rem;
+    align-self: center;
+}
+.card {
+    width: 15rem;
+    height: 20rem;
+    background-color: rgb(190, 190, 190);
+    padding: 0.5rem;
+}
+.cardImg {
+    max-width: 100%;
+}
+
+#eyeBtn {
+    margin-right: 1rem;
+    margin-bottom: -7px;
+    width: 3rem;
+    height: auto;
+}
+
 
 #background {
     background-position: 50% 40%;
@@ -18,7 +75,6 @@
 
 #loginContainer {
     margin-top: 1rem;
-    font-family:Arial, Helvetica, sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -31,13 +87,12 @@
 
 #logoutContainer {
     margin-top: 1rem;
-    font-family:Arial, Helvetica, sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content:flex-end;
     align-items: center;
     background-color: transparent;
-    position: fixed;
+    /* position: fixed; */
     width: 100vw;
     min-height: 5rem;
 }
@@ -107,4 +162,10 @@ input {
     display: block;
     margin-left: 1rem;
     background-color: transparent;
+}
+.bg-transp {
+    background-color: transparent;
+}
+.text-black {
+    color: black;
 }

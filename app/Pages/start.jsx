@@ -8,6 +8,7 @@ import { Footer } from '../footer';
 export class Start extends React.Component {
 
   constructor(props) {
+    console.log('construktor');
     super(props)
     const storedState = localStorage.getItem("state")
     if(storedState) {
@@ -21,32 +22,41 @@ export class Start extends React.Component {
   }
 
   handleClick = (loggedIn) => {
+    console.log('handleClick');
     if (loggedIn) {
         this.updateState({isLoggedIn: true});
         console.log('Inloggad');
     } else {
         this.updateState({isLoggedIn: false});
-        console.log('Fel användarnamn eller lösenord');
     }
   }
 
   updateState = (newState) => {
+    console.log('updateState');
     this.setState(newState, () => 
     localStorage.setItem('state', JSON.stringify(this.state))
     );
   }
 
   updateBackground = (bool) => {
+    console.log('updateBackground');
     this.updateState({background: bool});
     console.log('no background');
   }
 
+  clearLocalStorage = () => {
+    console.log('clearLocalStorage');
+    localStorage.clear();
+    console.log('empty LS');
+  }
+
   render() {
+    console.log('Render');
     return (
       <div id="start">
         {!this.state.isLoggedIn
           ?
-          <Login background = {this.updateBackground} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
+          <Login clearLoSt = {this.clearLocalStorage} background = {this.updateBackground} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
           :
           <Logout background = {this.updateBackground} onClick = {this.handleClick}/>
         }

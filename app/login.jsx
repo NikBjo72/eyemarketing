@@ -11,15 +11,19 @@ export class Login extends React.Component {
         }
     }
     emailOnChangeHandler = (e) => {
+        console.log('emailOnChangeHandler');
         this.setState({email: e.target.value}, () => this.checkPassword())
     }
 
     passwordOnChangeHandler = (e) => {
+        console.log('passwordOnChangeHandler');
         this.setState({password: e.target.value}, () => this.checkPassword())
+
     }
 
     componentDidMount(){
         console.log("login did mount")
+        this.props.clearLoSt();
     }
 
     componentWillUnmount(){
@@ -28,6 +32,7 @@ export class Login extends React.Component {
     }
 
     checkPassword = () => {
+        console.log('checkPassword');
         if (this.state.password == this.props.password && this.state.email == this.props.email) {
             return true
         } else {
@@ -36,6 +41,7 @@ export class Login extends React.Component {
     }
 
     sendLoginAnswer = () => {
+        console.log('sendLoginAnswer');
         if (!this.checkPassword()){
             this.setState({loginTries: true})
             return false;
@@ -45,22 +51,22 @@ export class Login extends React.Component {
     }
 
     renderErrorMessage = () => {
+        console.log('renderErrorMessage');
         return <small id="errorMessage">Fel användarnamn eller lösenord</small>
     }
 
     render() {
-        console.log(this.state.loginTries);
-      return (
-          <div id="loginContainer">
+        console.log('loginRender');
+        return (
+            <div id="loginContainer">
                 <div id="form">
                     {this.state.loginTries ? this.renderErrorMessage() : null }
                     <input onChange = {this.emailOnChangeHandler} value = {this.state.email} type="email" placeholder='E-post'/>
                     <input onChange = {this.passwordOnChangeHandler} value = {this.state.password} type="password" placeholder='Lösenord'/>
                     <button onClick = {(e) => this.props.onClick(this.sendLoginAnswer())} id="loginBtn">Logga in</button>
                 </div>
-          </div>
-        
-      );
+            </div>
+        );
     }
 
 };
