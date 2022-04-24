@@ -16,41 +16,23 @@ export class BlinkingEyeBtn extends React.Component {
     }
 
     handleEvent = (e) => {
-        // //debugger
-        // if (e.type === 'mouseenter' && this.state.btnImage != Eye) {
-        //     this.setState({btnImage: closedEyeGreen}, () => 
-        //     console.log('mouseenter'))
-        //     return
-        // }
-        // //debugger
-        // if (e.type === 'mouseleave' && this.state.btnImage != Eye) {
-        //     this.setState({btnImage: closedEye}, () => 
-        //     console.log('mouseleave'))
-        //     return
-        // }
-        //debugger
+
         if (e.type === 'mousedown') {
 
             if (this.state.btnImage === Eye) {
-                this.setState({btnImage: closedEye, btnState: 'disabled'}, () => 
-                console.log(this.state.btnState))
+                this.setState({btnImage: closedEye, btnState: 'disabled'});
             } else {
-                var newState = {btnImage: Eye, btnState: 'active'};
-                this.setState({btnImage: Eye, btnState: 'active'}, () => 
-                console.log(this.state.btnState))
+                this.setState({btnImage: Eye, btnState: 'active'});
             }
 
         }
     }
 
     render() {
-        //console.log(this.state.btnImage);
         return (
                 <li>
                     <img id="eyeBtn"
                         src = {this.state.btnImage}
-                        //onMouseEnter={ this.handleEvent }
-                        //onMouseLeave={ this.handleEvent }
                         onMouseDown={ this.handleEvent }
                         onClick = {(e) => this.props.onClick(this.state.btnName, this.state.btnState)}
                     />

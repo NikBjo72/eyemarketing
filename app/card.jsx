@@ -5,7 +5,6 @@ export class Card extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(url);
     }
     
     render() {
@@ -22,9 +21,7 @@ export class Card extends React.Component {
                         </span>
                         ))
                     :
-                    'inga taggar' }
-
-                    
+                    'inga taggar' }      
             </div>
         );
     }

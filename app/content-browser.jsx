@@ -48,39 +48,28 @@ export class ContentBrowser extends React.Component {
     handleClick = (btnName, btnState) => {
         
         if (btnName === 'LOGO') {
-            this.setCategory('LOGO')
-            console.log('LOGO');
-            let logos = this.state.logos.map((l) => l.name);
+            let logos = this.state.logos;
             this.browseChosenCards(logos, btnState);
         }
         if (btnName === 'BILDER') {
-            this.setCategory('BILDER');
-            console.log('BILDER');
-            let images = this.state.images.map((i) => i.name);
-            console.log(images);
+            let images = this.state.images;
             this.browseChosenCards(images, btnState);
         }
         if (btnName === 'FÄRGER') {
-            this.setCategory('FÄRGER');
-            console.log('FÄRGER');
-            let colors = this.state.colors.map((c) => c.name);
+            let colors = this.state.colors;
             this.browseChosenCards(colors, btnState);
         }
     }
 
     browseChosenCards = (cards, btnState) => {
-        //debugger
+
         if (btnState === 'active') {
             if (this.state.chosenCards == '') {
-                this.setState({chosenCards: cards}, () =>
-                console.log(this.state.chosenCards));
+                this.setState({chosenCards: cards});
             } else {
                 let newState = {...this.state};
-                console.log(cards);
                 newState.chosenCards = newState.chosenCards.concat(cards);
-                console.log(newState);
-                this.setState(newState, () =>
-                console.log(this.state));
+                this.setState(newState);
             }
         } else {
             let newState = {...this.state};
@@ -89,26 +78,7 @@ export class ContentBrowser extends React.Component {
                     return object !== card;
                 });
             });
-            this.setState(newState, () =>
-            console.log(this.state));
-        }
-    }
-
-    setCategory = (btnName) => {
-        
-        switch (btnName) {
-        case 'LOGO':
-            this.setState({category: 'logos'});
-            console.log('category logos set');
-            break;
-        case 'BILDER':
-            this.setState({category: 'images'});
-            console.log('category images set');
-            break;
-        case 'FÄRGER':
-            this.setState({category: 'colors'});
-            console.log('category colors set');
-            break;
+            this.setState(newState);
         }
     }
     
@@ -122,12 +92,12 @@ export class ContentBrowser extends React.Component {
                     null
                     :
                     this.state.chosenCards.map((card) => (
-                        <Card url = {card} tags = {this.state[this.state.category].filter((i) => i.name === card)[0].tags}/>
+                        <Card url = {card.name} tags = {card.tags}/>
                     ))
                     }
                     
                 </div>
-                <div id="menu" class="colOne">
+                <div id="menu" className={"colOne"}>
                     <ul>
                         <BlinkingEyeBtn text = 'LOGO' onClick = {this.handleClick} />
                         <BlinkingEyeBtn text = 'BILDER' onClick = {this.handleClick} />

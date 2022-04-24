@@ -1,4 +1,3 @@
-//console.log('hej fån eyemarketing.js');
 import ReactDOM from "react-dom";
 import { Start } from "./Pages/start";
 
