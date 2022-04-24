@@ -10,11 +10,9 @@ export class Card extends React.Component {
     
     render() {
         return (
-            <div key = {'key'} class='card'>
-                <img class="cardImg" src = {url[this.props.url]} />
-                <h4 class='bg-transp text-black' id="cardHeader">Beskrivningstaggar</h4>
-                
-                {/* <p class='bg-transp text-black' >{this.props.tags}</p> */}
+            <div key = {this.props.url} className={'card'}>
+                <img className={"cardImg"} src = {url[this.props.url]} />
+                <h4 className={'bg-transp text-black'} id="cardHeader">Beskrivningstaggar</h4>
 
                 {this.props.tags != undefined
                     ?
@@ -24,7 +22,7 @@ export class Card extends React.Component {
                         </span>
                         ))
                     :
-                    'nej' }
+                    'inga taggar' }
 
                     
             </div>

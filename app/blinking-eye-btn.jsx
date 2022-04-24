@@ -9,27 +9,37 @@ export class BlinkingEyeBtn extends React.Component {
         super(props);
         this.state = {
             btnImage: closedEye,
-            btnState: ''
+            btnState: '',
+            btnName: this.props.text
         }
 
     }
 
     handleEvent = (e) => {
-        if (e.type === 'mouseenter' && this.state.btnImage != Eye) {
-            this.setState({btnImage: closedEyeGreen, btmState: 'mouseenter'}, () => 
-            console.log('mouseenter'))
-        }
-        if (e.type === 'mouseleave' && this.state.btnImage != Eye) {
-            this.setState({btnImage: closedEye, btmState: 'mouseleave'}, () => 
-            console.log('mouseleave'))
-        }
+        // //debugger
+        // if (e.type === 'mouseenter' && this.state.btnImage != Eye) {
+        //     this.setState({btnImage: closedEyeGreen}, () => 
+        //     console.log('mouseenter'))
+        //     return
+        // }
+        // //debugger
+        // if (e.type === 'mouseleave' && this.state.btnImage != Eye) {
+        //     this.setState({btnImage: closedEye}, () => 
+        //     console.log('mouseleave'))
+        //     return
+        // }
+        //debugger
         if (e.type === 'mousedown') {
-            this.setState({btnImage: Eye, btmState: 'mousedown'}, () => 
-            console.log('mousedown'))
-        }
-        if (e.type === 'mousedown' && this.state.btnImage == Eye) {
-            this.setState({btnImage: closedEye, btmState: 'mousedown'}, () => 
-            console.log('mousedown'))
+
+            if (this.state.btnImage === Eye) {
+                this.setState({btnImage: closedEye, btnState: 'disabled'}, () => 
+                console.log(this.state.btnState))
+            } else {
+                var newState = {btnImage: Eye, btnState: 'active'};
+                this.setState({btnImage: Eye, btnState: 'active'}, () => 
+                console.log(this.state.btnState))
+            }
+
         }
     }
 
@@ -39,9 +49,10 @@ export class BlinkingEyeBtn extends React.Component {
                 <li>
                     <img id="eyeBtn"
                         src = {this.state.btnImage}
-                        onMouseEnter={ this.handleEvent }
-                        onMouseLeave={ this.handleEvent }
+                        //onMouseEnter={ this.handleEvent }
+                        //onMouseLeave={ this.handleEvent }
                         onMouseDown={ this.handleEvent }
+                        onClick = {(e) => this.props.onClick(this.state.btnName, this.state.btnState)}
                     />
                     {this.props.text}
                 </li>
