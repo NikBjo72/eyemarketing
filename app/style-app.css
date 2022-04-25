@@ -5,14 +5,14 @@
 }
 
 #contentContainer {
-    border: solid 1px white;
+    /* border: solid 1px white; */
     
 }
 
 #menu {
     color: white;
     width: 30%;
-    border: solid 1px white;
+    /* border: solid 1px white; */
 }
 
 #browser {
@@ -24,7 +24,7 @@
     color: white;
     width: 70%;
     height: auto;
-    border: solid 1px white;
+    /* border: solid 1px white; */
 }
 .row {
     display: flex;

@@ -92,7 +92,7 @@ export class ContentBrowser extends React.Component {
                     null
                     :
                     this.state.chosenCards.map((card) => (
-                        <Card url = {card.name} tags = {card.tags}/>
+                        <Card key={card.name} url = {card.name} tags = {card.tags}/>
                     ))
                     }
                     

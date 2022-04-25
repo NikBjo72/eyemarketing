@@ -9,7 +9,7 @@ export class Card extends React.Component {
     
     render() {
         return (
-            <div key = {this.props.url} className={'card'}>
+            <div className={'card'}>
                 <img className={"cardImg"} src = {url[this.props.url]} />
                 <h4 className={'bg-transp text-black'} id="cardHeader">Beskrivningstaggar</h4>
 
