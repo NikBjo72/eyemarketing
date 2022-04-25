@@ -1,4 +1,5 @@
 import {BaseElement} from './base-element.js';
+import {url} from '../framework/images.js';
 
 export class TitleBar extends BaseElement {
     
@@ -32,7 +33,7 @@ export class TitleBar extends BaseElement {
                 <header class="mdl-layout__header">
                     <div class="mdl-layout__header-row">
                     <!-- Title -->
-                    <span class="mdl-layout-title"><img id="navEye"src="../images/Eye-small_100x66px.png"/>${this.title}</span>
+                    <span class="mdl-layout-title"><img id="navEye"src="${url['Eye_small_100x66px']}"/>${this.title}</span>
                     <!-- Add spacer, to align navigation to the right -->
                     <div class="mdl-layout-spacer"></div>
                     <!-- Navigation. We hide it in small screens. -->

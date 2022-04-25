@@ -1,0 +1,180 @@
+*{
+    margin: 0px;
+    background-color: #4d5059;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#contentContainer {
+    /* border: solid 1px white; */
+    
+}
+
+#menu {
+    color: white;
+    width: 30%;
+    /* border: solid 1px white; */
+}
+
+#browser {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+    color: white;
+    width: 70%;
+    height: auto;
+    /* border: solid 1px white; */
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.colOne {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+.colTwo {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 3
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    line-height: 3rem;
+    align-self: center;
+}
+.card {
+    width: 15rem;
+    height: 20rem;
+    background-color: rgb(190, 190, 190);
+    padding: 0.5rem;
+}
+.cardImg {
+    max-width: 100%;
+    height: auto;
+}
+
+#eyeBtn {
+    margin-right: 1rem;
+    margin-bottom: -7px;
+    width: 3rem;
+    height: auto;
+}
+#eyeBtn:hover {
+    transform: scale(1.3, 1.3);
+    transition: .3s;
+}
+
+#background {
+    background-position: 50% 40%;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent !important; 
+}
+
+#loginContainer {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    position: fixed;
+    width: 100vw;
+    min-height: 5rem;
+}
+
+#logoutContainer {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-end;
+    align-items: center;
+    background-color: transparent;
+    /* position: fixed; */
+    width: 100vw;
+    min-height: 5rem;
+}
+
+#footerContainer {
+    color: rgb(133, 133, 133);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 6.5vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    position: fixed;
+    width: 100vw;
+    min-height: 6rem;
+    bottom: 0px;
+}
+
+#form {
+    justify-content: center;
+    background-color: transparent;
+    color: white;
+}
+
+input {
+    border: solid 0.5px rgb(255, 255, 255);
+    border-radius: 5px;
+    color: white;
+    width: 12rem;
+    height: 2rem;
+    padding: 5px 10px 5px 15px;
+    margin: 0.5rem 1rem .5rem 1rem;
+}
+
+#loginBtn {
+    color: white;
+    border: solid 2px rgb(0, 184, 34);
+    border-radius: 5px;
+    min-width: 5rem;
+    width: auto;
+    height: 2.8rem;
+    padding: 5px 15px 5px 15px;
+    margin: 0.5rem 1rem .5rem 1rem;
+}
+#loginBtn:hover {
+    color: rgb(0, 184, 34);
+    cursor: pointer; 
+}
+
+#logoutBtn {
+    color: white;
+    border: solid 2px rgb(184, 0, 0);
+    border-radius: 5px;
+    min-width: 5rem;
+    width: auto;
+    height: 2.8rem;
+    padding: 5px 15px 5px 15px;
+    margin: 0.5rem 3rem .5rem 1rem;
+}
+#logoutBtn:hover {
+    color: rgb(184, 0, 0);
+    cursor: pointer; 
+}
+#errorMessage {
+    color:red;
+    display: block;
+    margin-left: 1rem;
+    background-color: transparent;
+}
+.bg-transp {
+    background-color: transparent;
+}
+.text-black {
+    color: black;
+}

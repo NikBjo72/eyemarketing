@@ -14,7 +14,7 @@ export class ContactPage extends Page {
         let p = new Page('Eye Marketing - Kontakt');
 
         let img1 = new Image();
-        img1.fileName = '../images/Avatar-Niklas_398x398px.png';
+        img1.fileName = 'Avatar_Niklas_398x398px';
         img1.id = 'imageAvatarNiklas';
         img1.appendToElement(this.element);
 
@@ -30,14 +30,14 @@ export class ContactPage extends Page {
         c2.appendToElement(this.element);
 
         let img2 = new Image();
-        img2.fileName = '../images/LinkedIn-black-blue_295x75px.png';
+        img2.fileName = 'LinkedIn_black_blue_295x75px';
         img2.id = 'imgLinkedIn';
         img2.link = true;
         img2.href = 'https://www.linkedin.com/in/nbjork/';
         img2.appendToElement(this.element);
 
         let img3 = new Image();
-        img3.fileName = '../images/Icon-niklas-CV_300x209px.png';
+        img3.fileName = 'Icon_niklas_CV_300x209px';
         img3.id = 'imgCV';
         img3.link = true;
         img3.href = 'https://nikbjo72.github.io/CV/';

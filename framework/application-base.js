@@ -31,7 +31,7 @@ export class ApplicationBase {
 
         this.titleBar.element.find('.nav-link').click((event) => {
 
-            let route ='';
+            let route = '';
             let href = this.titleBar.links.find(e => e.title == event.target.innerHTML);
             if (href.href != "") {
                 route = href.href;

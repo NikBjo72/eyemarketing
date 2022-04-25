@@ -1,4 +1,5 @@
 console.log('Hej från base-element.js');
+import $ from "../node_modules/jquery/dist/jquery.js";
 
 export class BaseElement {
     

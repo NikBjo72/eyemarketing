@@ -1,4 +1,5 @@
 import {BaseElement} from './base-element.js';
+import {url} from '../framework/images.js';
 
 export class Image extends BaseElement {
     
@@ -15,11 +16,11 @@ export class Image extends BaseElement {
         if (this.link)
         {
             return `
-                <a href="${this.href}" target="${this.target}"><img id="${this.id}"src="${this.fileName}" style="width: 100%;"/></a>
+                <a href="${this.href}" target="${this.target}"><img id="${this.id}"src="${url[this.fileName]}" style="width: 100%;"/></a>
             `;
         } else {
         return `
-            <img id="${this.id}"src="${this.fileName}" style="width: 100%;" />
+            <img id="${this.id}" src="${url[this.fileName]}" style="width: 100%;" />
         `;
         }
     }
