@@ -1,0 +1,35 @@
+{
+    "images": [
+                {   "name": "bild1",
+                    "tags": ["foto", "glad", "människor", "kontor", "skissa", "presentation"]
+                },
+                {   "name": "bild2",
+                    "tags": ["foto", "glad", "människor", "kontor", "dator", "idé"]
+                },
+                {   "name": "bild3",
+                    "tags": ["foto", "glad", "människor", "möte", "dator"]
+                }
+            ],
+    "logos":  [
+                {   "name": "logo1",
+                    "tags": ["logo", "svart mot blå bakgrund", "huvudlogo" ]
+                },
+                {   "name": "logo2",
+                    "tags": ["logo", "monokron", "svrt mot grå bakgrund"]
+                },
+                {   "name": "logo3",
+                    "tags": ["logo", "blå logotext", "används mot mörk bakgrund"]
+                }
+            ],
+    "colors": [
+                {   "name": "color1",
+                    "tags": ["Pantone process Blue C", "CMYK 100 29 0 0", "logofärg", "blå", "dekorfärg"]
+                },
+                {   "name": "color2",
+                    "tags": ["Pantone Yellow 012 C", "CMYK 0 20 100 0", "Gul", "dekorfärg"]
+                },
+                {   "name": "color3",
+                    "tags": ["Pantone 521 C", "CMYK 42 50 9 2", "duplexfärg bilder", "dekorfärg"]
+                }
+            ]
+}
