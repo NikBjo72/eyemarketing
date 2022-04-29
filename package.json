@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "concurrently \"parcel *.html\" \"npx json-server --watch app/Data/db.json\"",
+    "start": "concurrently \"parcel *.html --port 5000\" \"npx json-server --watch app/Data/db.json --routes app/Data/routes.json --port 3000\"",
     "build": "parcel build *.html"
   },
   "dependencies": {

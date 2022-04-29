@@ -1,47 +1,29 @@
 import React from 'react';
 import { BlinkingEyeBtn } from './blinking-eye-btn';
 import { Card } from './card';
+import urls from './Model/fetch-url';
 
 export class ContentBrowser extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            images: [
-                        {   name: 'bild1',
-                            tags: ['foto', 'glad', 'människor', 'kontor', 'skissa', 'presentation']
-                        },
-                        {   name: 'bild2',
-                            tags: ['foto', 'glad', 'människor', 'kontor', 'dator', 'idé']
-                        },
-                        {   name: 'bild3',
-                            tags: ['foto', 'glad', 'människor', 'möte', 'dator']
-                        }
-                    ],
-            logos:  [
-                        {   name: 'logo1',
-                            tags: ['logo', 'svart mot blå bakgrund', 'huvudlogo' ]
-                        },
-                        {   name: 'logo2',
-                            tags: ['logo', 'monokron', 'svrt mot grå bakgrund']
-                        },
-                        {   name: 'logo3',
-                            tags: ['logo', 'blå logotext', 'används mot mörk bakgrund']
-                        }
-                    ],
-            colors: [
-                        {   name: 'color1',
-                            tags: ['Pantone process Blue C', 'CMYK 100 29 0 0', 'logofärg', 'blå', 'dekorfärg']
-                        },
-                        {   name: 'color2',
-                            tags: ['Pantone Yellow 012 C', 'CMYK 0 20 100 0', 'Gul', 'dekorfärg']
-                        },
-                        {   name: 'color3',
-                            tags: ['Pantone 521 C', 'CMYK 42 50 9 2', 'duplexfärg bilder', 'dekorfärg']
-                        }
-                    ],
             chosenCards: '',
             category: ''
+        }
+    }
+
+    componentDidMount = async () => {
+        try {
+        const response = await fetch(`${urls.graphicComponents}`);
+        if(!response.ok){
+            throw new Error(response.statusText);
+        }
+        const data = await response.json();
+        this.setState(data);
+        //console.log(data);
+        } catch(error) {
+            console.log(error);
         }
     }
 
