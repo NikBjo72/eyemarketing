@@ -1,3 +1,3 @@
 {
-    "/graphicComponents/images": "/graphicComponents/images"
+    "/api/*": "/$1"
 }
