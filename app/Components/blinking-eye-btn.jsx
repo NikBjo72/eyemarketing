@@ -8,12 +8,25 @@ export class BlinkingEyeBtn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            btnImage: closedEye,
-            btnState: '',
+            btnImage: "",
+            btnStatus: this.props.btnStatus,
             btnName: this.props.text,
             btnID: this.props.id
         }
+        console.log(this.state.btnStatus);
+    }
 
+    componentDidMount() {
+        this.checkBtnStatus();
+        console.log(this.props.btnStatus);
+    }
+
+    checkBtnStatus = () => {
+        if(this.state.btnStatus === "on") {
+            this.setState({btnImage: Eye});
+        } else {
+            this.setState({btnImage: closedEye});
+        }
     }
 
     handleEvent = (e) => {
@@ -21,9 +34,9 @@ export class BlinkingEyeBtn extends React.Component {
         if (e.type === 'mousedown') {
 
             if (this.state.btnImage === Eye) {
-                this.setState({btnImage: closedEye, btnState: 'disabled'});
+                this.setState({btnImage: closedEye, btnStatus: 'off'});
             } else {
-                this.setState({btnImage: Eye, btnState: 'active'});
+                this.setState({btnImage: Eye, btnStatus: 'on'});
             }
         }
     }
@@ -31,8 +44,8 @@ export class BlinkingEyeBtn extends React.Component {
     render() {
         return (
                 <li id={`li${this.props.id}`}
-                    onMouseDown={ this.handleEvent }
-                    onClick = {(e) => this.props.onClick(this.state.btnName, this.state.btnState)}>
+                    //onMouseDown={ this.handleEvent }
+                    onClick = {(e) => this.props.onClick(this.state.btnName, this.state.btnStatus)}>
 
                     <img id={this.props.id}
                         src = {this.state.btnImage}    

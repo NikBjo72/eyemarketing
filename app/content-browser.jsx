@@ -9,7 +9,10 @@ export class ContentBrowser extends React.Component {
         super(props);
         this.state = {
             chosenCards: '',
-            category: ''
+            category: '',
+            statusLogoBtn: 'off',
+            statusImageBtn: 'off',
+            statusColorBtn: 'off',
         }
     }
 
@@ -27,25 +30,57 @@ export class ContentBrowser extends React.Component {
         }
     }
 
+    changeBtnStatus = (btnState, state) => {
+
+        console.log(btnState, state);
+        if(btnState === 'on'){
+            this.setState({[state]: 'off'}, () => {
+                console.log(this.state);
+            })
+        } else {
+            this.setState({[state]: 'on'}, () => {
+                console.log(this.state);
+            })
+        }
+        
+    }
+
     handleClick = (btnName, btnState) => {
         
         if (btnName === 'LOGO') {
-            let logos = this.state.logos;
-            this.browseChosenCards(logos, btnState);
+            const wait = new Promise((resolve) => {
+                resolve(this.changeBtnStatus(btnState, 'statusLogoBtn'))
+            });
+            wait.then(() => {
+                let logos = this.state.logos;
+                this.browseChosenCards(logos, btnState);
+            });
         }
         if (btnName === 'BILDER') {
-            let images = this.state.images;
-            this.browseChosenCards(images, btnState);
+            const wait = new Promise((resolve) => {
+                resolve(this.changeBtnStatus(btnState, 'statusImageBtn'))
+            });
+            wait.then(() => {
+                let images = this.state.images;
+                this.browseChosenCards(images, btnState);
+            });
+
         }
         if (btnName === 'FÄRGER') {
-            let colors = this.state.colors;
-            this.browseChosenCards(colors, btnState);
+            const wait = new Promise((resolve) => {
+                resolve(this.changeBtnStatus(btnState, 'statusColorBtn'));
+            });
+            wait.then(() => {
+                let colors = this.state.colors;
+                this.browseChosenCards(colors, btnState);
+            });
+
         }
     }
 
     browseChosenCards = (cards, btnState) => {
 
-        if (btnState === 'active') {
+        if (btnState === 'off') {
             if (this.state.chosenCards == '') {
                 this.setState({chosenCards: cards});
             } else {
@@ -55,6 +90,7 @@ export class ContentBrowser extends React.Component {
             }
         } else {
             let newState = {...this.state};
+            console.log(newState.chosenCards);
             cards.forEach(card => {
                 newState.chosenCards = newState.chosenCards.filter(object => {
                     return object !== card;
@@ -81,9 +117,9 @@ export class ContentBrowser extends React.Component {
                 </div>
                 <div id="menu" className={"colOne"}>
                     <ul>
-                        <BlinkingEyeBtn id="mediumBtn" text = 'LOGO' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn id="mediumBtn" text = 'BILDER' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn id="mediumBtn" text = 'FÄRGER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn key={`Logo${this.state.statusLogoBtn}`} btnStatus = {this.state.statusLogoBtn} id="mediumBtn" text = 'LOGO' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn key={`Image${this.state.statusImageBtn}`} btnStatus = {this.state.statusImageBtn} id="mediumBtn" text = 'BILDER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn key={`Color${this.state.statusColorBtn}`} btnStatus = {this.state.statusColorBtn} id="mediumBtn" text = 'FÄRGER' onClick = {this.handleClick} />
                     </ul>
                 </div>
             </div>
