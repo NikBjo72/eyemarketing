@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlinkingEyeBtn } from './blinking-eye-btn';
+import { BlinkingEyeBtn } from './Components/blinking-eye-btn';
 import { Card } from './card';
 import urls from './Model/fetch-url';
 
@@ -81,9 +81,9 @@ export class ContentBrowser extends React.Component {
                 </div>
                 <div id="menu" className={"colOne"}>
                     <ul>
-                        <BlinkingEyeBtn text = 'LOGO' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn text = 'BILDER' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn text = 'FÄRGER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn id="mediumBtn" text = 'LOGO' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn id="mediumBtn" text = 'BILDER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn id="mediumBtn" text = 'FÄRGER' onClick = {this.handleClick} />
                     </ul>
                 </div>
             </div>

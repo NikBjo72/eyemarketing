@@ -1,7 +1,7 @@
 import React from 'react';
-import Eye from "./images/eye.svg";
-import closedEye from "./images/Closed_Eye.svg";
-import closedEyeGreen from "./images/Closed_Eye_green.svg";
+import Eye from "../images/eye.svg";
+import closedEye from "../images/Closed_Eye.svg";
+import './blinking-eye-btn.css';
 
 export class BlinkingEyeBtn extends React.Component {
 
@@ -10,7 +10,8 @@ export class BlinkingEyeBtn extends React.Component {
         this.state = {
             btnImage: closedEye,
             btnState: '',
-            btnName: this.props.text
+            btnName: this.props.text,
+            btnID: this.props.id
         }
 
     }
@@ -24,17 +25,17 @@ export class BlinkingEyeBtn extends React.Component {
             } else {
                 this.setState({btnImage: Eye, btnState: 'active'});
             }
-
         }
     }
 
     render() {
         return (
-                <li>
-                    <img id="eyeBtn"
-                        src = {this.state.btnImage}
-                        onMouseDown={ this.handleEvent }
-                        onClick = {(e) => this.props.onClick(this.state.btnName, this.state.btnState)}
+                <li id={`li${this.props.id}`}
+                    onMouseDown={ this.handleEvent }
+                    onClick = {(e) => this.props.onClick(this.state.btnName, this.state.btnState)}>
+
+                    <img id={this.props.id}
+                        src = {this.state.btnImage}    
                     />
                     {this.props.text}
                 </li>
