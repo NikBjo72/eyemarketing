@@ -1,8 +1,7 @@
 import React from 'react';
-import backgroundImage from "../images/eye.svg";
 import { Background } from '../background';
 import { Login } from '../login';
-import { Logout } from '../logout'
+import { MyEyeMarketing } from '../my-eye-marketing'
 import { Footer } from '../footer';
 
 export class Start extends React.Component {
@@ -29,6 +28,7 @@ export class Start extends React.Component {
     } else {
         this.updateState({isLoggedIn: false});
     }
+
   }
 
   updateState = (newState) => {
@@ -54,11 +54,12 @@ export class Start extends React.Component {
     console.log('Render');
     return (
       <div id="start">
+
         {!this.state.isLoggedIn
           ?
           <Login clearLoSt = {this.clearLocalStorage} background = {this.updateBackground} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
           :
-          <Logout background = {this.updateBackground} onClick = {this.handleClick}/>
+          <MyEyeMarketing background = {this.updateBackground} onClick = {this.handleClick}/>
         }
           <Footer />
 

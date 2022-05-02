@@ -24,7 +24,6 @@ export class BlinkingEyeBtn extends React.Component {
             } else {
                 this.setState({btnImage: Eye, btnState: 'active'});
             }
-
         }
     }
 

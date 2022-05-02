@@ -4,11 +4,6 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
-#contentContainer {
-    /* border: solid 1px white; */
-    
-}
-
 #menu {
     color: white;
     width: 30%;
@@ -94,16 +89,14 @@ li {
     min-height: 5rem;
 }
 
-#logoutContainer {
-    margin-top: 1rem;
+#menuContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content:flex-end;
-    align-items: center;
+    margin-top: 1rem;
     background-color: transparent;
-    /* position: fixed; */
     width: 100vw;
     min-height: 5rem;
+    padding-left: 1rem;
 }
 
 #footerContainer {
@@ -152,7 +145,13 @@ input {
     cursor: pointer; 
 }
 
+#logoutBtnContainer {
+    display: inline-block;
+    margin-left: auto;
+}
+
 #logoutBtn {
+    float: right;
     color: white;
     border: solid 2px rgb(184, 0, 0);
     border-radius: 5px;
@@ -166,6 +165,18 @@ input {
     color: rgb(184, 0, 0);
     cursor: pointer; 
 }
+
+#navBtn {
+    color: white;
+    border: solid 2px rgb(184, 0, 0);
+    border-radius: 5px;
+    min-width: 5rem;
+    width: auto;
+    height: 2.8rem;
+    padding: 5px 15px 5px 15px;
+    margin: 0.5rem;
+}
+
 #errorMessage {
     color:red;
     display: block;
