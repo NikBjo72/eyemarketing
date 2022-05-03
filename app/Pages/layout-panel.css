@@ -1,0 +1,12 @@
+canvas{
+    background-color: aliceblue;
+}
+
+#container{
+margin: 1.5rem;
+}
+
+#canvasContainer {
+    flex-basis: 100%;
+    flex: 3
+}

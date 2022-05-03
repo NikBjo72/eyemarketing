@@ -3,6 +3,7 @@ import { Start } from "./Pages/start";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { MyEyeMarketing } from "./Pages/my-eye-marketing";
 import { ContentBrowser } from "./Pages/content-browser";
+import LayoutPanel from "./Pages/layout-panel";
 
 
 const app = document.getElementById("root");
@@ -13,6 +14,7 @@ ReactDOM.render(
               
             <Route path="/my-eye-marketing" element={<MyEyeMarketing />} />
             <Route path="/browser" element={<ContentBrowser />} />
+            <Route path="/layout" element={<LayoutPanel />} />
             
           </Route>
         </Routes>

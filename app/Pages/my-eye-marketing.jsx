@@ -45,6 +45,7 @@ export class MyEyeMarketing extends React.Component {
         <div id="menuContainer">
           <Link id="navLink" to="/"><button id="navBtn"><BlinkingEyeBtn key = {`Home ${this.state.activeButton}`} btnStatus = { this.state.activeButton == "HOME" ? "on" : "off" } id="smallBtn" name="HOME" text="HOME" onClick = {this.handleClick}/></button></Link>
           <Link id="navLink" to="/browser"><button id="navBtn"><BlinkingEyeBtn key = {`Browser ${this.state.activeButton}`} btnStatus = { this.state.activeButton == "BROWSER" ? "on" : "off" } id="smallBtn" name="BROWSER" text="BROWSER" onClick = {this.handleClick}/></button></Link>
+          <Link id="navLink" to="/layout"><button id="navBtn"><BlinkingEyeBtn key = {`Layout ${this.state.activeButton}`} btnStatus = { this.state.activeButton == "LAYOUT PANEL" ? "on" : "off" } id="smallBtn" text="LAYOUT PANEL" onClick = {this.handleClick}/></button></Link>
 
           <div id="logoutBtnContainer">
             <Link to="/"><button onClick = {(e) => this.props.onClick(false)} id="logoutBtn">Logga ut</button></Link>
