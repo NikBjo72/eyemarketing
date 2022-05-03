@@ -38,7 +38,7 @@ Parcel innehåler också Babel som traspilerar koden till ES5.
 **json-server** --> används för att simulera ett REST-API från en json-fil. Körs på port 3000.   
 **concurrently** --> används för att kunna starta två servrar (parcel och json-server) med ett kommando.   
 Gör det enklare för dem som ska utvärdera applikationen.  
-**react-browser** --> 
+**react-browser** --> används för att kunna spara url:er vid navigering mellan sidorna. Gör också så att det går att använda pilarna i browsern för att bläddra mellan besökta sidor.
 
 ## Tjänster
 API http://localhost:3000/ (lokal json-server) används i filerna:  
