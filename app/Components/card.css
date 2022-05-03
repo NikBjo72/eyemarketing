@@ -1,0 +1,10 @@
+.card {
+    width: 15rem;
+    height: 20rem;
+    background-color: rgb(190, 190, 190);
+    padding: 0.5rem;
+}
+.cardImg {
+    max-width: 100%;
+    height: auto;
+}

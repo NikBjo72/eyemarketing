@@ -1,6 +1,7 @@
 import React from 'react';
+import './my-eye-marketing.css';
 import { Outlet, Link } from "react-router-dom";
-import { BlinkingEyeBtn } from './Components/blinking-eye-btn';
+import { BlinkingEyeBtn } from '../Components/blinking-eye-btn';
 
 export class MyEyeMarketing extends React.Component {
 

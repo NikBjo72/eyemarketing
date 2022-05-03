@@ -1,7 +1,8 @@
 import React from 'react';
-import { BlinkingEyeBtn } from './Components/blinking-eye-btn';
-import { Card } from './card';
-import urls from './Model/fetch-url';
+import './content-browser.css';
+import { BlinkingEyeBtn } from '../Components/blinking-eye-btn';
+import { Card } from '../Components/card';
+import urls from '../Model/fetch-url';
 
 export class ContentBrowser extends React.Component {
 

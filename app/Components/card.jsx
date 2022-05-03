@@ -1,5 +1,6 @@
 import React from 'react';
-import { url } from './Helpers/images'
+import { url } from '../Helpers/images';
+import './card.css';
 
 export class Card extends React.Component {
 

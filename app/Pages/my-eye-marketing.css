@@ -1,0 +1,43 @@
+#menuContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    background-color: transparent;
+    width: 100vw;
+    padding-left: 1rem;
+}
+
+#logoutBtnContainer {
+    display: inline-block;
+    margin-left: auto;
+}
+
+#logoutBtn {
+    float: right;
+    color: white;
+    border: solid 2px rgb(184, 0, 0);
+    border-radius: 5px;
+    min-width: 5rem;
+    width: auto;
+    height: 2.8rem;
+    padding: 5px 15px 5px 15px;
+    margin: 0.5rem 3rem .5rem 1rem;
+}
+
+#logoutBtn:hover {
+    color: rgb(184, 0, 0);
+    cursor: pointer; 
+}
+
+#navBtn {
+    color: white;
+    border: solid 2px rgb(215, 215, 215);
+    border-radius: 5px;
+    min-width: 5rem;
+    width: auto;
+    height: 2.8rem;
+    padding: 5px 15px 5px 15px;
+    margin: 0.5rem;
+    list-style-type: none;
+    cursor: pointer;
+}

@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
 import { Start } from "./Pages/start";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import { MyEyeMarketing } from "./my-eye-marketing";
-import { ContentBrowser } from "./content-browser";
+import { MyEyeMarketing } from "./Pages/my-eye-marketing";
+import { ContentBrowser } from "./Pages/content-browser";
 
 
 const app = document.getElementById("root");

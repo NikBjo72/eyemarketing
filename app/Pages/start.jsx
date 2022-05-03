@@ -1,8 +1,9 @@
 import React from 'react';
-import { Background } from '../background';
-import { Login } from '../login';
-import { MyEyeMarketing } from '../my-eye-marketing'
-import { Footer } from '../footer';
+import './start.css';
+import { Background } from '../Components/background';
+import { Login } from '../Components/login';
+import { MyEyeMarketing } from './my-eye-marketing'
+import { Footer } from '../Components/footer';
 
 export class Start extends React.Component {
 

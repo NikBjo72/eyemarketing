@@ -1,5 +1,6 @@
 import React from 'react';
-import backgroundImage from "./images/eye.svg";
+import './background.css';
+import backgroundImage from "../images/eye.svg";
 
 export class Background extends React.Component {
 
