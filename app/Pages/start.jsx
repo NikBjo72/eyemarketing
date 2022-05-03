@@ -10,7 +10,7 @@ export class Start extends React.Component {
   constructor(props) {
     console.log('construktor');
     super(props)
-    const storedState = localStorage.getItem("state")
+    const storedState = localStorage.getItem("startState")
     if(storedState) {
       this.state = JSON.parse(storedState);
     } else {
@@ -35,7 +35,7 @@ export class Start extends React.Component {
   updateState = (newState) => {
     console.log('updateState');
     this.setState(newState, () => 
-    localStorage.setItem('state', JSON.stringify(this.state))
+    localStorage.setItem('startState', JSON.stringify(this.state))
     );
   }
 

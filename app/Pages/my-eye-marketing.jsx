@@ -7,9 +7,20 @@ export class MyEyeMarketing extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      activeButton: "HOME"
+    const storedState = localStorage.getItem("myEyeMarketingState")
+    if(storedState) {
+      this.state = JSON.parse(storedState);
+    } else {
+      this.state = {
+        activeButton: "HOME"
+      }
     }
+  }
+
+  updateState = (newState) => {
+    this.setState(newState, () => 
+    localStorage.setItem('myEyeMarketingState', JSON.stringify(this.state))
+    );
   }
 
   componentWillUnmount(){
@@ -19,14 +30,10 @@ export class MyEyeMarketing extends React.Component {
 
   handleClick = (btnName, btnState) => {
     if(btnState == "off" && btnName != this.state.activeButton) {
-      this.setState({activeButton: btnName}, () => {
-        console.log(`handleClick ${this.state.activeButton}`);
-        });
+      this.updateState({activeButton: btnName});
     }
     else if (btnState == "on" && btnName != this.state.activeButton){
-      this.setState({activeButton: ""}, () => {
-        console.log(`handleClick ${this.state.activeButton}`);
-        });
+      this.updateState({activeButton: "HOME"});
     }
   }
 
