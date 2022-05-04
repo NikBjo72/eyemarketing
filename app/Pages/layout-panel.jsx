@@ -1,42 +1,68 @@
 import React from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { url } from '../Helpers/images';
+import { CanvasImage } from '../Components/canvas-image';
 import './layout-panel.css';
+import CanvasImagePanel from '../Components/canvas-image-panel';
 
 const LayoutPanel = () => {
 
-    const canvas = React.useRef();
-    console.log(canvas);
+    const [width, setWidth] = useState('800');
+    const [height, setHeight] = useState('500');
 
-    React.useEffect(() => {
-        const ctx = canvas.current.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const widthOnChangeHandler = (e) => {
+        setWidth(e.target.value);
+    }
+
+    const heightOnChangeHandler = (e) => {
+        setHeight(e.target.value);
+    }
+
+    const canvasRef = useRef(null);
+    console.log(canvasRef);
+
+    useEffect(() => {
+        const ctx = canvasRef.current.getContext('2d');
+        ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
         ctx.beginPath();
         ctx.fillStyle = 'red';
-        ctx.ellipse(300, 200, 150, 150, 0, 0, 2*Math.PI);
+        ctx.ellipse(200, 300, 150, 150, 0, 0, 2 * Math.PI);
         ctx.fill();
-        
-        //Text();
+    }, []);
 
-    });
+    useEffect(() => {
+        const ctx = canvasRef.current.getContext('2d');
+        ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
+        Text();
+        //CanvasImage(ctx, 'bild1', 200);
+        let newImage = new CanvasImage(ctx);
+        newImage.load();
+    }, []);
 
-    const Text = () => {
+    function Text() {
+        const ctx = canvasRef.current.getContext('2d');
+        ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
         ctx.beginPath();
         ctx.font = 'bold 48px serif';
-        ctx.fillText('Hello World', 50, 200);
+        ctx.fillText('Hello World', 200, 400);
     }
 
     return (
         <div id="container" className={"row"}>
         <div id="canvasContainer">
 
-        <canvas id="canvas" ref={canvas} height={"500px"} width={"1000px"}>
-            
+        <canvas id="canvas" ref={canvasRef} height={height} width={width}>   
         </canvas>
 
         </div>
         <div id="panelContainer" className={"colOne"}>
-            <ul>
-                
-            </ul>
+            <label></label>
+                <fieldset id="fieldsetStorlek">
+                    <legend className="text-white">Storlek layout</legend>
+                    <input onChange = { widthOnChangeHandler } value = {`${width}`} type="text" placeholder='Layout bredd'/>
+                    <input onChange = { heightOnChangeHandler } value = {`${height}`} type="text" placeholder='Layout höjd'/>
+                </fieldset>
+                <CanvasImagePanel />
         </div>
         </div>
     );

@@ -10,3 +10,7 @@ margin: 1.5rem;
     flex-basis: 100%;
     flex: 3
 }
+#fieldsetStorlek { 
+    width: min-content;
+    border-radius: 5px;
+}
