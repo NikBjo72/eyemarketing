@@ -3,7 +3,7 @@ canvas{
 }
 
 #container{
-margin: 1.5rem;
+margin: 1.5rem 1.5rem 8rem 1.5rem;
 }
 
 #canvasContainer {
@@ -12,5 +12,12 @@ margin: 1.5rem;
 }
 #fieldsetStorlek { 
     width: min-content;
-    border-radius: 5px;
+    border-radius: 7px;
+}
+.inputlabel {
+    padding: 0px 3px 0px 3px;
+    position: absolute;
+    background-color: #4d5059;
+    font-size: small;
+    margin-left: 23px;
 }

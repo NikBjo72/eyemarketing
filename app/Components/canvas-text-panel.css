@@ -1,0 +1,11 @@
+#checkboxContainer {
+    display: flex; 
+}
+.checkboxLabel {
+    margin-top: 1rem;
+    background-color: transparent;
+}
+textarea {
+    width: 9rem ;
+    height: 6rem;
+}

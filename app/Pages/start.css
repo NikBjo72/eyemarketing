@@ -4,7 +4,7 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
-input, select {
+input, select, textarea  {
     border: solid 0.5px rgb(255, 255, 255);
     border-radius: 5px;
     color: white;
@@ -17,6 +17,11 @@ input, select {
 }
 select {
     width:fit-content;
+    height: 2.6rem;
+}
+
+.checkbox {
+    width: 1.5rem;
 }
 
 .bg-transp {
@@ -40,7 +45,7 @@ select {
 .colOne {
     display: flex;
     flex-direction: column;
-    flex-basis: 100%;
+    flex-basis: 50%;
     flex: 1;
 }
 
@@ -48,5 +53,5 @@ select {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
-    flex: 3
+    flex: 2
 }

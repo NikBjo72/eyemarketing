@@ -13,12 +13,12 @@ export class BlinkingEyeBtn extends React.Component {
             btnName: this.props.text,
             btnID: this.props.id
         }
-        console.log(this.state.btnStatus);
+        //console.log(this.state.btnStatus);
     }
 
     componentDidMount() {
         this.checkBtnStatus();
-        console.log(this.props.btnStatus);
+        //console.log(this.props.btnStatus);
     }
 
     checkBtnStatus = () => {

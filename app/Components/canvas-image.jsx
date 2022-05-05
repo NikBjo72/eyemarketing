@@ -4,7 +4,7 @@ import './canvas-image.css'
 export class CanvasImage {
 
     constructor(object) {
-        this.type = "image";
+        this.type = "img";
         this.order = 0;
         this.image = new Image();
         this.image.src = url[object.imageName];

@@ -38,8 +38,8 @@ export class MyEyeMarketing extends React.Component {
   }
 
   render() {
-    console.log('my-eye-marketing - Render');
-    console.log(this.state.activeButton);
+    //console.log('my-eye-marketing - Render');
+    //console.log(this.state.activeButton);
     return (
       <div id="myEyeMarketing">
         <div id="menuContainer">
