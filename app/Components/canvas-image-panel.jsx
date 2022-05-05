@@ -5,50 +5,36 @@ import './canvas-image.css'
 
 const CanvasImagePanel = (props) => {
 
-    const updateUseEffect = () => {
-        if(consoleLog) {
-            setConsoleLog(false);
-        } else {
-            setConsoleLog(true);
-        };
-    }
-
     const [consoleLog, setConsoleLog] = useState(true)
     const [imageSettings, setImageSettings] = useState(
         {
             "imageName": "",
             "imageX": 0,
-            "imageY": 00,
+            "imageY": 0,
             "imageWidth": 0,
-            "imageHeight": 0
+            "order": 0
         }
         );
 
     const selectOnChangeHandler = (e) =>  { setImageSettings(
-        {...imageSettings, "imageName": e.currentTarget.value});
-        updateUseEffect();
+        { ...imageSettings, "imageName": e.currentTarget.value });
     }
-
     const xOnChangeHandler = (e) =>  { setImageSettings(
-        {...imageSettings, "imageX": e.currentTarget.value});
-        updateUseEffect();
+        { ...imageSettings, "imageX": parseInt(e.currentTarget.value) });
     }
     const yOnChangeHandler = (e) =>  { setImageSettings(
-        {...imageSettings, "imageY": e.currentTarget.value});
-        updateUseEffect();
+        { ...imageSettings, "imageY": parseInt(e.currentTarget.value) });
     }
     const widthOnChangeHandler = (e) =>  { setImageSettings(
-        {...imageSettings, "imageWidth": e.currentTarget.value});
-        updateUseEffect();
+        { ...imageSettings, "imageWidth": parseInt(e.currentTarget.value) });
     }
-    const heightOnChangeHandler = (e) =>  { setImageSettings(
-        {...imageSettings, "imageHeight": e.currentTarget.value});
-        updateUseEffect();
+    const orderOnChangeHandler = (e) =>  { setImageSettings(
+        { ...imageSettings, "order": parseInt(e.currentTarget.value) });
     }
     
-    useEffect(() => {
-        console.log(imageSettings);
-    }, [consoleLog]);
+    // useEffect(() => {
+    //     console.log(imageSettings);
+    // });
 
     let images = Object.keys(url);
 
@@ -64,19 +50,11 @@ const CanvasImagePanel = (props) => {
             <input onChange = { xOnChangeHandler } value = {imageSettings.imageX} type="number" placeholder='Placering horisontellt'/>
             <input onChange = { yOnChangeHandler } value = {imageSettings.imageY} type="number" placeholder='Placering vertikalt'/>
             <input onChange = { widthOnChangeHandler } value = {imageSettings.imageWidth} type="number" placeholder='Bildbredd'/>
-            <input onChange = { heightOnChangeHandler } value = {imageSettings.imageHeight} type="number" placeholder='Bildbredd'/>
-            <button onClick = {(e) => props.onClick("addImageBtn")} id="addImageBtn">Lägg till</button>
-            <button onClick = {(e) => props.onClick("deleteImageBtn")} id="deleteImageBtn">Ta bort</button>
+            <input onChange = { orderOnChangeHandler } value = {imageSettings.order} type="number" placeholder='Ordning'/>
+            <button onClick = {(e) => props.onClick("addImageBtn", imageSettings)} id="addImageBtn">Lägg till</button>
+            <button onClick = {(e) => props.onClick("deleteImageBtn", imageSettings.imageName)} id="deleteImageBtn">Ta bort</button>
         </fieldset>
     );
 }
 
 export default CanvasImagePanel;
-
-// {
-//     "imageName": "bild1",
-//     "imageX": 50,
-//     "imageY": 50,
-//     "imageWidth": 200,
-//     "imageHeight": 140
-// }

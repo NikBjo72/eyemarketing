@@ -7,28 +7,35 @@ import CanvasImagePanel from '../Components/canvas-image-panel';
 
 const LayoutPanel = () => {
 
-    const [loadImage, setLoadImage] = useState(true);
+    const [loadState, setLoadState] = useState(true);
     const [width, setWidth] = useState('800');
     const [height, setHeight] = useState('500');
     const [canvasImages, setCanvasImages] = useState(
         [   
             {
+                "type": "img",
+                "order": 0,
                 "imageName": "bild1",
                 "imageX": 50,
                 "imageY": 50,
                 "imageWidth": 200,
-                "imageHeight": 140
             }, 
-            {
+            {   
+                "type": "img",
+                "order": 0,
                 "imageName": "bild2",
                 "imageX": 300,
-                "imageY": 300,
+                "imageY": 50,
                 "imageWidth": 200,
-                "imageHeight": 140
             }
         ]
     );
-    const [canvasImagesObjects, setCanvasImagesObjects] = useState({"newState": []});
+
+    updateState = () => {
+        if (loadState === true){
+            setLoadState(false);
+        } else {setLoadState(true)};
+    }
 
     const widthOnChangeHandler = (e) => {
         setWidth(e.target.value);
@@ -40,29 +47,10 @@ const LayoutPanel = () => {
 
     const onClickHandler = (buttonName, imageSettings) => {
 
-        const ctx = canvasRef.current.getContext('2d');
-
-        var newState = [];
-
-        for(i=0; i < canvasImages.length; ++i) {
-            canvasImages[i].imageName = new CanvasImage(ctx, canvasImages[i]);
-            var newImage = canvasImages[i].imageName;
-
-            newState.push(newImage);
-        }
-
-        setCanvasImagesObjects({ newState });
-
-        if(loadImage) {
-            setLoadImage(false);
-        } else {
-            setLoadImage(true);
-        }
-
+        setCanvasImages(canvasImages => [...canvasImages, imageSettings]);
     }
 
     const canvasRef = useRef(null);
-    //console.log(canvasRef);
 
     useEffect(() => {
         const ctx = canvasRef.current.getContext('2d');
@@ -71,27 +59,18 @@ const LayoutPanel = () => {
         ctx.fillStyle = 'red';
         ctx.ellipse(200, 300, 150, 150, 0, 0, 2 * Math.PI);
         ctx.fill();
-    }, []);
 
-    useEffect(() => {
-        const ctx = canvasRef.current.getContext('2d');
-        ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
-        Text();
+        Text(ctx);
 
-        if(canvasImagesObjects.newState.length != 0) {
-            console.log('Kör for-loop');
-
-        for(i = 0; i < canvasImagesObjects.newState.length; i++) {
-            console.log(`Bild: ${i}`);
-            console.log(canvasImagesObjects.newState[i]);
-            canvasImagesObjects.newState[i].load();
+        for(i=0; i < canvasImages.length; ++i) {
+            const img = new CanvasImage(canvasImages[i]);
+            img.src = url[canvasImages[i].imageName];
+            img.imageHeight = img.getImageHeight();
+            ctx.drawImage(img.image, img.imageX, img.imageY, img.imageWidth, img.imageHeight);
         }
-        } else { console.log('Kör inte for-loop'); }
+    });
 
-    },[loadImage]);
-
-    function Text() {
-        const ctx = canvasRef.current.getContext('2d');
+    function Text(ctx) {
         ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
         ctx.beginPath();
         ctx.font = 'bold 48px serif';
