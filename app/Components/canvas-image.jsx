@@ -3,24 +3,18 @@ import './canvas-image.css'
 
 export class CanvasImage {
 
-    // constructor(ctx, object) {
-    //     this.image = new Image();
-    //     this.ctx = ctx;
-    //     this.imageName = object.imageName;
-    //     this.imageX = object.imageX;
-    //     this.imageY = object.imageY;
-    //     this.imageWidth = object.width;
-    //     this.imageHeight = getImageHeight(this.imageName, this.imageWidth);
-    // }
-
-    constructor(ctx) {
+    constructor(ctx, object) {
         this.image = new Image();
+        this.image.src = url[object.imageName];
         this.ctx = ctx;
-        this.imageName = 'bild1';
-        this.imageX = 100;
-        this.imageY = 50;
-        this.imageWidth = 200;
-        this.imageHeight = this.getImageHeight(this.imageName, this.imageWidth);
+        this.imageName = object.imageName;
+        this.imageX = object.imageX;
+        this.imageY = object.imageY;
+        this.imageWidth = object.imageWidth;
+        console.log('1');
+        this.imageHeight = object.imageHeight;
+        //this.imageHeight = this.getImageHeight(this.imageName, this.imageWidth);
+        console.log('2');
     }
     
     getImageHeight = (inImageName, inWidth) => {
@@ -29,6 +23,8 @@ export class CanvasImage {
         const imageHeight = this.image.naturalHeight;
         const scale = imageHeight/imageWidth;
 
+        console.log('3');
+        console.log(inWidth * scale);
         return (inWidth * scale);
     }
 

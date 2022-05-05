@@ -7,8 +7,28 @@ import CanvasImagePanel from '../Components/canvas-image-panel';
 
 const LayoutPanel = () => {
 
+    const [loadImage, setLoadImage] = useState(true);
     const [width, setWidth] = useState('800');
     const [height, setHeight] = useState('500');
+    const [canvasImages, setCanvasImages] = useState(
+        [   
+            {
+                "imageName": "bild1",
+                "imageX": 50,
+                "imageY": 50,
+                "imageWidth": 200,
+                "imageHeight": 140
+            }, 
+            {
+                "imageName": "bild2",
+                "imageX": 300,
+                "imageY": 300,
+                "imageWidth": 200,
+                "imageHeight": 140
+            }
+        ]
+    );
+    const [canvasImagesObjects, setCanvasImagesObjects] = useState({"newState": []});
 
     const widthOnChangeHandler = (e) => {
         setWidth(e.target.value);
@@ -18,8 +38,31 @@ const LayoutPanel = () => {
         setHeight(e.target.value);
     }
 
+    const onClickHandler = (buttonName, imageSettings) => {
+
+        const ctx = canvasRef.current.getContext('2d');
+
+        var newState = [];
+
+        for(i=0; i < canvasImages.length; ++i) {
+            canvasImages[i].imageName = new CanvasImage(ctx, canvasImages[i]);
+            var newImage = canvasImages[i].imageName;
+
+            newState.push(newImage);
+        }
+
+        setCanvasImagesObjects({ newState });
+
+        if(loadImage) {
+            setLoadImage(false);
+        } else {
+            setLoadImage(true);
+        }
+
+    }
+
     const canvasRef = useRef(null);
-    console.log(canvasRef);
+    //console.log(canvasRef);
 
     useEffect(() => {
         const ctx = canvasRef.current.getContext('2d');
@@ -34,10 +77,18 @@ const LayoutPanel = () => {
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
         Text();
-        //CanvasImage(ctx, 'bild1', 200);
-        let newImage = new CanvasImage(ctx);
-        newImage.load();
-    }, []);
+
+        if(canvasImagesObjects.newState.length != 0) {
+            console.log('Kör for-loop');
+
+        for(i = 0; i < canvasImagesObjects.newState.length; i++) {
+            console.log(`Bild: ${i}`);
+            console.log(canvasImagesObjects.newState[i]);
+            canvasImagesObjects.newState[i].load();
+        }
+        } else { console.log('Kör inte for-loop'); }
+
+    },[loadImage]);
 
     function Text() {
         const ctx = canvasRef.current.getContext('2d');
@@ -62,7 +113,7 @@ const LayoutPanel = () => {
                     <input onChange = { widthOnChangeHandler } value = {`${width}`} type="text" placeholder='Layout bredd'/>
                     <input onChange = { heightOnChangeHandler } value = {`${height}`} type="text" placeholder='Layout höjd'/>
                 </fieldset>
-                <CanvasImagePanel />
+                <CanvasImagePanel onClick = {onClickHandler}/>
         </div>
         </div>
     );
