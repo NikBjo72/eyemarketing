@@ -122,8 +122,8 @@ const CanvasTextPanel = (props) => {
                 <input onChange = { orderOnChangeHandler } value = {textSettings.order} type="number" placeholder='Ordning'/>
             </div>
 
-            <button onClick = {(e) => props.onClick("addTextBtn", textSettings)} className="deleteBtn">Lägg till</button>
-            <button onClick = {(e) => props.onClick("deleteTextBtn")} className="addBtn">Ta bort</button>
+            <button onClick = {(e) => props.onClick("addTextBtn", textSettings)} className="addBtn">Lägg till</button>
+            <button onClick = {(e) => props.onClick("deleteTextBtn")} className="deleteBtn">Ta bort</button>
         </fieldset>
     );
 }
