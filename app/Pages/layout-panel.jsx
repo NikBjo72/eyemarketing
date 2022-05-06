@@ -52,7 +52,7 @@ const LayoutPanel = () => {
     const onClickHandler = (buttonName, imageSettings) => {
 
         setCanvasItems(canvasImages => [...canvasImages, imageSettings]);
-        debugger
+
         if( buttonName == 'addLayoutBtn') {
             setCanvasItems(imageSettings[0].layoutContent);
             console.log(canvasItems);

@@ -19,11 +19,14 @@ Versonen måste vara minst v14.18.1
 1. För att starta applikationen gå in i mappen /eyemarketing i en terminal och skriv: npm start  
 2. En server startas med Parsel på http://localhost:5000/ samt en api-server med json-server på http://localhost:3000/.
 3. För att öppna appkikationen i en webbrowser, kopiera adressen: http://localhost:5000/ och klistra in i valfri webbrowser.
-4. För att besöka prototyp-applikationen klicka på app i top-menyn, längst till höger.  
+4. För att besöka prototyp-applikationen klicka på app i top-menyn, längst upp till höger.  
 5. Applikationen öppnas i ett nytt fönster.  
 6. Inloggningsuppgifter för appen:  
 E-post: test@eyemarketing.se  
-Lösenord: Hej123!   
+Lösenord: Hej123! 
+
+## Övrig information
+Jag har fortfarande en bugg i appen som gör att layouterna på canvasen inte uppdateras vid varje knapptryckning. Man kan byta till en anna sida och gå tillbaka, eller trycka på knappen flera gånger så funkar det. Det är någon kombo med React och canvas som är problemet, men jag har inte hittat vart eftersom det inte ger något felmeddelande. Hoppas kunna lösa det snart.
 
 ##  Byggsystem och transpilering 
 Applikationen körs med hjälp av Parcel som byggsystem.  
@@ -38,11 +41,13 @@ Parcel innehåler också Babel som traspilerar koden till ES5.
 **json-server** --> används för att simulera ett REST-API från en json-fil. Körs på port 3000.   
 **concurrently** --> används för att kunna starta två servrar (parcel och json-server) med ett kommando.   
 Gör det enklare för dem som ska utvärdera applikationen.  
-**react-browser** --> används för att kunna spara url:er vid navigering mellan sidorna. Gör också så att det går att använda pilarna i browsern för att bläddra mellan besökta sidor.
+**react-router-dom** --> används för att kunna spara url:er vid navigering mellan sidorna. Gör också så att det går att använda pilarna i browsern för att bläddra mellan besökta sidor.
 
 ## Tjänster
-API http://localhost:3000/ (lokal json-server) används i filerna:  
-**content-browser.jsx** --> (http://localhost:3000/api/graphicContent) för att hämta filnamn och taggar på marknadsmaterial (logo, bilder och färger) som sedan renderas ut som kort vid knappval av kategori.
+API http://localhost:3000/ (lokal json-server). Informationen i apiets databas hittar du i [Model/Data/filen db.json].
+Api:et är ett simulerat REST-api med hjälp av json-server. För att titta på api:et så kan du använda ovan adress i en webbläsare. API:et används i filerna:  
+**• get-my-model-data.js** --> anropar API:et (http://localhost:3000/api/graphicContent) med fetch. Denna modul är separead fån UI-filer och återanvänds i nedan filer för att hämta data från api:et.  
+**• content-browser.js** --> avänder funktionen i get-my-model-data.js för att hämta filnamn och taggar på marknadsmaterial (logo, bilder och färger) som sedan renderas ut som kort vid knappval av kategori.  
+**• canvas-load-panel.jsx** --> avänder funktionen i [get-my-model-data.js] för att hämta sparade layouter.
     
 **God utvärdering!**
-
