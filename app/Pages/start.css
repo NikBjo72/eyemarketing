@@ -4,10 +4,88 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
+input, select, textarea  {
+    border: solid 0.5px rgb(255, 255, 255);
+    border-radius: 5px;
+    color: white;
+    width: 12rem;
+    height: 2rem;
+    padding: 5px 10px 5px 15px;
+    margin: 0.5rem 1rem .5rem 1rem;
+    width: fit-content;
+
+}
+select {
+    width:fit-content;
+    height: 2.6rem;
+}
+fieldset {
+    min-width: 13rem;
+}
+
+.checkbox {
+    width: 1.5rem;
+}
+
 .bg-transp {
     background-color: transparent;
 }
 
 .text-black {
     color: black;
+}
+.text-white {
+    color: white;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.colOne {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    flex: 1;
+}
+
+.colTwo {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 2
+}
+.addBtn {
+    color: white;
+    border: solid 2px rgb(0, 184, 34);
+    border-radius: 5px;
+    min-width: 4rem;
+    width: auto;
+    height: 2.8rem;
+    padding: 5px 10px 5px 10px;
+    margin: 0.5rem 1rem .5rem 1rem;
+}
+
+.addBtn:hover {
+    color: rgb(0, 184, 34);
+    cursor: pointer; 
+}
+
+.deleteBtn {
+    color: white;
+    border: solid 2px rgb(255, 0, 0);
+    border-radius: 5px;
+    min-width: 4rem;
+    width: auto;
+    height: 2.8rem;
+    padding: 5px 10px 5px 10px;
+    margin: 0.5rem 1rem .5rem 1rem;
+}
+
+.deleteBtn:hover {
+    color: rgb(255, 0, 0);
+    cursor: pointer; 
 }

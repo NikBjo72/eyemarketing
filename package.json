@@ -1,13 +1,13 @@
 {
   "scripts": {
-    "start": "concurrently \"parcel *.html --port 5000\" \"npx json-server --watch app/Data/db.json --routes app/Data/routes.json --port 3000\"",
+    "start": "concurrently \"parcel *.html --port 5000\" \"npx json-server --watch app/Model/Data/db.json --routes app/Model/Data/routes.json --port 3000\"",
     "build": "parcel build *.html"
   },
   "dependencies": {
     "concurrently": "^7.1.0",
     "jquery": "^3.6.0",
     "json-server": "^0.17.0",
-    "material-design-lite": "^1.3.0", 
+    "material-design-lite": "^1.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.3.0"

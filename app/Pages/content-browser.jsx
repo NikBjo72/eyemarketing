@@ -3,6 +3,7 @@ import './content-browser.css';
 import { BlinkingEyeBtn } from '../Components/blinking-eye-btn';
 import { Card } from '../Components/card';
 import urls from '../Model/fetch-url';
+import GetMyModelData from '../Model/get-my-model-data';
 
 export class ContentBrowser extends React.Component {
 
@@ -18,17 +19,8 @@ export class ContentBrowser extends React.Component {
     }
 
     componentDidMount = async () => {
-        try {
-        const response = await fetch(`${urls.graphicComponents}`);
-        if(!response.ok){
-            throw new Error(response.statusText);
-        }
-        const data = await response.json();
-        this.setState(data);
-        //console.log(data);
-        } catch(error) {
-            console.log(error);
-        }
+
+        this.setState(await GetMyModelData(urls.graphicComponents));
     }
 
     changeBtnStatus = (btnState, state) => {
