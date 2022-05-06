@@ -12,8 +12,8 @@ Versonen måste vara minst v14.18.1
 ## Förbered applikationen
 1. Ladda ner källkoden genom att, på GitHub clicka på knappen Code och välja Download Zip.  
 2. Packa upp Zipfilen.  
-2. Öppna/gå in i mappen /eyemarketing via en terninal (i kodeditorn eller separat) och skriv: npm install  
-3. Vill du se koden, så öppna mappen /eyemarketing i valfri kodeditor.  
+2. Öppna/gå in i mappen /eyemarketing-main via en terninal (i kodeditorn eller separat) och skriv: npm install  
+3. Vill du se koden, så öppna mappen /eyemarketing-main i valfri kodeditor.  
 
 ## Starta applikationen 
 1. För att starta applikationen gå in i mappen /eyemarketing i en terminal och skriv: npm start  
