@@ -46,8 +46,47 @@
     },
     "savedLayouts": [
 
-        {   "name": {},
-            "layoutContent": {}
+        {   "layoutId": "1",
+            "name": "Test1",
+            "layoutContent": [   
+                {
+                    "type": "img",
+                    "order": 0,
+                    "imageName": "bild1",
+                    "imageX": 50,
+                    "imageY": 50,
+                    "imageWidth": 200
+                }, 
+                {   
+                    "type": "img",
+                    "order": 0,
+                    "imageName": "bild2",
+                    "imageX": 300,
+                    "imageY": 50,
+                    "imageWidth": 200
+                }
+            ]
+        },
+        {   "layoutId": "1",
+            "name": "Test2",
+            "layoutContent": [   
+                {
+                    "type": "img",
+                    "order": 0,
+                    "imageName": "bild3",
+                    "imageX": 50,
+                    "imageY": 50,
+                    "imageWidth": 200
+                }, 
+                {   
+                    "type": "img",
+                    "order": 0,
+                    "imageName": "logo2",
+                    "imageX": 300,
+                    "imageY": 50,
+                    "imageWidth": 200
+                }
+            ]
         }
     ]
 }

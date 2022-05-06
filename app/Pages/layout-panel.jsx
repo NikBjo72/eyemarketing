@@ -5,12 +5,15 @@ import { CanvasImage } from '../Components/canvas-image';
 import './layout-panel.css';
 import CanvasImagePanel from '../Components/canvas-image-panel';
 import CanvasTextPanel from '../Components/canvas-text-panel';
+import CanvasLoadPanel from '../Components/canvas-load-panel';
 
 const LayoutPanel = () => {
 
     const [loadState, setLoadState] = useState(true);
     const [width, setWidth] = useState('800');
     const [height, setHeight] = useState('500');
+    const [savedItems, setsavedItems] = useState();
+
     const [canvasItems, setCanvasItems] = useState(
         [   
             {
@@ -52,6 +55,10 @@ const LayoutPanel = () => {
     }
 
     const canvasRef = useRef(null);
+
+    useEffect(() => {
+        
+    })
 
     useEffect(() => {
 
@@ -99,16 +106,17 @@ const LayoutPanel = () => {
                 <fieldset id="fieldsetStorlek">
                     <legend className="text-white">Storlek layout</legend>
                     <div className='inputHolder'>
-                        <label class="inputlabel text-white" for="width">Bredd</label>
+                        <label className="inputlabel text-white" for="width">Bredd</label>
                         <input onChange = { widthOnChangeHandler } value = {`${width}`} name="width" type="text" placeholder='Layout bredd'/>
                     </div>
                     <div className='inputHolder'>
-                        <label class="inputlabel text-white" for="height">Höjd</label>
+                        <label className="inputlabel text-white" for="height">Höjd</label>
                         <input onChange = { heightOnChangeHandler } value = {`${height}`} name="height" type="text" placeholder='Layout höjd'/>
                     </div>
                 </fieldset>
-                <CanvasImagePanel onClick = {onClickHandler}/>
-                <CanvasTextPanel onClick = {onClickHandler}/>
+                <CanvasLoadPanel onClick = {onClickHandler} />
+                <CanvasImagePanel onClick = {onClickHandler} />
+                <CanvasTextPanel onClick = {onClickHandler} />
         </div>
         </div>
     );

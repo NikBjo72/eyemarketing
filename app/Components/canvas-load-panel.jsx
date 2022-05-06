@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { url } from '../Helpers/images';
 
-const CanvasImagePanel = (props) => {
+const CanvasLoadPanel = (props) => {
 
     const [consoleLog, setConsoleLog] = useState(true)
     const [imageSettings, setImageSettings] = useState(
@@ -40,36 +40,20 @@ const CanvasImagePanel = (props) => {
 
     return (
         <fieldset id="fieldsetImage">
-            <legend className="text-white">Lägg till bild</legend>
+            <legend className="text-white">Sparade layouter</legend>
             <div className='inputHolder'>
-                <label className="inputlabel text-white" >Bild</label>
+                <label className="inputlabel text-white" >Layout</label>
                 <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
-                    <option>Välj en bild</option>
+                    <option>Välj en layout</option>
                     {images.map((i) => {
                         return (<option key={i} value={i}>{i}</option>)
                     })}
                 </select>
             </div>
-            <div className='inputHolder'>
-                <label className="inputlabel text-white" >Placering horisontellt</label>
-                <input onChange = { xOnChangeHandler } value = {imageSettings.imageX} type="number" placeholder='Placering horisontellt'/>
-            </div>
-            <div className='inputHolder'>
-                <label className="inputlabel text-white" >Placering vertikalt</label>
-                <input onChange = { yOnChangeHandler } value = {imageSettings.imageY} type="number" placeholder='Placering vertikalt'/>
-            </div>
-            <div className='inputHolder'>
-                <label className="inputlabel text-white" >Bildbredd</label>
-                <input onChange = { widthOnChangeHandler } value = {imageSettings.imageWidth} type="number" placeholder='Bildbredd'/>
-            </div>
-            <div className='inputHolder'>
-                <label className="inputlabel text-white" >Lager</label>
-                <input onChange = { orderOnChangeHandler } value = {imageSettings.order} type="number" placeholder='Ordning'/>
-            </div>
-            <button onClick = {(e) => props.onClick("addImageBtn", imageSettings)} id="addImageBtn">Lägg till</button>
+            <button onClick = {(e) => props.onClick("addImageBtn", imageSettings)} id="addImageBtn">Öppna</button>
             <button onClick = {(e) => props.onClick("deleteImageBtn", imageSettings.imageName)} id="deleteImageBtn">Ta bort</button>
         </fieldset>
     );
 }
 
-export default CanvasImagePanel;
+export default CanvasLoadPanel;

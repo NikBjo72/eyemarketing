@@ -19,6 +19,9 @@ select {
     width:fit-content;
     height: 2.6rem;
 }
+fieldset {
+    min-width: 13rem;
+}
 
 .checkbox {
     width: 1.5rem;

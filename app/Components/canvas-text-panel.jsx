@@ -72,12 +72,12 @@ const CanvasTextPanel = (props) => {
         <fieldset id="fieldsetImage">
             <legend className="text-white">Lägg till text</legend>
             <div className='inputHolder'>
-                <label class="inputlabel text-white" >Text</label>
+                <label className="inputlabel text-white" >Text</label>
                 <textarea onChange = { textOnChangeHandler } name = "content" type = "text" value={textSettings.text} placeholder='Skriv din text här'/>
             </div>
 
             <div className='inputHolder'>
-                <label class="inputlabel text-white" >Typsnitt</label> 
+                <label className="inputlabel text-white" >Typsnitt</label> 
                 <select onChange = { selectFontOnChangeHandler } name='font' id='selectFont'>
                 <option>Välj typsnitt</option>
                     {fonts.map((i) => {
@@ -86,7 +86,7 @@ const CanvasTextPanel = (props) => {
                 </select>
             </div>
             <div className='inputHolder'>
-                <label class="inputlabel text-white" >Textstorlek</label>
+                <label className="inputlabel text-white" >Textstorlek</label>
                 <input onChange = { sizeOnChangeHandler } value = {textSettings.fontSize} type="number" placeholder='Textstorlek'/>
             </div>
 
@@ -98,7 +98,7 @@ const CanvasTextPanel = (props) => {
             </div>
 
             <div className='inputHolder'>
-                <label class="inputlabel text-white" >Textfärg</label>
+                <label className="inputlabel text-white" >Textfärg</label>
                 <select onChange = { selectColorOnChangeHandler } name='color' id='selectFont'>
                 <option>Välj färg</option>
                     {color.map((i) => {
@@ -108,17 +108,17 @@ const CanvasTextPanel = (props) => {
             </div>
 
             <div className='inputHolder'>
-                <label class="inputlabel text-white" >Placering horisontellt</label>    
+                <label className="inputlabel text-white" >Placering horisontellt</label>    
                 <input onChange = { xOnChangeHandler } value = {textSettings.textX} type="number" placeholder='Placering horisontellt'/>
             </div>
 
             <div className='inputHolder'>
-                <label class="inputlabel text-white" >Placering vertikalt</label>
+                <label className="inputlabel text-white" >Placering vertikalt</label>
                 <input onChange = { yOnChangeHandler } value = {textSettings.textY} type="number" placeholder='Placering vertikalt'/>
             </div>
 
             <div className='inputHolder'>
-                <label class="inputlabel text-white" >Lager</label>    
+                <label className="inputlabel text-white" >Lager</label>    
                 <input onChange = { orderOnChangeHandler } value = {textSettings.order} type="number" placeholder='Ordning'/>
             </div>
 
