@@ -66,8 +66,8 @@ const CanvasImagePanel = (props) => {
                 <label className="inputlabel text-white" >Lager</label>
                 <input onChange = { orderOnChangeHandler } value = {imageSettings.order} type="number" placeholder='Ordning'/>
             </div>
-            <button onClick = {(e) => props.onClick("addImageBtn", imageSettings)} id="addImageBtn">Lägg till</button>
-            <button onClick = {(e) => props.onClick("deleteImageBtn", imageSettings.imageName)} id="deleteImageBtn">Ta bort</button>
+            <button onClick = {(e) => props.onClick("addImageBtn", imageSettings)} className="addBtn">Lägg till</button>
+            <button onClick = {(e) => props.onClick("deleteImageBtn", imageSettings.imageName)} className="deleteBtn">Ta bort</button>
         </fieldset>
     );
 }

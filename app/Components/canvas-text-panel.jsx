@@ -64,9 +64,9 @@ const CanvasTextPanel = (props) => {
         { ...textSettings, "order": parseInt(e.currentTarget.value) });
     }
     
-    useEffect(() => {
-        console.log(textSettings);
-    });
+    // useEffect(() => {
+    //     console.log(textSettings);
+    // });
 
     return (
         <fieldset id="fieldsetImage">
@@ -122,8 +122,8 @@ const CanvasTextPanel = (props) => {
                 <input onChange = { orderOnChangeHandler } value = {textSettings.order} type="number" placeholder='Ordning'/>
             </div>
 
-            <button onClick = {(e) => props.onClick("addTextBtn", textSettings)} id="addImageBtn">Lägg till</button>
-            <button onClick = {(e) => props.onClick("deleteTextBtn")} id="deleteImageBtn">Ta bort</button>
+            <button onClick = {(e) => props.onClick("addTextBtn", textSettings)} className="deleteBtn">Lägg till</button>
+            <button onClick = {(e) => props.onClick("deleteTextBtn")} className="addBtn">Ta bort</button>
         </fieldset>
     );
 }

@@ -1,42 +1,33 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { url } from '../Helpers/images';
+import urls from '../Model/fetch-url';
+import GetMyModelData from'../Model/get-my-model-data';
 
 const CanvasLoadPanel = (props) => {
 
     const [consoleLog, setConsoleLog] = useState(true)
-    const [imageSettings, setImageSettings] = useState(
-        {
-            "type": "img",
-            "imageName": "",
-            "imageX": 0,
-            "imageY": 0,
-            "imageWidth": 0,
-            "order": 0
-        }
-        );
+    const [chosenLayout, setchoslenLayout] = useState('');
+    const [allLayoutSettings, setAllLayoutSettings] = useState([]);
+    const [chosenLayoutSettings, setChosenLayoutSettings] = useState([]);
 
-    const selectOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "imageName": e.currentTarget.value });
-    }
-    const xOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "imageX": parseInt(e.currentTarget.value) });
-    }
-    const yOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "imageY": parseInt(e.currentTarget.value) });
-    }
-    const widthOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "imageWidth": parseInt(e.currentTarget.value) });
-    }
-    const orderOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "order": parseInt(e.currentTarget.value) });
+    const selectOnChangeHandler = (e) => {
+        setchoslenLayout(e.currentTarget.value);
+        var layout = allLayoutSettings.filter(layout => layout.name == e.currentTarget.value);
+        setChosenLayoutSettings(layout);
+        // console.log('chosenLayout');
+        // console.log(layout);
     }
     
-    // useEffect(() => {
-    //     console.log(imageSettings);
-    // });
+    useEffect(async () => {
+        setAllLayoutSettings(await GetMyModelData(urls.savedLayouts));
+    }, []);
 
-    let images = Object.keys(url);
+    // useEffect(() => {
+    //     console.log(chosenLayout);
+    //     console.log('=> state');
+    //     console.log(chosenLayoutSettings);
+    // });
 
     return (
         <fieldset id="fieldsetImage">
@@ -45,13 +36,13 @@ const CanvasLoadPanel = (props) => {
                 <label className="inputlabel text-white" >Layout</label>
                 <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
                     <option>Välj en layout</option>
-                    {images.map((i) => {
-                        return (<option key={i} value={i}>{i}</option>)
+                    {allLayoutSettings.map((object) => {
+                        return (<option key={object.name} value={object.name}>{object.name}</option>)
                     })}
                 </select>
             </div>
-            <button onClick = {(e) => props.onClick("addImageBtn", imageSettings)} id="addImageBtn">Öppna</button>
-            <button onClick = {(e) => props.onClick("deleteImageBtn", imageSettings.imageName)} id="deleteImageBtn">Ta bort</button>
+            <button onClick = {(e) => props.onClick("addLayoutBtn", chosenLayoutSettings)} className="addBtn">Öppna</button>
+            <button onClick = {(e) => props.onClick("deleteLayoutBtn")} className="deleteBtn">Ta bort</button>
         </fieldset>
     );
 }

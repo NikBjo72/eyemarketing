@@ -52,15 +52,18 @@ const LayoutPanel = () => {
     const onClickHandler = (buttonName, imageSettings) => {
 
         setCanvasItems(canvasImages => [...canvasImages, imageSettings]);
+        debugger
+        if( buttonName == 'addLayoutBtn') {
+            setCanvasItems(imageSettings[0].layoutContent);
+            console.log(canvasItems);
+        }
     }
 
     const canvasRef = useRef(null);
 
     useEffect(() => {
-        
-    })
-
-    useEffect(() => {
+        console.log('canvasItems i use effect');
+        console.log(canvasItems);
 
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
@@ -106,11 +109,11 @@ const LayoutPanel = () => {
                 <fieldset id="fieldsetStorlek">
                     <legend className="text-white">Storlek layout</legend>
                     <div className='inputHolder'>
-                        <label className="inputlabel text-white" for="width">Bredd</label>
+                        <label className="inputlabel text-white">Bredd</label>
                         <input onChange = { widthOnChangeHandler } value = {`${width}`} name="width" type="text" placeholder='Layout bredd'/>
                     </div>
                     <div className='inputHolder'>
-                        <label className="inputlabel text-white" for="height">Höjd</label>
+                        <label className="inputlabel text-white">Höjd</label>
                         <input onChange = { heightOnChangeHandler } value = {`${height}`} name="height" type="text" placeholder='Layout höjd'/>
                     </div>
                 </fieldset>
