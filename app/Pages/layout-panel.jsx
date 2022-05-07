@@ -110,11 +110,11 @@ const LayoutPanel = () => {
                     <legend className="text-white">Storlek layout</legend>
                     <div className='inputHolder'>
                         <label className="inputlabel text-white">Bredd</label>
-                        <input onChange = { widthOnChangeHandler } value = {`${width}`} name="width" type="text" placeholder='Layout bredd'/>
+                        <input onChange = { widthOnChangeHandler } value = {`${width}`} name="width" type="number" placeholder='Layout bredd'/>
                     </div>
                     <div className='inputHolder'>
                         <label className="inputlabel text-white">Höjd</label>
-                        <input onChange = { heightOnChangeHandler } value = {`${height}`} name="height" type="text" placeholder='Layout höjd'/>
+                        <input onChange = { heightOnChangeHandler } value = {`${height}`} name="height" type="number" placeholder='Layout höjd'/>
                     </div>
                 </fieldset>
                 <CanvasLoadPanel onClick = {onClickHandler} />
