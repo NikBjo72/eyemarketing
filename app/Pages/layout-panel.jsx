@@ -9,6 +9,7 @@ import CanvasLoadPanel from '../Components/canvas-load-panel';
 
 const LayoutPanel = () => {
 
+    const [canvasRef, setcanvasRef] = useState(useRef(null));
     const [loadState, setLoadState] = useState(true);
     const [width, setWidth] = useState('800');
     const [height, setHeight] = useState('500');
@@ -16,22 +17,7 @@ const LayoutPanel = () => {
 
     const [canvasItems, setCanvasItems] = useState(
         [   
-            {
-                "type": "img",
-                "order": 0,
-                "imageName": "bild1",
-                "imageX": 50,
-                "imageY": 50,
-                "imageWidth": 200,
-            }, 
-            {   
-                "type": "img",
-                "order": 0,
-                "imageName": "bild2",
-                "imageX": 300,
-                "imageY": 50,
-                "imageWidth": 200,
-            }
+
         ]
     );
 
@@ -59,20 +45,12 @@ const LayoutPanel = () => {
         }
     }
 
-    const canvasRef = useRef(null);
-
     useEffect(() => {
         console.log('canvasItems i use effect');
         console.log(canvasItems);
 
         const ctx = canvasRef.current.getContext('2d');
-        ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
-        // ctx.beginPath();
-        // ctx.fillStyle = 'red';
-        // ctx.ellipse(200, 300, 150, 150, 0, 0, 2 * Math.PI);
-        // ctx.fill();
-
-        Text(ctx);
+        ctx.clearRect(0, 0, width, height);
 
         for(i=0; i < canvasItems.length; ++i) {
 
@@ -110,11 +88,11 @@ const LayoutPanel = () => {
                     <legend className="text-white">Storlek layout</legend>
                     <div className='inputHolder'>
                         <label className="inputlabel text-white">Bredd</label>
-                        <input onChange = { widthOnChangeHandler } value = {`${width}`} name="width" type="text" placeholder='Layout bredd'/>
+                        <input onChange = { widthOnChangeHandler } value = {`${width}`} name="width" type="number" placeholder='Layout bredd'/>
                     </div>
                     <div className='inputHolder'>
                         <label className="inputlabel text-white">Höjd</label>
-                        <input onChange = { heightOnChangeHandler } value = {`${height}`} name="height" type="text" placeholder='Layout höjd'/>
+                        <input onChange = { heightOnChangeHandler } value = {`${height}`} name="height" type="number" placeholder='Layout höjd'/>
                     </div>
                 </fieldset>
                 <CanvasLoadPanel onClick = {onClickHandler} />

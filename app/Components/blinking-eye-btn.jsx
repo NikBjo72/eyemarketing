@@ -10,7 +10,7 @@ export class BlinkingEyeBtn extends React.Component {
         this.state = {
             btnImage: "",
             btnStatus: this.props.btnStatus,
-            btnName: this.props.text,
+            btnName: this.props.name,
             btnID: this.props.id
         }
         //console.log(this.state.btnStatus);
@@ -30,7 +30,6 @@ export class BlinkingEyeBtn extends React.Component {
     }
 
     handleEvent = (e) => {
-
         if (e.type === 'mousedown') {
 
             if (this.state.btnImage === Eye) {
