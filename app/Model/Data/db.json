@@ -64,6 +64,16 @@
                     "imageX": 300,
                     "imageY": 50,
                     "imageWidth": 200
+                },{
+                    "type": "text",
+                    "text": "Test 1",
+                    "font": "verdana",
+                    "fontSize": 40,
+                    "style": "bold",
+                    "color": "yellow",
+                    "textX": 100,
+                    "textY": 300,
+                    "order": 1
                 }
             ]
         },

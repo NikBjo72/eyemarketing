@@ -40,7 +40,7 @@ export class ContentBrowser extends React.Component {
 
     handleClick = (btnName, btnState) => {
         
-        if (btnName === 'LOGO') {
+        if (btnName === 'logo') {
             const wait = new Promise((resolve) => {
                 resolve(this.changeBtnStatus(btnState, 'statusLogoBtn'))
             });
@@ -49,7 +49,7 @@ export class ContentBrowser extends React.Component {
                 this.browseChosenCards(logos, btnState);
             });
         }
-        if (btnName === 'BILDER') {
+        if (btnName === 'images') {
             const wait = new Promise((resolve) => {
                 resolve(this.changeBtnStatus(btnState, 'statusImageBtn'))
             });
@@ -59,7 +59,7 @@ export class ContentBrowser extends React.Component {
             });
 
         }
-        if (btnName === 'FÄRGER') {
+        if (btnName === 'colors') {
             const wait = new Promise((resolve) => {
                 resolve(this.changeBtnStatus(btnState, 'statusColorBtn'));
             });
@@ -110,9 +110,9 @@ export class ContentBrowser extends React.Component {
                 </div>
                 <div id="menu" className={"colOne"}>
                     <ul>
-                        <BlinkingEyeBtn key={`Logo${this.state.statusLogoBtn}`} btnStatus = {this.state.statusLogoBtn} id="mediumBtn" text = 'LOGO' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn key={`Image${this.state.statusImageBtn}`} btnStatus = {this.state.statusImageBtn} id="mediumBtn" text = 'BILDER' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn key={`Color${this.state.statusColorBtn}`} btnStatus = {this.state.statusColorBtn} id="mediumBtn" text = 'FÄRGER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn key={`Logo${this.state.statusLogoBtn}`} btnStatus = {this.state.statusLogoBtn} id="mediumBtn" name="logo" text = 'LOGO' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn key={`Image${this.state.statusImageBtn}`} btnStatus = {this.state.statusImageBtn} id="mediumBtn" name="images" text = 'BILDER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn key={`Color${this.state.statusColorBtn}`} btnStatus = {this.state.statusColorBtn} id="mediumBtn" name="colors" text = 'FÄRGER' onClick = {this.handleClick} />
                     </ul>
                 </div>
             </div>
