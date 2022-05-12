@@ -58,7 +58,7 @@ export class Start extends React.Component {
 
         {!this.state.isLoggedIn
           ?
-          <Login clearLoSt = {this.clearLocalStorage} background = {this.updateBackground} email = {'test@eyemarketing.se'} password = {'Hej123!'} onClick = {this.handleClick}/>
+          <Login clearLoSt = {this.clearLocalStorage} background = {this.updateBackground} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
           :
           <MyEyeMarketing background = {this.updateBackground} onClick = {this.handleClick}/>
         }

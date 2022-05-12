@@ -92,9 +92,9 @@ const CanvasTextPanel = (props) => {
 
             <div id="checkboxContainer">
                 <input className="checkbox" onChange = { styleOnChangeHandler } value={'bold'} checked={checkboxBold} name="Bold" type="checkbox"/>
-                <label className="text-white checkboxLabel" for="Bold">Bold</label>
+                <label className="text-white checkboxLabel" >Bold</label>
                 <input className="checkbox" onChange = { styleOnChangeHandler } value={'italic'} checked={checkboxItalic} name="Italic" type="checkbox"/>
-                <label className="text-white checkboxLabel" for="Italic">Italic</label>
+                <label className="text-white checkboxLabel" >Italic</label>
             </div>
 
             <div className='inputHolder'>

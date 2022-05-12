@@ -1,33 +1,36 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
-import { url } from '../Helpers/images';
 import urls from '../Model/fetch-url';
 import GetMyModelData from'../Model/get-my-model-data';
 
 const CanvasLoadPanel = (props) => {
 
-    const [consoleLog, setConsoleLog] = useState(true)
-    const [chosenLayout, setchoslenLayout] = useState('');
+    const [update, setUpdate] = useState(false);
     const [allLayoutSettings, setAllLayoutSettings] = useState([]);
     const [chosenLayoutSettings, setChosenLayoutSettings] = useState([]);
 
+    const Update = () => {
+        if (update == false) {
+            setUpdate(true);
+        } else setUpdate(false);
+    }
+
     const selectOnChangeHandler = (e) => {
-        setchoslenLayout(e.currentTarget.value);
-        var layout = allLayoutSettings.filter(layout => layout.name == e.currentTarget.value);
+        Update();
+        const layout = allLayoutSettings.filter(layout => layout.name == e.currentTarget.value);
         setChosenLayoutSettings(layout);
-        // console.log('chosenLayout');
-        // console.log(layout);
     }
     
     useEffect(async () => {
         setAllLayoutSettings(await GetMyModelData(urls.savedLayouts));
-    }, []);
+    }, [update]);
 
-    // useEffect(() => {
-    //     console.log(chosenLayout);
-    //     console.log('=> state');
-    //     console.log(chosenLayoutSettings);
-    // });
+    useEffect(() => {
+        console.log('vald layout i load panel');
+        console.log(chosenLayoutSettings);
+        console.log('alla layouter hämtade');
+        console.log(allLayoutSettings);
+    });
 
     return (
         <fieldset id="fieldsetImage">

@@ -13,13 +13,8 @@ const LayoutPanel = () => {
     const [loadState, setLoadState] = useState(true);
     const [width, setWidth] = useState('800');
     const [height, setHeight] = useState('500');
-    const [savedItems, setsavedItems] = useState();
-
-    const [canvasItems, setCanvasItems] = useState(
-        [   
-
-        ]
-    );
+    //const [savedItems, setsavedItems] = useState();
+    const [canvasItems, setCanvasItems] = useState([]);
 
     updateState = () => {
         if (loadState === true){
@@ -27,45 +22,63 @@ const LayoutPanel = () => {
         } else {setLoadState(true)};
     }
 
-    const widthOnChangeHandler = (e) => {
-        setWidth(e.target.value);
-    }
+    const canvasOnChangeHandler = (e) => {
 
-    const heightOnChangeHandler = (e) => {
-        setHeight(e.target.value);
-    }
+        const setItems = (target, value) => {
+            var newCanvasItems = [...canvasItems];
+            newCanvasItems.find((i) => i.type)[value] = parseInt(target);
+            setCanvasItems(newCanvasItems);
+        }
 
-    const onClickHandler = (buttonName, imageSettings) => {
+        if(e.target.name == 'width') {
 
-        setCanvasItems(canvasImages => [...canvasImages, imageSettings]);
+            setWidth(e.target.value);
+            setItems(e.target.value, e.target.name);
+        }
+        else if(e.target.name == 'height') {
 
-        if( buttonName == 'addLayoutBtn') {
-            setCanvasItems(imageSettings[0].layoutContent);
-            console.log(canvasItems);
+            setHeight(e.target.value);
+            setItems(e.target.value, e.target.name);
         }
     }
 
+    const onClickHandler = (buttonName, chosenLayoutSettings) => {
+
+        if( buttonName == 'addLayoutBtn') {
+            debugger
+
+            setCanvasItems(chosenLayoutSettings[0].layoutContent);
+            console.log('=> layout i layoutdelen efter klick');
+            console.log(chosenLayoutSettings[0].layoutContent);
+        } else
+        setCanvasItems(canvasImages => [...canvasImages, chosenLayoutSettings]);
+    }
+
     useEffect(() => {
-        console.log('canvasItems i use effect');
-        console.log(canvasItems);
 
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, width, height);
 
         for(i=0; i < canvasItems.length; ++i) {
 
-            if(canvasItems[i].type == 'img') {
+            if(canvasItems[i].type == 'canvas') {
+
+                setWidth(canvasItems[i].width);
+                setHeight(canvasItems[i].height);
+            }
+            else if(canvasItems[i].type == 'img') {
+
                 const img = new CanvasImage(canvasItems[i]);
                 img.src = url[canvasItems[i].imageName];
                 img.imageHeight = img.getImageHeight();
                 ctx.drawImage(img.image, img.imageX, img.imageY, img.imageWidth, img.imageHeight);
             }
             else if(canvasItems[i].type == 'text') {
+
                 ctx.fillStyle = `${canvasItems[i].color}`;
                 ctx.font = `${canvasItems[i].style} ${canvasItems[i].fontSize}px "${canvasItems[i].font}"`;
                 ctx.fillText(`${canvasItems[i].text}`, canvasItems[i].textX, canvasItems[i].textY);
-            }
-            
+            }  
         }
     });
 
@@ -88,11 +101,11 @@ const LayoutPanel = () => {
                     <legend className="text-white">Storlek layout</legend>
                     <div className='inputHolder'>
                         <label className="inputlabel text-white">Bredd</label>
-                        <input onChange = { widthOnChangeHandler } value = {`${width}`} name="width" type="number" placeholder='Layout bredd'/>
+                        <input onChange = { canvasOnChangeHandler } value = {`${width}`} name="width" type="number"/>
                     </div>
                     <div className='inputHolder'>
                         <label className="inputlabel text-white">Höjd</label>
-                        <input onChange = { heightOnChangeHandler } value = {`${height}`} name="height" type="number" placeholder='Layout höjd'/>
+                        <input onChange = { canvasOnChangeHandler } value = {`${height}`} name="height" type="number"/>
                     </div>
                 </fieldset>
                 <CanvasLoadPanel onClick = {onClickHandler} />

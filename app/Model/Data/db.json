@@ -48,7 +48,12 @@
 
         {   "layoutId": "1",
             "name": "Test1",
-            "layoutContent": [   
+            "layoutContent": [
+                {
+                    "type": "canvas",
+                    "width": 800,
+                    "height": 500
+                },  
                 {
                     "type": "img",
                     "order": 0,
@@ -64,7 +69,8 @@
                     "imageX": 300,
                     "imageY": 50,
                     "imageWidth": 200
-                },{
+                },
+                {
                     "type": "text",
                     "text": "Test 1",
                     "font": "verdana",
@@ -79,7 +85,12 @@
         },
         {   "layoutId": "2",
             "name": "Test2",
-            "layoutContent": [   
+            "layoutContent": [
+                {
+                    "type": "canvas",
+                    "width": 800,
+                    "height": 500
+                },   
                 {
                     "type": "img",
                     "order": 0,
@@ -95,6 +106,17 @@
                     "imageX": 300,
                     "imageY": 50,
                     "imageWidth": 200
+                },
+                {
+                    "type": "text",
+                    "text": "Test 2",
+                    "font": "verdana",
+                    "fontSize": 40,
+                    "style": "bold",
+                    "color": "black",
+                    "textX": 200,
+                    "textY": 200,
+                    "order": 1
                 }
             ]
         }
