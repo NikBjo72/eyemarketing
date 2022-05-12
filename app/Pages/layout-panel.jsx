@@ -43,13 +43,14 @@ const LayoutPanel = () => {
     }
 
     const onClickHandler = (buttonName, chosenLayoutSettings) => {
-
-        if( buttonName == 'addLayoutBtn') {
-            debugger
-
+        //debugger
+        if( buttonName == 'addLayoutBtn' ) {
+            if(chosenLayoutSettings[0] == undefined) {
+                setCanvasItems([]);
+            } else
             setCanvasItems(chosenLayoutSettings[0].layoutContent);
-            console.log('=> layout i layoutdelen efter klick');
-            console.log(chosenLayoutSettings[0].layoutContent);
+            // console.log('=> layout i layoutdelen efter klick');
+            // console.log(chosenLayoutSettings[0].layoutContent);
         } else
         setCanvasItems(canvasImages => [...canvasImages, chosenLayoutSettings]);
     }

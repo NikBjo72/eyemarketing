@@ -17,20 +17,24 @@ const CanvasLoadPanel = (props) => {
 
     const selectOnChangeHandler = (e) => {
         Update();
-        const layout = allLayoutSettings.filter(layout => layout.name == e.currentTarget.value);
-        setChosenLayoutSettings(layout);
+        if(e.target.name == 'empty') {
+            setChosenLayoutSettings([]);
+        } else {
+            const layout = allLayoutSettings.filter(layout => layout.name == e.currentTarget.value);
+            setChosenLayoutSettings(layout);
+        }
     }
     
     useEffect(async () => {
         setAllLayoutSettings(await GetMyModelData(urls.savedLayouts));
     }, [update]);
 
-    useEffect(() => {
-        console.log('vald layout i load panel');
-        console.log(chosenLayoutSettings);
-        console.log('alla layouter hämtade');
-        console.log(allLayoutSettings);
-    });
+    // useEffect(() => {
+    //     console.log('vald layout i load panel');
+    //     console.log(chosenLayoutSettings);
+    //     console.log('alla layouter hämtade');
+    //     console.log(allLayoutSettings);
+    // });
 
     return (
         <fieldset id="fieldsetImage">
@@ -38,7 +42,7 @@ const CanvasLoadPanel = (props) => {
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Layout</label>
                 <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
-                    <option>Välj en layout</option>
+                <option name={'empty'} value={'Tom layout'}>Tom layout</option>
                     {allLayoutSettings.map((object) => {
                         return (<option key={object.name} value={object.name}>{object.name}</option>)
                     })}
