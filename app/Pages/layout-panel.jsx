@@ -45,7 +45,15 @@ const LayoutPanel = () => {
     }
 
     const onClickHandler = (buttonName, chosenLayoutSettings) => {
-        //debugger
+
+        if (buttonName == 'deleteLayoutBtn' ||
+            buttonName == 'deleteImageBtn' ||
+            buttonName == 'deleteTextBtn')
+        {
+            window.alert("Denna funktion är under utveckling");
+            return
+        }
+
         if( buttonName == 'addLayoutBtn' ) {
             if(chosenLayoutSettings[0] == undefined) {
                 setCanvasItems([]);
