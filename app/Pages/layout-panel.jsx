@@ -108,7 +108,7 @@ const LayoutPanel = () => {
 
         </div>
         <div id="panelContainer" className={"colOne"}>
-                <fieldset id="fieldsetStorlek">
+                <fieldset id="fieldsetStorlek" className='panelFieldset'>
                     <legend className="text-white">Storlek layout</legend>
                     <div className='inputHolder'>
                         <label className="inputlabel text-white">Bredd</label>

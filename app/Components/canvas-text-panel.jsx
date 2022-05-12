@@ -69,7 +69,7 @@ const CanvasTextPanel = (props) => {
     // });
 
     return (
-        <fieldset id="fieldsetImage">
+        <fieldset id="fieldsetText" className="panelFieldset"> 
             <legend className="text-white">Lägg till text</legend>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Text</label>

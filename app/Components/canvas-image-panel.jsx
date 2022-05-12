@@ -39,7 +39,7 @@ const CanvasImagePanel = (props) => {
     let images = Object.keys(url);
 
     return (
-        <fieldset id="fieldsetImage">
+        <fieldset id="fieldsetImage" className="panelFieldset">
             <legend className="text-white">Lägg till bild</legend>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Bild</label>

@@ -37,7 +37,7 @@ const CanvasLoadPanel = (props) => {
     // });
 
     return (
-        <fieldset id="fieldsetImage">
+        <fieldset id="fieldsetLoad" className="panelFieldset">
             <legend className="text-white">Sparade layouter</legend>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Layout</label>

@@ -1,5 +1,4 @@
 import { url } from '../Helpers/images';
-import './canvas-image.css'
 
 export class CanvasImage {
 
