@@ -6,6 +6,7 @@ import './layout-panel.css';
 import CanvasImagePanel from '../Components/canvas-image-panel';
 import CanvasTextPanel from '../Components/canvas-text-panel';
 import CanvasLoadPanel from '../Components/canvas-load-panel';
+import SyncStateToLocalStorage from '../Model/sync-state-to-local-storage';
 
 const LayoutPanel = () => {
 
@@ -14,7 +15,8 @@ const LayoutPanel = () => {
     const [width, setWidth] = useState('800');
     const [height, setHeight] = useState('500');
     //const [savedItems, setsavedItems] = useState();
-    const [canvasItems, setCanvasItems] = useState([]);
+    //const [canvasItems, setCanvasItems] = useState([]); // old otan LS
+    const [canvasItems, setCanvasItems] = SyncStateToLocalStorage('canvasItems', []);
 
     updateState = () => {
         if (loadState === true){
