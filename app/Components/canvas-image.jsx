@@ -14,8 +14,11 @@ export class CanvasImage {
         this.imageHeight = object.imageHeight;
     }
     
-    getImageHeight = () => {
+    getImageHeight = async () => {
+        if (!this.image.complete) {
+            await new Promise(resolve => this.image.onload = () => resolve());
+        }
         const scale = this.image.naturalHeight/this.image.naturalWidth;
-        return (this.imageWidth * scale);
+        return (this.imageWidth * scale);    
     }
 }

@@ -65,7 +65,7 @@ const LayoutPanel = () => {
         setCanvasItems(canvasImages => [...canvasImages, chosenLayoutSettings]);
     }
 
-    useEffect(() => {
+    useEffect(async () => {
 
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, width, height);
@@ -78,10 +78,9 @@ const LayoutPanel = () => {
                 setHeight(canvasItems[i].height);
             }
             else if(canvasItems[i].type == 'img') {
-
                 const img = new CanvasImage(canvasItems[i]);
                 img.src = url[canvasItems[i].imageName];
-                img.imageHeight = img.getImageHeight();
+                img.imageHeight = await img.getImageHeight();
                 ctx.drawImage(img.image, img.imageX, img.imageY, img.imageWidth, img.imageHeight);
             }
             else if(canvasItems[i].type == 'text') {
