@@ -1,7 +1,7 @@
 import React from 'react';
 import './my-eye-marketing.css';
 import { Outlet, Link } from "react-router-dom";
-import { BlinkingEyeBtn } from '../Components/blinking-eye-btn';
+import { BlinkingEyeBtn } from '../Components/blinking-eye/blinking-eye-btn';
 
 export class MyEyeMarketing extends React.Component {
 
@@ -38,8 +38,6 @@ export class MyEyeMarketing extends React.Component {
   }
 
   render() {
-    //console.log('my-eye-marketing - Render');
-    //console.log(this.state.activeButton);
     return (
       <div id="myEyeMarketing">
         <div id="menuContainer">
