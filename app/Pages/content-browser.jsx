@@ -19,8 +19,8 @@ export class ContentBrowser extends React.Component {
     }
 
     componentDidMount = async () => {
-
         this.setState(await GetMyModelData(urls.graphicComponents));
+        console.log('state', this.state);
     }
 
     changeBtnStatus = (btnState, state) => {
@@ -34,46 +34,16 @@ export class ContentBrowser extends React.Component {
             this.setState({[state]: 'on'}, () => {
                 console.log(this.state);
             })
-        }
-        
+        } 
     }
 
-    handleClick = (btnName, btnState) => {
-        
-        if (btnName === 'logo') {
-            const wait = new Promise((resolve) => {
-                resolve(this.changeBtnStatus(btnState, 'statusLogoBtn'))
-            });
-            wait.then(() => {
-                let logos = this.state.logos;
-                this.browseChosenCards(logos, btnState);
-            });
-        }
-        if (btnName === 'images') {
-            const wait = new Promise((resolve) => {
-                resolve(this.changeBtnStatus(btnState, 'statusImageBtn'))
-            });
-            wait.then(() => {
-                let images = this.state.images;
-                this.browseChosenCards(images, btnState);
-            });
-
-        }
-        if (btnName === 'colors') {
-            const wait = new Promise((resolve) => {
-                resolve(this.changeBtnStatus(btnState, 'statusColorBtn'));
-            });
-            wait.then(() => {
-                let colors = this.state.colors;
-                this.browseChosenCards(colors, btnState);
-            });
-
-        }
+    handleClick = (btnName, btnStatus) => {
+        this.browseChosenCards(this.state[btnName], btnStatus);
     }
 
-    browseChosenCards = (cards, btnState) => {
+    browseChosenCards = (cards, btnStatus) => {
 
-        if (btnState === 'off') {
+        if (btnStatus === true) {
             if (this.state.chosenCards == '') {
                 this.setState({chosenCards: cards});
             } else {
@@ -110,9 +80,9 @@ export class ContentBrowser extends React.Component {
                 </div>
                 <div id="menu" className={"colOne"}>
                     <ul>
-                        <BlinkingEyeBtn key={`Logo${this.state.statusLogoBtn}`} btnStatus = {this.state.statusLogoBtn} id="mediumBtn" name="logo" text = 'LOGO' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn key={`Image${this.state.statusImageBtn}`} btnStatus = {this.state.statusImageBtn} id="mediumBtn" name="images" text = 'BILDER' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn key={`Color${this.state.statusColorBtn}`} btnStatus = {this.state.statusColorBtn} id="mediumBtn" name="colors" text = 'FÄRGER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn key={`Logo${this.state.statusLogoBtn}`} type = 'local' id="mediumBtn" name="logos" text = 'LOGO' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn key={`Image${this.state.statusImageBtn}`} type = 'local' id="mediumBtn" name="images" text = 'BILDER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn key={`Color${this.state.statusColorBtn}`} type = 'local' id="mediumBtn" name="colors" text = 'FÄRGER' onClick = {this.handleClick} />
                     </ul>
                 </div>
             </div>

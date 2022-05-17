@@ -12,7 +12,7 @@ export class MyEyeMarketing extends React.Component {
       this.state = JSON.parse(storedState);
     } else {
       this.state = {
-        activeButton: "home"
+        //activeButton: "home"
       }
     }
   }
@@ -28,22 +28,22 @@ export class MyEyeMarketing extends React.Component {
     this.props.background(true);
   }
 
-  handleClick = (btnName, btnState) => {
-    if(btnState == "off" && btnName != this.state.activeButton) {
-      this.updateState({activeButton: btnName});
-    }
-    else if (btnState == "on" && btnName != this.state.activeButton){
-      this.updateState({activeButton: "home"});
-    }
-  }
+  // handleClick = (btnName, btnState) => {
+  //   if(btnState == "off" && btnName != this.state.activeButton) {
+  //     this.updateState({activeButton: btnName});
+  //   }
+  //   else if (btnState == "on" && btnName != this.state.activeButton){
+  //     this.updateState({activeButton: "home"});
+  //   }
+  // }
 
   render() {
     return (
       <div id="myEyeMarketing">
         <div id="menuContainer">
-          <Link id="navLink" to="/"><button id="navBtn"><BlinkingEyeBtn key = {`Home ${this.state.activeButton}`} btnStatus = { this.state.activeButton == "home" ? "on" : "off" } id="smallBtn" name="home" text="HEM" onClick = {this.handleClick}/></button></Link>
-          <Link id="navLink" to="/browser"><button id="navBtn"><BlinkingEyeBtn key = {`Browser ${this.state.activeButton}`} btnStatus = { this.state.activeButton == "browser" ? "on" : "off" } id="smallBtn" name="browser" text="MARKNADSMATERIAL" onClick = {this.handleClick}/></button></Link>
-          <Link id="navLink" to="/layout"><button id="navBtn"><BlinkingEyeBtn key = {`Layout ${this.state.activeButton}`} btnStatus = { this.state.activeButton == "layoutPanel" ? "on" : "off" } id="smallBtn" name ="layoutPanel" text="LAYOUT PANEL" onClick = {this.handleClick}/></button></Link>
+          <Link id="navLink" to="/"><button id="navBtn"><BlinkingEyeBtn key = {`Home ${this.state.activeButton}`} type = 'global' id="smallBtn" name="home" text="HEM" /></button></Link>
+          <Link id="navLink" to="/browser"><button id="navBtn"><BlinkingEyeBtn key = {`Browser ${this.state.activeButton}`} type = 'global' id="smallBtn" name="browser" text="MARKNADSMATERIAL" /></button></Link>
+          <Link id="navLink" to="/layout"><button id="navBtn"><BlinkingEyeBtn key = {`Layout ${this.state.activeButton}`} type = 'global' id="smallBtn" name ="layoutPanel" text="LAYOUT PANEL" /></button></Link>
 
           <div id="logoutBtnContainer">
             <Link to="/"><button onClick = {(e) => this.props.onClick(false)} id="logoutBtn">Logga ut</button></Link>
