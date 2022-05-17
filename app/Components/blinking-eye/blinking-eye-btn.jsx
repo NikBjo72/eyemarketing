@@ -11,24 +11,32 @@ export const BlinkingEyeBtn = (props) => {
 
     const btnStatusContext = useContext(EyeBtnStatusContext);
 
+
     const handleEvent = () => {
-        if(btnStatus === false) {
-            setBtnImage(Eye);
-            setBtnStatus(true);
-        } else {
-            setBtnImage(closedEye);
-            setBtnStatus(false);
+
+        if (props.type === 'local') {
+
+            if(btnStatus === false) {
+                setBtnImage(Eye);
+                setBtnStatus(true);
+            } else {
+                setBtnImage(closedEye);
+                setBtnStatus(false);
+            }
+        }
+        else if (props.type === 'global') {
+            btnStatusContext.changeBtnStatus(props.name);
         }
     }
     
     const checkBtnStatus = () => {
-
+        // Changing image depending on local status
         if(props.type === 'local') {
             if(btnStatus === false) {
                 setBtnImage(closedEye);
             } else setBtnImage(Eye);
         }
-        
+        // Changing image depending on global status
         if (props.type === 'global') {
             if(btnStatusContext.btnName === props.name) {
                 setBtnImage(Eye);
@@ -38,11 +46,11 @@ export const BlinkingEyeBtn = (props) => {
 
     useEffect(() => {
         checkBtnStatus();
-    },[btnImage]);
+    });
 
     return (
         <li id={`li${props.id}`}
-            onClick = {(e) => props.onClick(props.name, btnStatus)}
+            onClick = {props.handleEvent ? (e) => props.onClick(props.name, btnStatus) : undefined}
             onMouseDown={ handleEvent }>
             <img id={props.id}
                 src = {btnImage}

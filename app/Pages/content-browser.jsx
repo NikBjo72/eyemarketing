@@ -12,9 +12,6 @@ export class ContentBrowser extends React.Component {
         this.state = {
             chosenCards: '',
             category: '',
-            statusLogoBtn: 'off',
-            statusImageBtn: 'off',
-            statusColorBtn: 'off',
         }
     }
 
@@ -80,9 +77,9 @@ export class ContentBrowser extends React.Component {
                 </div>
                 <div id="menu" className={"colOne"}>
                     <ul>
-                        <BlinkingEyeBtn key={`Logo${this.state.statusLogoBtn}`} type = 'local' id="mediumBtn" name="logos" text = 'LOGO' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn key={`Image${this.state.statusImageBtn}`} type = 'local' id="mediumBtn" name="images" text = 'BILDER' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn key={`Color${this.state.statusColorBtn}`} type = 'local' id="mediumBtn" name="colors" text = 'FÄRGER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="logos" text = 'LOGO' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="images" text = 'BILDER' onClick = {this.handleClick} />
+                        <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="colors" text = 'FÄRGER' onClick = {this.handleClick} />
                     </ul>
                 </div>
             </div>

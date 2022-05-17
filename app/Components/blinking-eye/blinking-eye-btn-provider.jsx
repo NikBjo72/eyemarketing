@@ -1,13 +1,12 @@
-import React from 'react';
-import { useState, useEffect, useRef,  } from 'react-dom';
+import React, { useState, useEffect, useRef,  } from 'react';
 import EyeBtnStatusContext from './eye-btn-status-context';
 
 export const BlinkingEyeProvider = (props) => {
 
     const [btnName, setBtnName] = useState('');
 
-    const changeBtnStatus = () => {
-        setBtnName(props.btnName);
+    const changeBtnStatus = (name) => {
+        setBtnName(name);
     }
 
     return (
