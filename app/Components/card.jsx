@@ -1,8 +1,9 @@
 import React from 'react';
 import { url } from '../Helpers/images';
 import './card.css';
+import propTypes from "prop-types";
 
-export class Card extends React.Component {
+class Card extends React.Component {
 
     constructor(props) {
         super(props);
@@ -27,3 +28,8 @@ export class Card extends React.Component {
         );
     }
 }
+Card.propTypes = {
+   url: propTypes.string.isRequired,
+   tags: propTypes.array.isRequired 
+}
+export default Card;

@@ -67,6 +67,8 @@ const LayoutPanel = () => {
 
     useEffect(async () => {
 
+        console.log(canvasItems);
+
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, width, height);
 

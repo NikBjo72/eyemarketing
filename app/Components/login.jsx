@@ -1,7 +1,8 @@
 import React from 'react';
 import './login.css';
+import propTypes from "prop-types";
 
-export class Login extends React.Component {
+class Login extends React.Component {
     
     constructor(props) {
         super(props)
@@ -69,5 +70,12 @@ export class Login extends React.Component {
             </div>
         );
     }
-
 };
+Login.propTypes = {
+    onClick: propTypes.func.isRequired,
+    email: propTypes.string.isRequired,
+    password: propTypes.string.isRequired,
+    clearLoSt: propTypes.func,
+    background: propTypes.func
+}
+export default Login;

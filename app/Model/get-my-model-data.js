@@ -1,4 +1,4 @@
-
+import propTypes from "prop-types";
 
 const getMyModelData = async (url) => {
 
@@ -12,5 +12,8 @@ const getMyModelData = async (url) => {
             return console.log(error);
         }
 }
+getMyModelData.propTypes = {
+    url: propTypes.string.isRequired
+};
 
 export default getMyModelData

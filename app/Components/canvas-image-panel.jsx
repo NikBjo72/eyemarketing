@@ -31,10 +31,6 @@ const CanvasImagePanel = (props) => {
     const orderOnChangeHandler = (e) =>  { setImageSettings(
         { ...imageSettings, "order": parseInt(e.currentTarget.value) });
     }
-    
-    // useEffect(() => {
-    //     console.log(imageSettings);
-    // });
 
     let images = Object.keys(url);
 

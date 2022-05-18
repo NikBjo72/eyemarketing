@@ -38,7 +38,7 @@ const CanvasLoadPanel = (props) => {
 
     return (
         <fieldset id="fieldsetLoad" className="panelFieldset">
-            <legend className="text-white">Sparade layouter</legend>
+            <legend className="text-white">Öppna layout</legend>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Layout</label>
                 <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
