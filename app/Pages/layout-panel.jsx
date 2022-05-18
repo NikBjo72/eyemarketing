@@ -6,22 +6,30 @@ import './layout-panel.css';
 import CanvasImagePanel from '../Components/canvas-image-panel';
 import CanvasTextPanel from '../Components/canvas-text-panel';
 import CanvasLoadPanel from '../Components/canvas-load-panel';
+import CanvasSavePanel from '../Components/canvas-save-panel';
 import SyncStateToLocalStorage from '../Model/sync-state-to-local-storage';
+import postMyModelData from '../Model/post-my-model-data';
+import urls from '../Model/fetch-url';
 
 const LayoutPanel = () => {
 
+    const didMount = useRef(false);
     const [canvasRef, setcanvasRef] = useState(useRef(null));
-    const [loadState, setLoadState] = useState(true);
+    const [saveState, setSaveState] = useState(true);
     const [width, setWidth] = useState('800');
     const [height, setHeight] = useState('500');
-    //const [savedItems, setsavedItems] = useState();
+    const [saveLayout, setSaveLayout] = useState({
+        id: undefined,
+        name: undefined,
+        layoutContent: undefined
+    });
     //const [canvasItems, setCanvasItems] = useState([]); // old otan LS
     const [canvasItems, setCanvasItems] = SyncStateToLocalStorage('canvasItems', []);
 
-    updateState = () => {
-        if (loadState === true){
-            setLoadState(false);
-        } else {setLoadState(true)};
+    updateState = (state, setState) => {
+        if (state === true){
+            setState(false);
+        } else {setState(true)};
     }
 
     const canvasOnChangeHandler = (e) => {
@@ -44,7 +52,7 @@ const LayoutPanel = () => {
         }
     }
 
-    const onClickHandler = (buttonName, chosenLayoutSettings) => {
+    const onClickHandler = (buttonName, object) => {
 
         if (buttonName == 'deleteLayoutBtn' ||
             buttonName == 'deleteImageBtn' ||
@@ -54,20 +62,35 @@ const LayoutPanel = () => {
             return
         }
 
-        if( buttonName == 'addLayoutBtn' ) {
-            if(chosenLayoutSettings[0] == undefined) {
+        if(buttonName == 'addLayoutBtn') {
+            if(object[0] == undefined) {
                 setCanvasItems([]);
             } else
-            setCanvasItems(chosenLayoutSettings[0].layoutContent);
-            // console.log('=> layout i layoutdelen efter klick');
-            // console.log(chosenLayoutSettings[0].layoutContent);
-        } else
-        setCanvasItems(canvasImages => [...canvasImages, chosenLayoutSettings]);
+            setCanvasItems(object[0].layoutContent);
+        }
+        else if (buttonName == 'addImageBtn') {
+            setCanvasItems(canvasImages => [...canvasImages, object]);
+        }
+        else if (buttonName == 'saveLayoutBtn') {
+            setSaveLayout({
+                ...saveLayout,
+                name: object,
+                layoutContent: canvasItems
+            });
+            updateState(saveState, setSaveState);
+        }
     }
 
     useEffect(async () => {
+        if ( !didMount.current ) {
+            return didMount.current = true;
+        }
+        await postMyModelData(urls.savedLayouts, saveLayout);
+    },[saveLayout]);
 
-        console.log(canvasItems);
+    useEffect(async () => {
+
+        console.log('efter saveBtn: ', saveLayout);
 
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, width, height);
@@ -94,11 +117,11 @@ const LayoutPanel = () => {
         }
     });
 
-    function Text(ctx) {
-        ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
-        ctx.font = `bold 48px "verdana"`;
-        ctx.fillText('Hello World', 200, 400);
-    }
+    // function Text(ctx) {
+    //     ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
+    //     ctx.font = `bold 48px "verdana"`;
+    //     ctx.fillText('Hello World', 200, 400);
+    // }
 
     return (
         <div id="container" className={"row"}>
@@ -121,6 +144,7 @@ const LayoutPanel = () => {
                     </div>
                 </fieldset>
                 <CanvasLoadPanel onClick = {onClickHandler} />
+                <CanvasSavePanel onClick = {onClickHandler} />
                 <CanvasImagePanel onClick = {onClickHandler} />
                 <CanvasTextPanel onClick = {onClickHandler} />
         </div>

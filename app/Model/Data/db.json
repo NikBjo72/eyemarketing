@@ -1,124 +1,195 @@
 {
-    "graphicComponents": {
-
-        "images": [
-                    {   "imageId": "1",
-                        "name": "bild1",
-                        "tags": ["foto", "glad", "människor", "kontor", "skissa", "presentation"]
-                    },
-                    {   "imageId": "2",
-                        "name": "bild2",
-                        "tags": ["foto", "glad", "människor", "kontor", "dator", "idé"]
-                    },
-                    {   "imageId": "3",
-                        "name": "bild3",
-                        "tags": ["foto", "glad", "människor", "möte", "dator"]
-                    }
-                ],
-        "logos":  [
-                    {   "logoId": "1",
-                        "name": "logo1",
-                        "tags": ["logo", "svart mot blå bakgrund", "huvudlogo" ]
-                    },
-                    {   "logoId": "2",
-                        "name": "logo2",
-                        "tags": ["logo", "monokron", "svart mot grå bakgrund"]
-                    },
-                    {   "logoId": "3",
-                        "name": "logo3",
-                        "tags": ["logo", "blå logotext", "används mot mörk bakgrund"]
-                    }
-                ],
-        "colors": [
-                    {   "colorId": "1",
-                        "name": "color1",
-                        "tags": ["Pantone process Blue C", "CMYK 100 29 0 0", "logofärg", "blå", "dekorfärg"]
-                    },
-                    {   "colorId": "2",
-                        "name": "color2",
-                        "tags": ["Pantone Yellow 012 C", "CMYK 0 20 100 0", "Gul", "dekorfärg"]
-                    },
-                    {   "colorId": "3",
-                        "name": "color3",
-                        "tags": ["Pantone 521 C", "CMYK 42 50 9 2", "duplexfärg bilder", "dekorfärg"]
-                    }
-                ]
-    },
-    "savedLayouts": [
-
-        {   "layoutId": "1",
-            "name": "Test1",
-            "layoutContent": [
-                {
-                    "type": "canvas",
-                    "width": 800,
-                    "height": 500
-                },  
-                {
-                    "type": "img",
-                    "order": 0,
-                    "imageName": "bild1",
-                    "imageX": 50,
-                    "imageY": 50,
-                    "imageWidth": 200
-                }, 
-                {   
-                    "type": "img",
-                    "order": 0,
-                    "imageName": "bild2",
-                    "imageX": 300,
-                    "imageY": 50,
-                    "imageWidth": 200
-                },
-                {
-                    "type": "text",
-                    "text": "Test 1",
-                    "font": "verdana",
-                    "fontSize": 40,
-                    "style": "bold",
-                    "color": "yellow",
-                    "textX": 100,
-                    "textY": 300,
-                    "order": 1
-                }
-            ]
-        },
-        {   "layoutId": "2",
-            "name": "Test2",
-            "layoutContent": [
-                {
-                    "type": "canvas",
-                    "width": 800,
-                    "height": 500
-                },   
-                {
-                    "type": "img",
-                    "order": 0,
-                    "imageName": "bild3",
-                    "imageX": 50,
-                    "imageY": 50,
-                    "imageWidth": 200
-                }, 
-                {   
-                    "type": "img",
-                    "order": 0,
-                    "imageName": "logo2",
-                    "imageX": 300,
-                    "imageY": 50,
-                    "imageWidth": 200
-                },
-                {
-                    "type": "text",
-                    "text": "Test 2",
-                    "font": "verdana",
-                    "fontSize": 40,
-                    "style": "bold",
-                    "color": "black",
-                    "textX": 200,
-                    "textY": 200,
-                    "order": 1
-                }
-            ]
-        }
+  "graphicComponents": {
+    "images": [
+      {
+        "id": "1",
+        "name": "bild1",
+        "tags": [
+          "foto",
+          "glad",
+          "människor",
+          "kontor",
+          "skissa",
+          "presentation"
+        ]
+      },
+      {
+        "id": "2",
+        "name": "bild2",
+        "tags": [
+          "foto",
+          "glad",
+          "människor",
+          "kontor",
+          "dator",
+          "idé"
+        ]
+      },
+      {
+        "id": "3",
+        "name": "bild3",
+        "tags": [
+          "foto",
+          "glad",
+          "människor",
+          "möte",
+          "dator"
+        ]
+      }
+    ],
+    "logos": [
+      {
+        "id": "1",
+        "name": "logo1",
+        "tags": [
+          "logo",
+          "svart mot blå bakgrund",
+          "huvudlogo"
+        ]
+      },
+      {
+        "id": "2",
+        "name": "logo2",
+        "tags": [
+          "logo",
+          "monokron",
+          "svart mot grå bakgrund"
+        ]
+      },
+      {
+        "id": "3",
+        "name": "logo3",
+        "tags": [
+          "logo",
+          "blå logotext",
+          "används mot mörk bakgrund"
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "id": "1",
+        "name": "color1",
+        "tags": [
+          "Pantone process Blue C",
+          "CMYK 100 29 0 0",
+          "logofärg",
+          "blå",
+          "dekorfärg"
+        ]
+      },
+      {
+        "id": "2",
+        "name": "color2",
+        "tags": [
+          "Pantone Yellow 012 C",
+          "CMYK 0 20 100 0",
+          "Gul",
+          "dekorfärg"
+        ]
+      },
+      {
+        "id": "3",
+        "name": "color3",
+        "tags": [
+          "Pantone 521 C",
+          "CMYK 42 50 9 2",
+          "duplexfärg bilder",
+          "dekorfärg"
+        ]
+      }
     ]
+  },
+  "savedLayouts": [
+    {
+      "id": "1",
+      "name": "Test1",
+      "layoutContent": [
+        {
+          "type": "canvas",
+          "width": 800,
+          "height": 500
+        },
+        {
+          "type": "img",
+          "order": 0,
+          "imageName": "bild1",
+          "imageX": 50,
+          "imageY": 50,
+          "imageWidth": 200
+        },
+        {
+          "type": "img",
+          "order": 0,
+          "imageName": "bild2",
+          "imageX": 300,
+          "imageY": 50,
+          "imageWidth": 200
+        },
+        {
+          "type": "text",
+          "text": "Test 1",
+          "font": "verdana",
+          "fontSize": 40,
+          "style": "bold",
+          "color": "yellow",
+          "textX": 100,
+          "textY": 300,
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Test2",
+      "layoutContent": [
+        {
+          "type": "canvas",
+          "width": 800,
+          "height": 500
+        },
+        {
+          "type": "img",
+          "order": 0,
+          "imageName": "bild3",
+          "imageX": 50,
+          "imageY": 50,
+          "imageWidth": 200
+        },
+        {
+          "type": "img",
+          "order": 0,
+          "imageName": "logo2",
+          "imageX": 300,
+          "imageY": 50,
+          "imageWidth": 200
+        },
+        {
+          "type": "text",
+          "text": "Test 2",
+          "font": "verdana",
+          "fontSize": 40,
+          "style": "bold",
+          "color": "black",
+          "textX": 200,
+          "textY": 200,
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "y9T7KiehqHrfXLr2Oawby",
+      "name": "Logotest",
+      "layoutContent": [
+        {
+          "type": "img",
+          "imageName": "logo1",
+          "imageX": 100,
+          "imageY": 100,
+          "imageWidth": 600,
+          "order": 0
+        }
+      ]
+    }
+  ]
 }
