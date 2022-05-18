@@ -17,7 +17,6 @@ export class ContentBrowser extends React.Component {
 
     componentDidMount = async () => {
         this.setState(await GetMyModelData(urls.graphicComponents));
-        console.log('state', this.state);
     }
 
     changeBtnStatus = (btnState, state) => {

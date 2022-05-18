@@ -6,7 +6,6 @@ import { ContentBrowser } from "../Pages/content-browser";
 import LayoutPanel from "../Pages/layout-panel";
 import { BlinkingEyeProvider } from '../Components/blinking-eye/blinking-eye-btn-provider';
 
-
 const app = document.getElementById("root");
 ReactDOM.render(
     <BlinkingEyeProvider>
@@ -14,7 +13,7 @@ ReactDOM.render(
           <Routes>
             <Route path='/' element={<Start/>}>
 
-              <Route path="/my-eye-marketing" element={<MyEyeMarketing />} />
+              {/* <Route path="/my-eye-marketing" element={<MyEyeMarketing />} /> */}
               <Route path="/browser" element={<ContentBrowser />} />
               <Route path="/layout" element={<LayoutPanel />} />
 

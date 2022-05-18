@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
 
-EyeBtnStatusContext = createContext({status: "off"});
+EyeBtnStatusContext = createContext();
 
 export default EyeBtnStatusContext;

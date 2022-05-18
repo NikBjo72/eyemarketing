@@ -3,14 +3,14 @@ import EyeBtnStatusContext from './eye-btn-status-context';
 
 export const BlinkingEyeProvider = (props) => {
 
-    const [btnName, setBtnName] = useState('');
+    const [activeRoute, setActiveRoute] = useState('');
 
-    const changeBtnStatus = (name) => {
-        setBtnName(name);
+    const changeBtnStatus = (route) => {
+        setActiveRoute(route);
     }
 
     return (
-     <EyeBtnStatusContext.Provider value={{ btnName: btnName, changeBtnStatus: changeBtnStatus }}>
+     <EyeBtnStatusContext.Provider value={{ activeRoute: activeRoute, changeBtnStatus: changeBtnStatus }}>
          {props.children}
      </EyeBtnStatusContext.Provider>
     );

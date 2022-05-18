@@ -3,8 +3,12 @@ import Eye from "../../images/eye.svg";
 import closedEye from "../../images/Closed_Eye.svg";
 import './blinking-eye-btn.css';
 import EyeBtnStatusContext from './eye-btn-status-context';
+import { useLocation } from 'react-router-dom'
 
 export const BlinkingEyeBtn = (props) => {
+
+    const location = useLocation();
+    console.log('useLocation', location.pathname);
 
     const [btnImage, setBtnImage] = useState(closedEye);
     const [btnStatus, setBtnStatus] = useState(false);
@@ -24,9 +28,10 @@ export const BlinkingEyeBtn = (props) => {
                 setBtnStatus(false);
             }
         }
-        else if (props.type === 'global') {
-            btnStatusContext.changeBtnStatus(props.name);
-        }
+        // else if (props.type === 'global') {
+        //     btnStatusContext.changeBtnStatus(props.name, location.pathname);
+
+        // }
     }
     
     const checkBtnStatus = () => {
@@ -38,13 +43,16 @@ export const BlinkingEyeBtn = (props) => {
         }
         // Changing image depending on global status
         if (props.type === 'global') {
-            if(btnStatusContext.btnName === props.name) {
+            if(btnStatusContext.activeRoute === props.name) {
                 setBtnImage(Eye);
             } else setBtnImage(closedEye);
         }
     }
 
     useEffect(() => {
+        if (props.type === 'global') {
+            btnStatusContext.changeBtnStatus(location.pathname);
+        }
         checkBtnStatus();
     });
 
