@@ -3,9 +3,10 @@ import Eye from "../../images/eye.svg";
 import closedEye from "../../images/Closed_Eye.svg";
 import './blinking-eye-btn.css';
 import EyeBtnStatusContext from './eye-btn-status-context';
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export const BlinkingEyeBtn = (props) => {
+const BlinkingEyeBtn = (props) => {
 
     const location = useLocation();
     console.log('useLocation', location.pathname);
@@ -28,10 +29,6 @@ export const BlinkingEyeBtn = (props) => {
                 setBtnStatus(false);
             }
         }
-        // else if (props.type === 'global') {
-        //     btnStatusContext.changeBtnStatus(props.name, location.pathname);
-
-        // }
     }
     
     const checkBtnStatus = () => {
@@ -67,3 +64,11 @@ export const BlinkingEyeBtn = (props) => {
         </li>
     );
 }
+BlinkingEyeBtn.propTypes = {
+    type: PropTypes.string.isRequired,
+    handleEvent: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+};
+export default BlinkingEyeBtn;

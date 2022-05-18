@@ -1,6 +1,6 @@
 import React from 'react';
 import './content-browser.css';
-import { BlinkingEyeBtn } from '../Components/blinking-eye/blinking-eye-btn';
+import  BlinkingEyeBtn  from '../Components/blinking-eye/blinking-eye-btn';
 import { Card } from '../Components/card';
 import urls from '../Model/fetch-url';
 import GetMyModelData from '../Model/get-my-model-data';

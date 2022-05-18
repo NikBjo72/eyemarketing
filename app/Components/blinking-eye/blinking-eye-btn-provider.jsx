@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef,  } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import EyeBtnStatusContext from './eye-btn-status-context';
 
 export const BlinkingEyeProvider = (props) => {
