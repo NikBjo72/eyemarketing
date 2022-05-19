@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './my-eye-marketing.css';
 import { Outlet, Link } from "react-router-dom";
 import BlinkingEyeBtn  from '../BlinkingEye/blinking-eye-btn';
+import BackgroundStatusContext from '../Background/background-status-context';
 
-export const MyEyeMarketing = (props) => {
+const MyEyeMarketing = (props) => {
+  const backgroundCtx = useContext(BackgroundStatusContext);
 
   useEffect(() => {
-    return () => {props.background(true)}
+    return () => {backgroundCtx.changeBackgroundStatus(true)};
+  },[]);
+  
+  useEffect(() => {
+    backgroundCtx.changeBackgroundStatus(false);
   },[]);
 
   return (
@@ -23,3 +29,4 @@ export const MyEyeMarketing = (props) => {
     </div>
   );
 };
+export default MyEyeMarketing;

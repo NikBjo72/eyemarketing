@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './login.css';
 import propTypes from "prop-types";
+import BackgroundStatusContext from './Background/background-status-context';
 
 class Login extends React.Component {
-    
+
     constructor(props) {
         super(props)
         this.state = {
@@ -13,28 +14,22 @@ class Login extends React.Component {
         }
     }
     emailOnChangeHandler = (e) => {
-        console.log('emailOnChangeHandler');
         this.setState({email: e.target.value}, () => this.checkPassword())
     }
 
     passwordOnChangeHandler = (e) => {
-        console.log('passwordOnChangeHandler');
         this.setState({password: e.target.value}, () => this.checkPassword())
-
     }
 
     componentDidMount(){
-        console.log("login did mount")
         this.props.clearLoSt();
     }
 
     componentWillUnmount(){
-        console.log("login did unmount")
-        this.props.background(false);
+        this.context.changeBackgroundStatus(false);
     }
 
     checkPassword = () => {
-        console.log('checkPassword');
         if (this.state.password == this.props.password && this.state.email == this.props.email) {
             return true
         } else {
@@ -43,22 +38,20 @@ class Login extends React.Component {
     }
 
     sendLoginAnswer = () => {
-        console.log('sendLoginAnswer');
         if (!this.checkPassword()){
             this.setState({loginTries: true})
             return false;
         } else {
+            this.context.changeBackgroundStatus(false);
             return true;
         }
     }
 
     renderErrorMessage = () => {
-        console.log('renderErrorMessage');
         return <small id="errorMessage">Fel användarnamn eller lösenord</small>
     }
 
     render() {
-        console.log('loginRender');
         return (
             <div id="loginContainer">
                 <div id="form">
@@ -76,6 +69,6 @@ Login.propTypes = {
     email: propTypes.string.isRequired,
     password: propTypes.string.isRequired,
     clearLoSt: propTypes.func,
-    background: propTypes.func
 }
+Login.contextType = BackgroundStatusContext;
 export default Login;

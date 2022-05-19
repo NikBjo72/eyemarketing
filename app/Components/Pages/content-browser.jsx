@@ -21,14 +21,11 @@ export class ContentBrowser extends React.Component {
 
     changeBtnStatus = (btnState, state) => {
 
-        console.log(btnState, state);
         if(btnState === 'on'){
             this.setState({[state]: 'off'}, () => {
-                console.log(this.state);
             })
         } else {
             this.setState({[state]: 'on'}, () => {
-                console.log(this.state);
             })
         } 
     }

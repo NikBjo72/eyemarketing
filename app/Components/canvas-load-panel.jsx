@@ -29,13 +29,6 @@ const CanvasLoadPanel = (props) => {
         setAllLayoutSettings(await GetMyModelData(urls.savedLayouts));
     }, [update]);
 
-    // useEffect(() => {
-    //     console.log('vald layout i load panel');
-    //     console.log(chosenLayoutSettings);
-    //     console.log('alla layouter hämtade');
-    //     console.log(allLayoutSettings);
-    // });
-
     return (
         <fieldset id="fieldsetLoad" className="panelFieldset">
             <legend className="text-white">Öppna/Ta bort layout</legend>

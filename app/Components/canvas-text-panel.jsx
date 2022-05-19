@@ -63,10 +63,6 @@ const CanvasTextPanel = (props) => {
     const orderOnChangeHandler = (e) =>  { setTextSettings(
         { ...textSettings, "order": parseInt(e.currentTarget.value) });
     }
-    
-    // useEffect(() => {
-    //     console.log(textSettings);
-    // });
 
     return (
         <fieldset id="fieldsetText" className="panelFieldset"> 

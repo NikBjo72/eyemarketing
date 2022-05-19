@@ -16,10 +16,6 @@ const CanvasSavePanel = (props) => {
         setName(e.currentTarget.value);
     }
 
-    useEffect(() => {
-        console.log(name);
-    });
-
     return (
         <fieldset id="fieldsetLoad" className="panelFieldset">
             <legend className="text-white">Spara layout</legend>
