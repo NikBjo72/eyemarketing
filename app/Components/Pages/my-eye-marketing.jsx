@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './my-eye-marketing.css';
 import { Outlet, Link } from "react-router-dom";
-import BlinkingEyeBtn  from '../Components/blinking-eye/blinking-eye-btn';
+import BlinkingEyeBtn  from '../BlinkingEye/blinking-eye-btn';
 
 export const MyEyeMarketing = (props) => {
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import './start.css';
-import { Background } from '../Components/background';
-import Login from '../Components/login';
+import { Background } from '../background';
+import Login from '../login';
 import { MyEyeMarketing } from './my-eye-marketing'
-import { Footer } from '../Components/footer';
+import { Footer } from '../footer';
+import ErrorBoundary from '../ErrorHandeling/error-boundary';
 
 export class Start extends React.Component {
 
@@ -55,17 +56,18 @@ export class Start extends React.Component {
     console.log('Render');
     return (
       <div id="start">
+        <ErrorBoundary>
 
-        {!this.state.isLoggedIn
-          ?
-          <Login clearLoSt = {this.clearLocalStorage} background = {this.updateBackground} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
-          :
-          <MyEyeMarketing background = {this.updateBackground} onClick = {this.handleClick}/>
-        }
+          {!this.state.isLoggedIn
+            ?
+            <Login clearLoSt = {this.clearLocalStorage} background = {this.updateBackground} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
+            :
+            <MyEyeMarketing background = {this.updateBackground} onClick = {this.handleClick}/>
+          }
           <Footer />
-
           {this.state.background ? <Background /> : null}
-          
+
+        </ErrorBoundary>   
       </div>
     );
   } 

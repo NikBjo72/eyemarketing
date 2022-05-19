@@ -1,9 +1,9 @@
 import React from 'react';
 import './content-browser.css';
-import  BlinkingEyeBtn  from '../Components/blinking-eye/blinking-eye-btn';
-import Card from '../Components/card';
-import urls from '../Model/fetch-url';
-import GetMyModelData from '../Model/get-my-model-data';
+import  BlinkingEyeBtn  from '../BlinkingEye/blinking-eye-btn';
+import Card from '../card';
+import urls from '../../Model/fetch-url';
+import GetMyModelData from '../../Model/get-my-model-data';
 
 export class ContentBrowser extends React.Component {
 
@@ -49,7 +49,6 @@ export class ContentBrowser extends React.Component {
             }
         } else {
             let newState = {...this.state};
-            console.log(newState.chosenCards);
             cards.forEach(card => {
                 newState.chosenCards = newState.chosenCards.filter(object => {
                     return object !== card;

@@ -1,15 +1,15 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
-import { url } from '../Helpers/images';
-import { CanvasImage } from '../Components/canvas-image';
+import { url } from '../../Helpers/images';
+import { CanvasImage } from '../canvas-image';
 import './layout-panel.css';
-import CanvasImagePanel from '../Components/canvas-image-panel';
-import CanvasTextPanel from '../Components/canvas-text-panel';
-import CanvasLoadPanel from '../Components/canvas-load-panel';
-import CanvasSavePanel from '../Components/canvas-save-panel';
-import SyncStateToLocalStorage from '../Model/sync-state-to-local-storage';
-import postMyModelData from '../Model/post-my-model-data';
-import urls from '../Model/fetch-url';
+import CanvasImagePanel from '../canvas-image-panel';
+import CanvasTextPanel from '../canvas-text-panel';
+import CanvasLoadPanel from '../canvas-load-panel';
+import CanvasSavePanel from '../canvas-save-panel';
+import SyncStateToLocalStorage from '../../Model/sync-state-to-local-storage';
+import postMyModelData from '../../Model/post-my-model-data';
+import urls from '../../Model/fetch-url';
 
 const LayoutPanel = () => {
 
