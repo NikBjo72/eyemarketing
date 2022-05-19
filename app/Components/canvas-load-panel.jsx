@@ -1,11 +1,12 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import urls from '../Model/fetch-url';
 import GetMyModelData from'../Model/get-my-model-data';
 
 const CanvasLoadPanel = (props) => {
 
     const [update, setUpdate] = useState(false);
+    const [chosenLayoutName, setchosenLayoutName] = useState();
     const [allLayoutSettings, setAllLayoutSettings] = useState([]);
     const [chosenLayoutSettings, setChosenLayoutSettings] = useState([]);
 
@@ -20,6 +21,7 @@ const CanvasLoadPanel = (props) => {
         if(e.target.name == 'empty') {
             setChosenLayoutSettings([]);
         } else {
+            setchosenLayoutName(e.currentTarget.value);
             const layout = allLayoutSettings.filter(layout => layout.name == e.currentTarget.value);
             setChosenLayoutSettings(layout);
         }
@@ -42,9 +44,8 @@ const CanvasLoadPanel = (props) => {
                 </select>
             </div>
             <button onClick = {(e) => props.onClick("addLayoutBtn", chosenLayoutSettings)} className="addBtn">Öppna</button>
-            <button onClick = {(e) => props.onClick("deleteLayoutBtn")} className="deleteBtn">Ta bort</button>
+            <button onClick = {(e) => props.onClick("deleteLayoutBtn", chosenLayoutName)} className="deleteBtn">Ta bort</button>
         </fieldset>
     );
 }
-
 export default CanvasLoadPanel;

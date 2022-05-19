@@ -9,6 +9,7 @@ import CanvasLoadPanel from '../canvas-load-panel';
 import CanvasSavePanel from '../canvas-save-panel';
 import SyncStateToLocalStorage from '../../Model/sync-state-to-local-storage';
 import postMyModelData from '../../Model/post-my-model-data';
+import deleteMyModelData from '../../Model/delete-my-model-data';
 import urls from '../../Model/fetch-url';
 
 const LayoutPanel = () => {
@@ -18,11 +19,11 @@ const LayoutPanel = () => {
     const [saveState, setSaveState] = useState(true);
     const [width, setWidth] = useState('800');
     const [height, setHeight] = useState('500');
-    const [saveLayout, setSaveLayout] = useState({
-        id: undefined,
-        name: undefined,
-        layoutContent: undefined
-    });
+    // const [saveLayout, setSaveLayout] = useState({
+    //     id: undefined,
+    //     name: undefined,
+    //     layoutContent: undefined
+    // });
     //const [canvasItems, setCanvasItems] = useState([]); // old otan LS
     const [canvasItems, setCanvasItems] = SyncStateToLocalStorage('canvasItems', []);
 
@@ -54,8 +55,7 @@ const LayoutPanel = () => {
 
     const onClickHandler = (buttonName, object) => {
 
-        if (buttonName == 'deleteLayoutBtn' ||
-            buttonName == 'deleteImageBtn' ||
+        if (buttonName == 'deleteImageBtn' ||
             buttonName == 'deleteTextBtn')
         {
             window.alert("Denna funktion är under utveckling");
@@ -72,21 +72,17 @@ const LayoutPanel = () => {
             setCanvasItems(canvasImages => [...canvasImages, object]);
         }
         else if (buttonName == 'saveLayoutBtn') {
-            setSaveLayout({
-                ...saveLayout,
+            let saveLayout = {
+                id: undefined,
                 name: object,
                 layoutContent: canvasItems
-            });
-            updateState(saveState, setSaveState);
+            }
+            postMyModelData(urls.savedLayouts, saveLayout);
+        }
+        else if (buttonName == 'deleteLayoutBtn') {
+            deleteMyModelData(urls.savedLayouts, object)
         }
     }
-
-    useEffect(async () => {
-        if ( !didMount.current ) {
-            return didMount.current = true;
-        }
-        await postMyModelData(urls.savedLayouts, saveLayout);
-    },[saveLayout]);
 
     useEffect(async () => {
 

@@ -10,7 +10,7 @@ const MyEyeMarketing = (props) => {
   useEffect(() => {
     return () => {backgroundCtx.changeBackgroundStatus(true)};
   },[]);
-  
+
   useEffect(() => {
     backgroundCtx.changeBackgroundStatus(false);
   },[]);

@@ -176,6 +176,20 @@
           "order": 1
         }
       ]
+    },
+    {
+      "id": "y9T7KiehqHrfXLr2Oawby",
+      "name": "Logotest",
+      "layoutContent": [
+        {
+          "type": "img",
+          "imageName": "logo1",
+          "imageX": 100,
+          "imageY": 100,
+          "imageWidth": 600,
+          "order": 0
+        }
+      ]
     }
   ]
 }
