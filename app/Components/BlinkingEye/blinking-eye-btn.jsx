@@ -1,17 +1,17 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Eye from "../../images/eye.svg";
-import closedEye from "../../images/Closed_Eye.svg";
 import './blinking-eye-btn.css';
 import EyeBtnStatusContext from './eye-btn-status-context';
 import { useLocation } from 'react-router-dom';
 import propTypes from 'prop-types';
+import Eye from './default-images/Eye.svg';
+import closedEye from './default-images/Closed_Eye.svg'
 
 const BlinkingEyeBtn = (props) => {
 
     const btnStatusContext = useContext(EyeBtnStatusContext);
     const location = useLocation();
     
-    const [btnImage, setBtnImage] = useState(closedEye);
+    const [btnImage, setBtnImage] = useState(props.imageDeactivated);
     const [btnStatus, setBtnStatus] = useState(false);
 
     const handleEvent = () => {
@@ -19,10 +19,10 @@ const BlinkingEyeBtn = (props) => {
         if (props.type === 'local') {
 
             if(btnStatus === false) {
-                setBtnImage(Eye);
+                setBtnImage(props.imageActivated);
                 setBtnStatus(true);
             } else {
-                setBtnImage(closedEye);
+                setBtnImage(props.imageDeactivated);
                 setBtnStatus(false);
             }
         }
@@ -32,14 +32,14 @@ const BlinkingEyeBtn = (props) => {
         // Changing image depending on local status
         if(props.type === 'local') {
             if(btnStatus === false) {
-                setBtnImage(closedEye);
-            } else setBtnImage(Eye);
+                setBtnImage(props.imageDeactivated);
+            } else setBtnImage(props.imageActivated);
         }
         // Changing image depending on global status
         if (props.type === 'global') {
             if(btnStatusContext.activeRoute === props.name) {
-                setBtnImage(Eye);
-            } else setBtnImage(closedEye);
+                setBtnImage(props.imageActivated);
+            } else setBtnImage(props.imageDeactivated);
         }
     }
 
@@ -60,6 +60,10 @@ const BlinkingEyeBtn = (props) => {
             {props.text}
         </li>
     );
+}
+BlinkingEyeBtn.defaultProps = {
+    imageActivated: Eye,
+    imageDeactivated: closedEye,
 }
 BlinkingEyeBtn.propTypes = {
     type: propTypes.string.isRequired,
