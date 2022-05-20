@@ -6,20 +6,23 @@ import { ContentBrowser } from "../Components/Pages/content-browser";
 import LayoutPanel from "../Components/Pages/layout-panel";
 import { BlinkingEyeProvider } from '../Components/BlinkingEye/blinking-eye-btn-provider';
 import BackgroundProvider from "../Components/Background/background-provider";
+import { LayoutDatabaseContextProvider } from "../Components/layout-database-context";
 
 const app = document.getElementById("root");
 ReactDOM.render(
-  <BackgroundProvider>
-    <BlinkingEyeProvider>
-      <HashRouter basename="">
-          <Routes>
-            <Route path='/' element={<Start/>}>
-              {/* <Route path="/my-eye-marketing" element={<MyEyeMarketing />} /> */}
-              <Route path="/browser" element={<ContentBrowser />} />
-              <Route path="/layout" element={<LayoutPanel />} />
-            </Route>
-          </Routes>
-      </HashRouter>
-    </BlinkingEyeProvider>
-  </BackgroundProvider>
+  <LayoutDatabaseContextProvider>
+    <BackgroundProvider>
+      <BlinkingEyeProvider>
+        <HashRouter basename="">
+            <Routes>
+              <Route path='/' element={<Start/>}>
+                {/* <Route path="/my-eye-marketing" element={<MyEyeMarketing />} /> */}
+                <Route path="/browser" element={<ContentBrowser />} />
+                <Route path="/layout" element={<LayoutPanel />} />
+              </Route>
+            </Routes>
+        </HashRouter>
+      </BlinkingEyeProvider>
+    </BackgroundProvider>
+    </LayoutDatabaseContextProvider>
 , app);

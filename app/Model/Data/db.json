@@ -176,20 +176,6 @@
           "order": 1
         }
       ]
-    },
-    {
-      "id": "vaZo5mbeQMlWcJZzO2504",
-      "name": "sdgb",
-      "layoutContent": [
-        {
-          "type": "img",
-          "imageName": "bild1",
-          "imageX": 10,
-          "imageY": 19,
-          "imageWidth": 200,
-          "order": 0
-        }
-      ]
     }
   ]
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { url } from '../../Helpers/images';
 import { CanvasImage } from '../canvas-image';
 import './layout-panel.css';
@@ -12,9 +12,11 @@ import postMyModelData from '../../Model/post-my-model-data';
 import urls from '../../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import LayoutDatabaseContext from '../layout-database-context';
 
 const LayoutPanel = () => {
 
+    const layoutDatabaseCtx = useContext(LayoutDatabaseContext);
     const didMount = useRef(false);
     const [canvasRef, setcanvasRef] = useState(useRef(null));
     const [width, setWidth] = useState('800');
@@ -77,6 +79,7 @@ const LayoutPanel = () => {
             console.log('response', response);
             if(response === 201) {
                 NotificationManager.success('Layout sparad');
+                layoutDatabaseCtx.updateDatabase();
             }
             else {
                 NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte spara!', 5000);
