@@ -1,14 +1,15 @@
 import React from 'react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useContext} from 'react';
 import urls from '../Model/fetch-url';
 import GetMyModelData from'../Model/get-my-model-data';
 import deleteMyModelData from '../Model/delete-my-model-data';
 import urls from '../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import LayoutDatabaseContext from '../Components/layout-database-context';
 
 const CanvasLoadPanel = (props) => {
-
+    const LayoutDatabaseCtx = useContext(LayoutDatabaseContext);
     const [update, setUpdate] = useState(false);
     const [chosenLayoutName, setchosenLayoutName] = useState();
     const [allLayoutSettings, setAllLayoutSettings] = useState([]);
@@ -25,6 +26,7 @@ const CanvasLoadPanel = (props) => {
 
         if(response === 200) {
             NotificationManager.success('Layout borttagen');
+            LayoutDatabaseCtx.updateDatabase();
         }
         else {
             NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte att ta bort!', 5000);
@@ -55,9 +57,13 @@ const CanvasLoadPanel = (props) => {
                     <label className="inputlabel text-white" >Layout</label>
                     <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
                     <option name={'empty'} value={'Tom layout'}>Tom layout</option>
-                        {allLayoutSettings.map((object) => {
-                            return (<option key={object.name} value={object.name}>{object.name}</option>)
-                        })}
+                        {LayoutDatabaseCtx.layoutNames !== undefined
+                        ?
+                        LayoutDatabaseCtx.layoutNames.map((object) => {
+                            return (<option key={object} value={object}>{object}</option>)
+                        })
+                        :
+                        null}   
                     </select>
                 </div>
                 <button onClick = {(e) => props.onClick("addLayoutBtn", chosenLayoutSettings)} className="addBtn">Öppna</button>
@@ -66,5 +72,5 @@ const CanvasLoadPanel = (props) => {
             <NotificationContainer/>
         </>
     );
-}
+};
 export default CanvasLoadPanel;
