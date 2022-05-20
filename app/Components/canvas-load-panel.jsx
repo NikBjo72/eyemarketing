@@ -27,11 +27,8 @@ const CanvasLoadPanel = (props) => {
             NotificationManager.success('Layout borttagen');
         }
         else {
-            NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte att ta bort!', 5000, () => {
-                alert('callback');
-            });
+            NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte att ta bort!', 5000);
         }
-        console.log('response at delete: ',response);
         Update();
     }
 

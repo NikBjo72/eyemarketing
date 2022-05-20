@@ -21,11 +21,13 @@ const postMyModelData = async (url, object) => {
         if(!response.ok){
             throw new Error(response.status);
         }
-        return data = await response.json();
-        } catch(error) {
-            console.log(error);
-            return error;
-        }
+        console.log(response.status);
+        return response.status;
+    }
+    catch(error) {
+        console.log(error);
+        return error;
+    }
 }
 postMyModelData.propTypes = {
     url: propTypes.string.isRequired,

@@ -18,7 +18,7 @@ const deleteMyModelData = async (url, name) => {
         return response.status;
     }
     catch(error) {
-        console.log('i error: ', error);
+        console.log(error);
         return error;
     }
 }

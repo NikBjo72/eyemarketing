@@ -10,6 +10,8 @@ import CanvasSavePanel from '../canvas-save-panel';
 import SyncStateToLocalStorage from '../../Model/sync-state-to-local-storage';
 import postMyModelData from '../../Model/post-my-model-data';
 import urls from '../../Model/fetch-url';
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 const LayoutPanel = () => {
 
@@ -45,31 +47,40 @@ const LayoutPanel = () => {
         }
     }
 
-    const onClickHandler = (buttonName, object) => {
+    const onClickHandler = async (buttonName, object) => {
 
-        if (buttonName == 'deleteImageBtn' ||
-            buttonName == 'deleteTextBtn')
+        if (buttonName === 'deleteImageBtn' ||
+            buttonName === 'deleteTextBtn')
         {
             window.alert("Denna funktion är under utveckling");
             return
         }
 
-        if(buttonName == 'addLayoutBtn') {
-            if(object[0] == undefined) {
+        if(buttonName === 'addLayoutBtn') {
+            if(object[0] === undefined) {
                 setCanvasItems([]);
             } else
             setCanvasItems(object[0].layoutContent);
         }
-        else if (buttonName == 'addImageBtn') {
+
+        else if (buttonName === 'addImageBtn') {
             setCanvasItems(canvasImages => [...canvasImages, object]);
         }
-        else if (buttonName == 'saveLayoutBtn') {
+        
+        else if (buttonName === 'saveLayoutBtn') {
             let saveLayout = {
                 id: undefined,
                 name: object,
                 layoutContent: canvasItems
             }
-            postMyModelData(urls.savedLayouts, saveLayout);
+            let response = await postMyModelData(urls.savedLayouts, saveLayout);
+            console.log('response', response);
+            if(response === 201) {
+                NotificationManager.success('Layout sparad');
+            }
+            else {
+                NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte spara!', 5000);
+            }
         }
     }
 
@@ -80,7 +91,7 @@ const LayoutPanel = () => {
 
         for(i=0; i < canvasItems.length; ++i) {
 
-            if(canvasItems[i].type == 'canvas') {
+            if(canvasItems[i].type === 'canvas') {
 
                 setWidth(canvasItems[i].width);
                 setHeight(canvasItems[i].height);
