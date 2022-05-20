@@ -119,29 +119,30 @@ const LayoutPanel = () => {
 
     return (
         <div id="container" className={"row"}>
-        <div id="canvasContainer">
 
-        <canvas id="canvas" ref={canvasRef} height={height} width={width}>   
-        </canvas>
+            <div id="canvasContainer">
+                <canvas id="canvas" ref={canvasRef} height={height} width={width}></canvas>
+            </div>
 
-        </div>
-        <div id="panelContainer" className={"colOne"}>
-                <fieldset id="fieldsetStorlek" className='panelFieldset'>
-                    <legend className="text-white">Storlek layout</legend>
-                    <div className='inputHolder'>
-                        <label className="inputlabel text-white">Bredd</label>
-                        <input onChange = { canvasOnChangeHandler } value = {`${width}`} name="width" type="number"/>
-                    </div>
-                    <div className='inputHolder'>
-                        <label className="inputlabel text-white">Höjd</label>
-                        <input onChange = { canvasOnChangeHandler } value = {`${height}`} name="height" type="number"/>
-                    </div>
-                </fieldset>
-                <CanvasLoadPanel onClick = {onClickHandler} />
-                <CanvasSavePanel onClick = {onClickHandler} />
-                <CanvasImagePanel onClick = {onClickHandler} />
-                <CanvasTextPanel onClick = {onClickHandler} />
-        </div>
+            <div id="panelContainer" className={"colOne"}>
+                    <fieldset id="fieldsetStorlek" className='panelFieldset'>
+                        <legend className="text-white">Storlek layout</legend>
+                        <div className='inputHolder'>
+                            <label className="inputlabel text-white">Bredd</label>
+                            <input onChange = { canvasOnChangeHandler } value = {`${width}`} name="width" type="number"/>
+                        </div>
+                        <div className='inputHolder'>
+                            <label className="inputlabel text-white">Höjd</label>
+                            <input onChange = { canvasOnChangeHandler } value = {`${height}`} name="height" type="number"/>
+                        </div>
+                    </fieldset>
+                    <CanvasLoadPanel onClick = {onClickHandler} />
+                    <CanvasSavePanel onClick = {onClickHandler} />
+                    <CanvasImagePanel onClick = {onClickHandler} />
+                    <CanvasTextPanel onClick = {onClickHandler} />
+                    <NotificationContainer />
+            </div>
+            
         </div>
     );
 }
