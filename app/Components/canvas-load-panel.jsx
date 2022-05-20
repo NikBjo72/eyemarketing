@@ -4,6 +4,8 @@ import urls from '../Model/fetch-url';
 import GetMyModelData from'../Model/get-my-model-data';
 import deleteMyModelData from '../Model/delete-my-model-data';
 import urls from '../Model/fetch-url';
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 const CanvasLoadPanel = (props) => {
 
@@ -20,6 +22,14 @@ const CanvasLoadPanel = (props) => {
 
     const deleteBtnOnClick = async () => {
         let response = await deleteMyModelData(urls.savedLayouts, chosenLayoutName);
+        if(response = 'OK') {
+            NotificationManager.success('Success message', 'Layouten borttagen');
+        }
+        else {
+            NotificationManager.error('Error message', 'Click me!', 5000, () => {
+                alert('callback');
+            });
+        }
         console.log('response at delete: ',response);
         Update();
     }
@@ -40,21 +50,23 @@ const CanvasLoadPanel = (props) => {
     }, [update]);
 
     return (
-        <fieldset id="fieldsetLoad" className="panelFieldset">
-            <legend className="text-white">Öppna/Ta bort layout</legend>
-            <div className='inputHolder'>
-                <label className="inputlabel text-white" >Layout</label>
-                <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
-                <option name={'empty'} value={'Tom layout'}>Tom layout</option>
-                    {allLayoutSettings.map((object) => {
-                        return (<option key={object.name} value={object.name}>{object.name}</option>)
-                    })}
-                </select>
-            </div>
-            <button onClick = {(e) => props.onClick("addLayoutBtn", chosenLayoutSettings)} className="addBtn">Öppna</button>
-            <button onClick = { deleteBtnOnClick } className="deleteBtn">Ta bort</button>
-            {/* <small id="confitmationText" className="text-green" >Layouten borttagen</small> */}
-        </fieldset>
+        <>
+            <fieldset id="fieldsetLoad" className="panelFieldset">
+                <legend className="text-white">Öppna/Ta bort layout</legend>
+                <div className='inputHolder'>
+                    <label className="inputlabel text-white" >Layout</label>
+                    <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
+                    <option name={'empty'} value={'Tom layout'}>Tom layout</option>
+                        {allLayoutSettings.map((object) => {
+                            return (<option key={object.name} value={object.name}>{object.name}</option>)
+                        })}
+                    </select>
+                </div>
+                <button onClick = {(e) => props.onClick("addLayoutBtn", chosenLayoutSettings)} className="addBtn">Öppna</button>
+                <button onClick = { deleteBtnOnClick } className="deleteBtn">Ta bort</button>
+            </fieldset>
+            <NotificationContainer/>
+        </>
     );
 }
 export default CanvasLoadPanel;

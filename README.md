@@ -44,6 +44,7 @@ Gör det enklare för dem som ska utvärdera applikationen.
 **react-router-dom** --> används för att kunna spara url:er vid navigering mellan sidorna. Gör också så att det går att använda pilarna i browsern för att bläddra mellan besökta sidor.
 **prop-types** --> används för att dokumentera typer av props för en specifik komponent(funktion).
 **nanoid** --> används för att skapa unika id till sparade objekt i api:et.
+**react-notifications** --> används för notifikationer vid användarinteraktion.
 
 ## Tjänster
 API http://localhost:3000/ (lokal json-server). Informationen i apiets databas hittar du i [app/Model/Data/db.json].
