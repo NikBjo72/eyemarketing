@@ -4,6 +4,8 @@ import  BlinkingEyeBtn  from '../BlinkingEye/blinking-eye-btn';
 import Card from '../card';
 import urls from '../../Model/fetch-url';
 import GetMyModelData from '../../Model/get-my-model-data';
+import Eye from "../../images/eye.svg";
+import closedEye from "../../images/Closed_Eye.svg";
 
 export class ContentBrowser extends React.Component {
 
