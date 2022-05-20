@@ -12,15 +12,15 @@ const deleteMyModelData = async (url, name) => {
 
     try {
         const response = await fetch(`${url}/${id}`, requestOptions);
-        return response.statusText;
-
         if(!response.ok){
-            throw new Error(response.statusText);
+            throw new Error(response.status);
         }
-        return data = await response.json();
-        } catch(error) {
-            return console.log(error);
-        }
+        return response.status;
+    }
+    catch(error) {
+        console.log('i error: ', error);
+        return error;
+    }
 }
 deleteMyModelData.propTypes = {
     url: propTypes.string.isRequired,

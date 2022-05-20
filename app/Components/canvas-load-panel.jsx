@@ -22,11 +22,12 @@ const CanvasLoadPanel = (props) => {
 
     const deleteBtnOnClick = async () => {
         let response = await deleteMyModelData(urls.savedLayouts, chosenLayoutName);
-        if(response = 'OK') {
-            NotificationManager.success('Success message', 'Layouten borttagen');
+
+        if(response === 200) {
+            NotificationManager.success('Layout borttagen');
         }
         else {
-            NotificationManager.error('Error message', 'Click me!', 5000, () => {
+            NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte att ta bort!', 5000, () => {
                 alert('callback');
             });
         }
