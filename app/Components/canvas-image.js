@@ -6,10 +6,10 @@ export class CanvasImage {
         this.type = "img";
         this.order = 0;
         this.image = new Image();
-        this.image.src = url[object.imageName];
-        this.imageName = object.imageName;
-        this.imageX = object.imageX;
-        this.imageY = object.imageY;
+        this.image.src = url[object.id];
+        this.imageName = object.id;
+        this.X = object.X;
+        this.Y = object.Y;
         this.imageWidth = object.imageWidth;
         this.imageHeight = object.imageHeight;
     }

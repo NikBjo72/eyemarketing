@@ -9,7 +9,7 @@ const CanvasTextPanel = (props) => {
     const [checkboxItalic, setcheckboxItalic] = useState(false);
     const [textSettings, setTextSettings] = useState(
         {
-            "name": "",
+            "id": "",
             "type": "text",
             "content": "",
             "font": "",
@@ -54,12 +54,11 @@ const CanvasTextPanel = (props) => {
 
     return (
         <fieldset id="fieldsetText" className="panelFieldset">
-            <legend className="text-white">Namn</legend>
+            <legend className="text-white">Lägg till text</legend>
             <div className='inputHolder'>
                 <label className="inputlabel text-white">Namn</label>
-                <input onChange = { onChangeTextHandler } name='name' id='selectImage' placeholder = "Layoutnamn"></input>
+                <input onChange = { onChangeTextHandler } name='id' id='selectImage' placeholder = "Layoutnamn"></input>
             </div>
-            <legend className="text-white">Lägg till text</legend>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Text</label>
                 <textarea onChange = { onChangeTextHandler } name = "content" type = "text" value={textSettings.content} placeholder='Skriv din text här'/>

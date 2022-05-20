@@ -7,29 +7,20 @@ const CanvasImagePanel = (props) => {
     const [consoleLog, setConsoleLog] = useState(true)
     const [imageSettings, setImageSettings] = useState(
         {
+            "id": "",
             "type": "img",
-            "imageName": "",
-            "imageX": 0,
-            "imageY": 0,
+            "X": 0,
+            "Y": 0,
             "imageWidth": 0,
             "order": 0
         }
-        );
+    );
 
     const selectOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "imageName": e.currentTarget.value });
+        { ...imageSettings, "id": e.currentTarget.value });
     }
-    const xOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "imageX": parseInt(e.currentTarget.value) });
-    }
-    const yOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "imageY": parseInt(e.currentTarget.value) });
-    }
-    const widthOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "imageWidth": parseInt(e.currentTarget.value) });
-    }
-    const orderOnChangeHandler = (e) =>  { setImageSettings(
-        { ...imageSettings, "order": parseInt(e.currentTarget.value) });
+    const onChangeHandler = (e) =>  { setImageSettings(
+        { ...imageSettings, [e.currentTarget.name]: parseInt(e.currentTarget.value) });
     }
 
     let images = Object.keys(url);
@@ -39,7 +30,7 @@ const CanvasImagePanel = (props) => {
             <legend className="text-white">Lägg till bild</legend>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Bild</label>
-                <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
+                <select onChange = { selectOnChangeHandler } name='id' id='selectImage'>
                     <option>Välj en bild</option>
                     {images.map((i) => {
                         return (<option key={i} value={i}>{i}</option>)
@@ -48,22 +39,22 @@ const CanvasImagePanel = (props) => {
             </div>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Placering horisontellt</label>
-                <input onChange = { xOnChangeHandler } value = {imageSettings.imageX} type="number" placeholder='Placering horisontellt'/>
+                <input onChange = { onChangeHandler } name='X' value = {imageSettings.X} type="number" placeholder='Placering horisontellt'/>
             </div>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Placering vertikalt</label>
-                <input onChange = { yOnChangeHandler } value = {imageSettings.imageY} type="number" placeholder='Placering vertikalt'/>
+                <input onChange = { onChangeHandler } name='Y' value = {imageSettings.Y} type="number" placeholder='Placering vertikalt'/>
             </div>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Bildbredd</label>
-                <input onChange = { widthOnChangeHandler } value = {imageSettings.imageWidth} type="number" placeholder='Bildbredd'/>
+                <input onChange = { onChangeHandler } name='imageWidth' value = {imageSettings.imageWidth} type="number" placeholder='Bildbredd'/>
             </div>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Lager</label>
-                <input onChange = { orderOnChangeHandler } value = {imageSettings.order} type="number" placeholder='Ordning'/>
+                <input onChange = { onChangeHandler } name='order' value = {imageSettings.order} type="number" placeholder='Ordning'/>
             </div>
             <button onClick = {(e) => props.onClick("addImageBtn", imageSettings)} className="addBtn">Lägg till</button>
-            <button onClick = {(e) => props.onClick("deleteImageBtn", imageSettings.imageName)} className="deleteBtn">Ta bort</button>
+            <button onClick = {(e) => props.onClick("deleteImageBtn", imageSettings.id)} className="deleteBtn">Ta bort</button>
         </fieldset>
     );
 }

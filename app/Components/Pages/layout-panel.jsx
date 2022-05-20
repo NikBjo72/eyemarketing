@@ -7,6 +7,7 @@ import CanvasImagePanel from '../canvas-image-panel';
 import CanvasTextPanel from '../canvas-text-panel';
 import CanvasLoadPanel from '../canvas-load-panel';
 import CanvasSavePanel from '../canvas-save-panel';
+import CanvasHistoryPanel from '../canvas-history-panel';
 import SyncStateToLocalStorage from '../../Model/sync-state-to-local-storage';
 import postMyModelData from '../../Model/post-my-model-data';
 import urls from '../../Model/fetch-url';
@@ -100,9 +101,9 @@ const LayoutPanel = () => {
             }
             else if(canvasItems[i].type == 'img') {
                 const img = new CanvasImage(canvasItems[i]);
-                img.src = url[canvasItems[i].imageName];
+                img.src = url[canvasItems[i].id];
                 img.imageHeight = await img.getImageHeight();
-                ctx.drawImage(img.image, img.imageX, img.imageY, img.imageWidth, img.imageHeight);
+                ctx.drawImage(img.image, img.X, img.Y, img.imageWidth, img.imageHeight);
             }
             else if(canvasItems[i].type == 'text') {
 
@@ -142,6 +143,7 @@ const LayoutPanel = () => {
                     <CanvasSavePanel onClick = {onClickHandler} />
                     <CanvasImagePanel onClick = {onClickHandler} />
                     <CanvasTextPanel onClick = {onClickHandler} />
+                    <CanvasHistoryPanel canvasItems = {canvasItems} />
                     <NotificationContainer />
             </div>
             
