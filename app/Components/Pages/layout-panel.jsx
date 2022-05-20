@@ -9,22 +9,14 @@ import CanvasLoadPanel from '../canvas-load-panel';
 import CanvasSavePanel from '../canvas-save-panel';
 import SyncStateToLocalStorage from '../../Model/sync-state-to-local-storage';
 import postMyModelData from '../../Model/post-my-model-data';
-import deleteMyModelData from '../../Model/delete-my-model-data';
 import urls from '../../Model/fetch-url';
 
 const LayoutPanel = () => {
 
     const didMount = useRef(false);
     const [canvasRef, setcanvasRef] = useState(useRef(null));
-    const [saveState, setSaveState] = useState(true);
     const [width, setWidth] = useState('800');
     const [height, setHeight] = useState('500');
-    // const [saveLayout, setSaveLayout] = useState({
-    //     id: undefined,
-    //     name: undefined,
-    //     layoutContent: undefined
-    // });
-    //const [canvasItems, setCanvasItems] = useState([]); // old otan LS
     const [canvasItems, setCanvasItems] = SyncStateToLocalStorage('canvasItems', []);
 
     updateState = (state, setState) => {
@@ -78,9 +70,6 @@ const LayoutPanel = () => {
                 layoutContent: canvasItems
             }
             postMyModelData(urls.savedLayouts, saveLayout);
-        }
-        else if (buttonName == 'deleteLayoutBtn') {
-            deleteMyModelData(urls.savedLayouts, object)
         }
     }
 

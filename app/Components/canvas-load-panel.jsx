@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import urls from '../Model/fetch-url';
 import GetMyModelData from'../Model/get-my-model-data';
+import deleteMyModelData from '../Model/delete-my-model-data';
+import urls from '../Model/fetch-url';
 
 const CanvasLoadPanel = (props) => {
 
@@ -14,6 +16,12 @@ const CanvasLoadPanel = (props) => {
         if (update == false) {
             setUpdate(true);
         } else setUpdate(false);
+    }
+
+    const deleteBtnOnClick = async () => {
+        let response = await deleteMyModelData(urls.savedLayouts, chosenLayoutName);
+        console.log('response at delete: ',response);
+        Update();
     }
 
     const selectOnChangeHandler = (e) => {
@@ -44,7 +52,8 @@ const CanvasLoadPanel = (props) => {
                 </select>
             </div>
             <button onClick = {(e) => props.onClick("addLayoutBtn", chosenLayoutSettings)} className="addBtn">Öppna</button>
-            <button onClick = {(e) => props.onClick("deleteLayoutBtn", chosenLayoutName)} className="deleteBtn">Ta bort</button>
+            <button onClick = { deleteBtnOnClick } className="deleteBtn">Ta bort</button>
+            {/* <small id="confitmationText" className="text-green" >Layouten borttagen</small> */}
         </fieldset>
     );
 }

@@ -12,6 +12,8 @@ const deleteMyModelData = async (url, name) => {
 
     try {
         const response = await fetch(`${url}/${id}`, requestOptions);
+        return response.statusText;
+
         if(!response.ok){
             throw new Error(response.statusText);
         }

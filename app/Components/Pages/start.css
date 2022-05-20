@@ -37,6 +37,12 @@ fieldset {
 .text-white {
     color: white;
 }
+.text-red {
+    color: rgb(255, 0, 0);
+}
+.text-green {
+    color: rgb(0, 184, 34);
+}
 
 .row {
     display: flex;
