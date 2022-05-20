@@ -76,7 +76,6 @@ const LayoutPanel = () => {
                 layoutContent: canvasItems
             }
             let response = await postMyModelData(urls.savedLayouts, saveLayout);
-            console.log('response', response);
             if(response === 201) {
                 NotificationManager.success('Layout sparad');
                 layoutDatabaseCtx.updateDatabase();
@@ -109,7 +108,7 @@ const LayoutPanel = () => {
 
                 ctx.fillStyle = `${canvasItems[i].color}`;
                 ctx.font = `${canvasItems[i].style} ${canvasItems[i].fontSize}px "${canvasItems[i].font}"`;
-                ctx.fillText(`${canvasItems[i].text}`, canvasItems[i].textX, canvasItems[i].textY);
+                ctx.fillText(`${canvasItems[i].content}`, canvasItems[i].X, canvasItems[i].Y);
             }  
         }
     });

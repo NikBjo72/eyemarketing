@@ -21,7 +21,6 @@ const postMyModelData = async (url, object) => {
         if(!response.ok){
             throw new Error(response.status);
         }
-        console.log(response.status);
         return response.status;
     }
     catch(error) {

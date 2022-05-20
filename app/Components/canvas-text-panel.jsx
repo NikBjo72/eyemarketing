@@ -5,31 +5,27 @@ import './canvas-text-panel.css'
 
 const CanvasTextPanel = (props) => {
 
-    const [consoleLog, setConsoleLog] = useState(true);
     const [checkboxBold, setcheckboxBold] = useState(false);
     const [checkboxItalic, setcheckboxItalic] = useState(false);
     const [textSettings, setTextSettings] = useState(
         {
+            "name": "",
             "type": "text",
-            "text": "",
+            "content": "",
             "font": "",
             "fontSize": 0,
             "style": "",
             "color": "",
-            "textX": 0,
-            "textY": 0,
+            "X": 0,
+            "Y": 0,
             "order": 0
         }
     );
-
-    const textOnChangeHandler = (e) =>  { setTextSettings(
-        { ...textSettings, "text": e.currentTarget.value });
+    const onChangeTextHandler = (e) =>  {setTextSettings(
+        { ...textSettings, [e.currentTarget.name]: e.currentTarget.value });
     }
-    const selectFontOnChangeHandler = (e) =>  { setTextSettings(
-        { ...textSettings, "font": e.currentTarget.value });
-    }
-    const sizeOnChangeHandler = (e) =>  { setTextSettings(
-        { ...textSettings, "fontSize": parseInt(e.currentTarget.value) });
+    const onChangeNumberHandler = (e) =>  { setTextSettings(
+        { ...textSettings, [e.currentTarget.name]: parseInt(e.currentTarget.value) });
     }
     const styleOnChangeHandler = (e) =>  {
         if(e.currentTarget.checked == true && e.currentTarget.value == 'bold') {
@@ -51,30 +47,26 @@ const CanvasTextPanel = (props) => {
             setcheckboxItalic(false);
         }
     }
-    const selectColorOnChangeHandler = (e) =>  { setTextSettings(
-        { ...textSettings, "color": e.currentTarget.value });
-    }
-    const xOnChangeHandler = (e) =>  { setTextSettings(
-        { ...textSettings, "textX": parseInt(e.currentTarget.value) });
-    }
-    const yOnChangeHandler = (e) =>  { setTextSettings(
-        { ...textSettings, "textY": parseInt(e.currentTarget.value) });
-    }
-    const orderOnChangeHandler = (e) =>  { setTextSettings(
-        { ...textSettings, "order": parseInt(e.currentTarget.value) });
-    }
+    
+    useEffect(() => {
+        console.log(textSettings);
+    });
 
     return (
-        <fieldset id="fieldsetText" className="panelFieldset"> 
+        <fieldset id="fieldsetText" className="panelFieldset">
+            <legend className="text-white">Namn</legend>
+            <div className='inputHolder'>
+                <label className="inputlabel text-white">Namn</label>
+                <input onChange = { onChangeTextHandler } name='name' id='selectImage' placeholder = "Layoutnamn"></input>
+            </div>
             <legend className="text-white">Lägg till text</legend>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Text</label>
-                <textarea onChange = { textOnChangeHandler } name = "content" type = "text" value={textSettings.text} placeholder='Skriv din text här'/>
+                <textarea onChange = { onChangeTextHandler } name = "content" type = "text" value={textSettings.content} placeholder='Skriv din text här'/>
             </div>
-
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Typsnitt</label> 
-                <select onChange = { selectFontOnChangeHandler } name='font' id='selectFont'>
+                <select onChange = { onChangeTextHandler } name='font' id='selectFont'>
                 <option>Välj typsnitt</option>
                     {fonts.map((i) => {
                         return (<option key={i} value={i}>{i}</option>)
@@ -83,7 +75,7 @@ const CanvasTextPanel = (props) => {
             </div>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Textstorlek</label>
-                <input onChange = { sizeOnChangeHandler } value = {textSettings.fontSize} type="number" placeholder='Textstorlek'/>
+                <input onChange = { onChangeNumberHandler } name="fontSize" value = {textSettings.fontSize} type="number" placeholder='Textstorlek'/>
             </div>
 
             <div id="checkboxContainer">
@@ -95,7 +87,7 @@ const CanvasTextPanel = (props) => {
 
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Textfärg</label>
-                <select onChange = { selectColorOnChangeHandler } name='color' id='selectFont'>
+                <select onChange = { onChangeTextHandler } name='color' id='selectFont'>
                 <option>Välj färg</option>
                     {color.map((i) => {
                         return (<option key={i} value={i}>{i}</option>)
@@ -105,17 +97,17 @@ const CanvasTextPanel = (props) => {
 
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Placering horisontellt</label>    
-                <input onChange = { xOnChangeHandler } value = {textSettings.textX} type="number" placeholder='Placering horisontellt'/>
+                <input onChange = { onChangeNumberHandler } name="X" value = {textSettings.X} type="number" placeholder='Placering horisontellt'/>
             </div>
 
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Placering vertikalt</label>
-                <input onChange = { yOnChangeHandler } value = {textSettings.textY} type="number" placeholder='Placering vertikalt'/>
+                <input onChange = { onChangeNumberHandler } name="Y" value = {textSettings.Y} type="number" placeholder='Placering vertikalt'/>
             </div>
 
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Lager</label>    
-                <input onChange = { orderOnChangeHandler } value = {textSettings.order} type="number" placeholder='Ordning'/>
+                <input onChange = { onChangeNumberHandler } name="order" value = {textSettings.order} type="number" placeholder='Ordning'/>
             </div>
 
             <button onClick = {(e) => props.onClick("addTextBtn", textSettings)} className="addBtn">Lägg till</button>
