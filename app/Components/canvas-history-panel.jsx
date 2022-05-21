@@ -13,7 +13,7 @@ const CanvasHistoryPanel = (props) => {
     }
 
     const handleEvent = (btnName, btnStatus) => {
-
+        
         activeBtn.forEach((b) => {
             if(b.activeBtnName === btnName) {
                 if(b.activeBtnStatus === false) {
@@ -31,16 +31,14 @@ const CanvasHistoryPanel = (props) => {
     useEffect(() => {
 
         setActiveBtn(
-            props.canvasItems.map(i => {
+            props.canvasItems
+            .filter(i => i.type !== 'canvas')
+            .map(i => {
                 return({
                     activeBtnName: i.id,
                     activeBtnStatus: false,
                 })
-        }));
-
-        if(activeBtn.length > 0) {
-        console.log('find: ',activeBtn.find(b => b.activeBtnName == 'bild2').activeBtnStatus);
-        }
+            }));
     },[props.canvasItems]);
 
     return (
@@ -48,7 +46,7 @@ const CanvasHistoryPanel = (props) => {
             <fieldset id="fieldsetLoad" className="panelFieldset">
                 <legend className="text-white">Layoutobjekt</legend>
                 {activeBtn.map(id => {
-                    return (<button id="navBtn"><BlinkingEyeBtn key={id.activeBtnName} type = 'local-scope' handleEvent = {true} onClick={handleEvent} id="smallBtn" name = {id.activeBtnName} text={id.activeBtnName} setStatus = {id.activeBtnStatus}/></button>)
+                    return (<button key={id.activeBtnName} id="navBtn"><BlinkingEyeBtn type = 'local-scope' handleEvent = {true} onClick={handleEvent} id="smallBtn" name = {id.activeBtnName} text={id.activeBtnName} setStatus = {id.activeBtnStatus}/></button>)
                 })}
             </fieldset>
         </>

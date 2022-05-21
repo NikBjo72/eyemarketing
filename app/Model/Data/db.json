@@ -106,35 +106,39 @@
       "name": "Test1",
       "layoutContent": [
         {
+          "id": "camvas",
           "type": "canvas",
           "width": 800,
           "height": 500
         },
         {
+          "id": "bild1",
           "type": "img",
           "order": 0,
           "imageName": "bild1",
-          "imageX": 50,
-          "imageY": 50,
+          "X": 50,
+          "Y": 50,
           "imageWidth": 200
         },
         {
+          "id": "bild2",
           "type": "img",
           "order": 0,
           "imageName": "bild2",
-          "imageX": 300,
-          "imageY": 50,
+          "X": 300,
+          "Y": 50,
           "imageWidth": 200
         },
         {
+          "id": "Text1",
           "type": "text",
-          "text": "Test 1",
+          "content": "Test 1",
           "font": "verdana",
           "fontSize": 40,
           "style": "bold",
           "color": "yellow",
-          "textX": 100,
-          "textY": 300,
+          "X": 100,
+          "Y": 300,
           "order": 1
         }
       ]
@@ -144,138 +148,74 @@
       "name": "Test2",
       "layoutContent": [
         {
+          "id": "camvas",
           "type": "canvas",
           "width": 800,
           "height": 500
         },
         {
+          "id": "bild3",
           "type": "img",
           "order": 0,
           "imageName": "bild3",
-          "imageX": 50,
-          "imageY": 50,
+          "X": 50,
+          "Y": 50,
           "imageWidth": 200
         },
         {
+          "id": "logo2",
           "type": "img",
           "order": 0,
           "imageName": "logo2",
-          "imageX": 300,
-          "imageY": 50,
+          "X": 300,
+          "Y": 50,
           "imageWidth": 200
         },
         {
+          "id": "Text2",
           "type": "text",
-          "text": "Test 2",
+          "content": "Test 2",
           "font": "verdana",
           "fontSize": 40,
           "style": "bold",
           "color": "black",
-          "textX": 200,
-          "textY": 200,
+          "X": 200,
+          "Y": 200,
           "order": 1
         }
       ]
     },
     {
-      "id": "P2dGGsC4d3YOKfhgXSaFX",
-      "name": "Test med text",
+      "id": "X7lLiqBYyCun17ob4z2jM",
+      "name": "Niklas",
       "layoutContent": [
         {
-          "id": "bild3",
+          "id": "bild1",
           "type": "img",
-          "X": 10,
-          "Y": 6,
-          "imageWidth": 300,
-          "order": 3,
-          "": 10
-        },
-        {
-          "id": "hghd",
-          "type": "text",
-          "content": "Hej",
-          "font": "Helvetica",
-          "fontSize": 12,
-          "style": "italic",
-          "color": "Black",
-          "X": 100,
-          "Y": 200,
+          "X": 0,
+          "Y": 0,
+          "imageWidth": 200,
           "order": 0
         },
         {
-          "id": "sfdh",
-          "type": "text",
-          "content": "Hej igen",
-          "font": "Comic Sans MS",
-          "fontSize": 40,
-          "style": "bold",
-          "color": "Yellow",
-          "X": 100,
-          "Y": 300,
-          "order": 5
-        },
-        {
-          "id": "sfdh",
-          "type": "text",
-          "content": "plopp",
-          "font": "Comic Sans MS",
-          "fontSize": 40,
-          "style": "bold",
-          "color": "Purple",
-          "X": 200,
-          "Y": 300,
-          "order": 5
-        }
-      ]
-    },
-    {
-      "id": "Z7EC0_3AM0Dct8TpBRzxO",
-      "name": "Hej Hopp",
-      "layoutContent": [
-        {
           "id": "bild3",
           "type": "img",
-          "X": 10,
-          "Y": 6,
-          "imageWidth": 300,
-          "order": 3,
-          "": 10
-        },
-        {
-          "id": "hghd",
-          "type": "text",
-          "content": "Hej",
-          "font": "Helvetica",
-          "fontSize": 12,
-          "style": "italic",
-          "color": "Black",
-          "X": 100,
+          "X": 0,
           "Y": 200,
+          "imageWidth": 200,
           "order": 0
         },
         {
-          "id": "sfdh",
+          "id": "Text1",
           "type": "text",
-          "content": "Hej igen",
-          "font": "Comic Sans MS",
+          "content": "Niklas",
+          "font": "Verdana",
           "fontSize": 40,
           "style": "bold",
-          "color": "Yellow",
-          "X": 100,
-          "Y": 300,
-          "order": 5
-        },
-        {
-          "id": "sfdh",
-          "type": "text",
-          "content": "plopp",
-          "font": "Comic Sans MS",
-          "fontSize": 40,
-          "style": "bold",
-          "color": "Purple",
-          "X": 200,
-          "Y": 300,
-          "order": 5
+          "color": "Blue",
+          "X": 300,
+          "Y": 200,
+          "order": 0
         }
       ]
     }
