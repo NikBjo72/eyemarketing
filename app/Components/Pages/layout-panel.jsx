@@ -67,7 +67,11 @@ const LayoutPanel = () => {
         }
 
         else if (buttonName === 'addImageBtn') {
-            setCanvasItems(canvasImages => [...canvasImages, object]);
+            setCanvasItems([...canvasItems, object]);
+        }
+
+        else if (buttonName === 'addTextBtn') {
+            setCanvasItems([...canvasItems, object]);
         }
         
         else if (buttonName === 'saveLayoutBtn') {
@@ -88,7 +92,7 @@ const LayoutPanel = () => {
     }
 
     useEffect(async () => {
-
+        console.log('canvasItems i layout-panel: ', canvasItems);
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, width, height);
 
@@ -139,11 +143,11 @@ const LayoutPanel = () => {
                             <input onChange = { canvasOnChangeHandler } value = {`${height}`} name="height" type="number"/>
                         </div>
                     </fieldset>
+                    <CanvasHistoryPanel canvasItems = {canvasItems} />
                     <CanvasLoadPanel onClick = {onClickHandler} />
                     <CanvasSavePanel onClick = {onClickHandler} />
                     <CanvasImagePanel onClick = {onClickHandler} />
                     <CanvasTextPanel onClick = {onClickHandler} />
-                    <CanvasHistoryPanel canvasItems = {canvasItems} />
                     <NotificationContainer />
             </div>
             

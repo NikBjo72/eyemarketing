@@ -6,6 +6,10 @@ import propTypes from 'prop-types';
 import Eye from './default-images/Eye.svg';
 import closedEye from './default-images/Closed_Eye.svg'
 
+/**
+ * Generates a buttan that switch two images
+ * @param {string} imageActivated - imported image that shows when activated.
+ */
 const BlinkingEyeBtn = (props) => {
 
     const btnStatusContext = useContext(EyeBtnStatusContext);
@@ -17,7 +21,6 @@ const BlinkingEyeBtn = (props) => {
     const handleEvent = () => {
 
         if (props.type === 'local') {
-
             if(btnStatus === false) {
                 setBtnImage(props.imageActivated);
                 setBtnStatus(true);
@@ -30,7 +33,7 @@ const BlinkingEyeBtn = (props) => {
     
     const checkBtnStatus = () => {
         // Changing image depending on local status
-        if(props.type === 'local') {
+        if(props.type === 'local' || props.type === 'local-scope') {
             if(btnStatus === false) {
                 setBtnImage(props.imageDeactivated);
             } else setBtnImage(props.imageActivated);
@@ -46,6 +49,9 @@ const BlinkingEyeBtn = (props) => {
     useEffect(() => {
         if (props.type === 'global') {
             btnStatusContext.changeBtnStatus(location.pathname);
+        }
+        if(props.type === 'local-scope') {
+            setBtnStatus(props.setStatus);
         }
         checkBtnStatus();
     });
@@ -71,5 +77,8 @@ BlinkingEyeBtn.propTypes = {
     id: propTypes.string.isRequired,
     name: propTypes.string.isRequired,
     text: propTypes.string.isRequired,
+    imageActivated: propTypes.string,
+    imageDeactivated: propTypes.string
+
 };
 export default BlinkingEyeBtn;

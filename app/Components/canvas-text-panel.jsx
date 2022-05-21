@@ -47,10 +47,6 @@ const CanvasTextPanel = (props) => {
             setcheckboxItalic(false);
         }
     }
-    
-    useEffect(() => {
-        console.log(textSettings);
-    });
 
     return (
         <fieldset id="fieldsetText" className="panelFieldset">

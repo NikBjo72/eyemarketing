@@ -176,6 +176,108 @@
           "order": 1
         }
       ]
+    },
+    {
+      "id": "P2dGGsC4d3YOKfhgXSaFX",
+      "name": "Test med text",
+      "layoutContent": [
+        {
+          "id": "bild3",
+          "type": "img",
+          "X": 10,
+          "Y": 6,
+          "imageWidth": 300,
+          "order": 3,
+          "": 10
+        },
+        {
+          "id": "hghd",
+          "type": "text",
+          "content": "Hej",
+          "font": "Helvetica",
+          "fontSize": 12,
+          "style": "italic",
+          "color": "Black",
+          "X": 100,
+          "Y": 200,
+          "order": 0
+        },
+        {
+          "id": "sfdh",
+          "type": "text",
+          "content": "Hej igen",
+          "font": "Comic Sans MS",
+          "fontSize": 40,
+          "style": "bold",
+          "color": "Yellow",
+          "X": 100,
+          "Y": 300,
+          "order": 5
+        },
+        {
+          "id": "sfdh",
+          "type": "text",
+          "content": "plopp",
+          "font": "Comic Sans MS",
+          "fontSize": 40,
+          "style": "bold",
+          "color": "Purple",
+          "X": 200,
+          "Y": 300,
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "Z7EC0_3AM0Dct8TpBRzxO",
+      "name": "Hej Hopp",
+      "layoutContent": [
+        {
+          "id": "bild3",
+          "type": "img",
+          "X": 10,
+          "Y": 6,
+          "imageWidth": 300,
+          "order": 3,
+          "": 10
+        },
+        {
+          "id": "hghd",
+          "type": "text",
+          "content": "Hej",
+          "font": "Helvetica",
+          "fontSize": 12,
+          "style": "italic",
+          "color": "Black",
+          "X": 100,
+          "Y": 200,
+          "order": 0
+        },
+        {
+          "id": "sfdh",
+          "type": "text",
+          "content": "Hej igen",
+          "font": "Comic Sans MS",
+          "fontSize": 40,
+          "style": "bold",
+          "color": "Yellow",
+          "X": 100,
+          "Y": 300,
+          "order": 5
+        },
+        {
+          "id": "sfdh",
+          "type": "text",
+          "content": "plopp",
+          "font": "Comic Sans MS",
+          "fontSize": 40,
+          "style": "bold",
+          "color": "Purple",
+          "X": 200,
+          "Y": 300,
+          "order": 5
+        }
+      ]
     }
   ]
 }
