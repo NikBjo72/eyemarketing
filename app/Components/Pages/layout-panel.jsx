@@ -23,8 +23,8 @@ const LayoutPanel = () => {
     const layoutDatabaseCtx = useContext(LayoutDatabaseContext);
     const [canvasRef, setcanvasRef] = useState(useRef(null));
     const [canvasLayoutItems, setCanvasLayoutItems] = SyncStateToLocalStorage('canvasItems', []);
-    const [width, setWidth] = useState();
-    const [height, setHeight] = useState();
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
 
     const setCanvasSize = (value, target) => {
         if(canvasLayoutItems.length === 0) {
