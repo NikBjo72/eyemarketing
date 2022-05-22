@@ -15,6 +15,8 @@ import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import LayoutDatabaseContext from '../layout-database-context';
 import FilterAndMap from '../../Helpers/filter-and-map';
+import ChangeLayoutItemContext from '../change-layout-item-context';
+import { ChangeLayoutItemContextProvider } from '../change-layout-item-context';
 
 const LayoutPanel = () => {
 
@@ -135,33 +137,33 @@ const LayoutPanel = () => {
     });
 
     return (
-        <div id="container" className={"row"}>
+        <ChangeLayoutItemContextProvider>
+            <div id="container" className={"row"}>
+                <div id="canvasContainer">
+                    <canvas id="canvas" ref={canvasRef} height={height} width={width}></canvas>
+                </div>
 
-            <div id="canvasContainer">
-                <canvas id="canvas" ref={canvasRef} height={height} width={width}></canvas>
+                <div id="panelContainer" className={"colOne"}>
+                        <fieldset id="fieldsetStorlek" className='panelFieldset'>
+                            <legend className="text-white">Storlek layout</legend>
+                            <div className='inputHolder'>
+                                <label className="inputlabel text-white">Bredd</label>
+                                <input onChange = { canvasOnChangeHandler } value={width} name="width" type="number"/>
+                            </div>
+                            <div className='inputHolder'>
+                                <label className="inputlabel text-white">Höjd</label>
+                                <input onChange = { canvasOnChangeHandler } value={height} name="height" type="number"/>
+                            </div>
+                        </fieldset>
+                        <CanvasHistoryPanel canvasLayoutItems = {canvasLayoutItems} />
+                        <CanvasLoadPanel onClick = {onClickHandler} />
+                        <CanvasSavePanel onClick = {onClickHandler} />
+                        <CanvasImagePanel onClick = {onClickHandler} />
+                        <CanvasTextPanel onClick = {onClickHandler} />
+                        <NotificationContainer />
+                </div> 
             </div>
-
-            <div id="panelContainer" className={"colOne"}>
-                    <fieldset id="fieldsetStorlek" className='panelFieldset'>
-                        <legend className="text-white">Storlek layout</legend>
-                        <div className='inputHolder'>
-                            <label className="inputlabel text-white">Bredd</label>
-                            <input onChange = { canvasOnChangeHandler } value={width} name="width" type="number"/>
-                        </div>
-                        <div className='inputHolder'>
-                            <label className="inputlabel text-white">Höjd</label>
-                            <input onChange = { canvasOnChangeHandler } value={height} name="height" type="number"/>
-                        </div>
-                    </fieldset>
-                    <CanvasHistoryPanel canvasLayoutItems = {canvasLayoutItems} />
-                    <CanvasLoadPanel onClick = {onClickHandler} />
-                    <CanvasSavePanel onClick = {onClickHandler} />
-                    <CanvasImagePanel onClick = {onClickHandler} />
-                    <CanvasTextPanel onClick = {onClickHandler} />
-                    <NotificationContainer />
-            </div>
-            
-        </div>
+        </ChangeLayoutItemContextProvider>
     );
 }
 
