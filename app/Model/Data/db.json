@@ -106,7 +106,7 @@
       "name": "Test1",
       "layoutContent": [
         {
-          "id": "camvas",
+          "id": "canvas",
           "type": "canvas",
           "width": 800,
           "height": 500
@@ -148,7 +148,7 @@
       "name": "Test2",
       "layoutContent": [
         {
-          "id": "camvas",
+          "id": "canvas",
           "type": "canvas",
           "width": 800,
           "height": 500
@@ -186,32 +186,20 @@
       ]
     },
     {
-      "id": "k81hvoCnzdYFf0UokYvW9",
-      "name": "Niklas",
+      "id": "rmau06pp1qtjCoC7LRiyu",
+      "name": "Niklas text",
       "layoutContent": [
+        {
+          "id": "canvas",
+          "type": "canvas",
+          "width": 500,
+          "height": 500
+        },
         {
           "id": "Niklas",
           "type": "text",
           "content": "Niklas",
-          "font": "Comic Sans MS",
-          "fontSize": 60,
-          "style": "bold",
-          "color": "Red",
-          "X": 100,
-          "Y": 200,
-          "order": 0
-        }
-      ]
-    },
-    {
-      "id": "RYRF3ZUqt-miCNfjc15Du",
-      "name": "Niklas1",
-      "layoutContent": [
-        {
-          "id": "Niklas",
-          "type": "text",
-          "content": "Niklas",
-          "font": "Comic Sans MS",
+          "font": "Helvetica",
           "fontSize": 60,
           "style": "bold",
           "color": "Red",

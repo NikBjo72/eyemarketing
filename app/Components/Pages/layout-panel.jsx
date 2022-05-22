@@ -14,15 +14,41 @@ import urls from '../../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import LayoutDatabaseContext from '../layout-database-context';
+import FilterAndMap from '../../Helpers/filter-and-map';
 
 const LayoutPanel = () => {
 
     const layoutDatabaseCtx = useContext(LayoutDatabaseContext);
-    const didMount = useRef(false);
     const [canvasRef, setcanvasRef] = useState(useRef(null));
-    const [width, setWidth] = useState('800');
-    const [height, setHeight] = useState('500');
     const [canvasItems, setCanvasItems] = SyncStateToLocalStorage('canvasItems', []);
+    const [width, setWidth] = useState();
+    const [height, setHeight] = useState();
+
+    const setCanvasSize = (value, target) => {
+        if(canvasItems.length === 0) {
+            var newCanvasSize = [
+                {
+                id: "canvas",
+                type: "canvas",
+                width: 800,
+                height: 500
+                }
+            ];
+        } else {
+            var newCanvasSize = [...canvasItems]
+        }
+        newCanvasSize.find((i) => i.type)[target] = parseInt(value);
+        setCanvasItems(newCanvasSize);
+    }
+
+    useEffect(() => {
+        setWidth(FilterAndMap(canvasItems, 'canvas', 'width'));
+        setHeight(FilterAndMap(canvasItems, 'canvas', 'height'));
+    }, [canvasItems])
+
+    useEffect(() => {
+        setCanvasSize();
+    }, [])
 
     updateState = (state, setState) => {
         if (state === true){
@@ -32,38 +58,13 @@ const LayoutPanel = () => {
 
     const canvasOnChangeHandler = (e) => {
 
-        const setItems = (value, target) => {
-            if(canvasItems.length === 0) {
-                var newCanvasItems = [
-                    {
-                    id: "camvas",
-                    type: "canvas",
-                    width: 800,
-                    height: 500
-                    }
-                ];
-            } else {
-                var newCanvasItems = [...canvasItems]
-            }
-            newCanvasItems.find((i) => i.type)[target] = parseInt(value);
-            setCanvasItems(newCanvasItems);
-        }
-
         if(e.target.name == 'width') {
-
-            setWidth(e.target.value);
-            setItems(e.target.value, e.target.name);
+            setCanvasSize(e.target.value, e.target.name);
         }
         else if(e.target.name == 'height') {
-
-            setHeight(e.target.value);
-            setItems(e.target.value, e.target.name);
+            setCanvasSize(e.target.value, e.target.name);
         }
     }
-
-    useEffect(() => {
-        console.log(canvasItems);
-    }, [canvasItems])
 
     const onClickHandler = async (buttonName, object) => {
 
@@ -79,6 +80,10 @@ const LayoutPanel = () => {
                 setCanvasItems([]);
             } else
             setCanvasItems(object[0].layoutContent);
+
+            if(object.length === 0) {
+                setCanvasSize();
+            }
         }
 
         else if (buttonName === 'addImageBtn') {
@@ -113,12 +118,7 @@ const LayoutPanel = () => {
 
         for(i=0; i < canvasItems.length; ++i) {
 
-            if(canvasItems[i].type === 'canvas') {
-
-                setWidth(canvasItems[i].width);
-                setHeight(canvasItems[i].height);
-            }
-            else if(canvasItems[i].type == 'img') {
+            if(canvasItems[i].type == 'img') {
                 const img = new CanvasImage(canvasItems[i]);
                 img.src = url[canvasItems[i].id];
                 img.imageHeight = await img.getImageHeight();
@@ -133,12 +133,6 @@ const LayoutPanel = () => {
         }
     });
 
-    // function Text(ctx) {
-    //     ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
-    //     ctx.font = `bold 48px "verdana"`;
-    //     ctx.fillText('Hello World', 200, 400);
-    // }
-
     return (
         <div id="container" className={"row"}>
 
@@ -151,11 +145,11 @@ const LayoutPanel = () => {
                         <legend className="text-white">Storlek layout</legend>
                         <div className='inputHolder'>
                             <label className="inputlabel text-white">Bredd</label>
-                            <input onChange = { canvasOnChangeHandler } value = {`${width}`} name="width" type="number"/>
+                            <input onChange = { canvasOnChangeHandler } value={width} name="width" type="number"/>
                         </div>
                         <div className='inputHolder'>
                             <label className="inputlabel text-white">Höjd</label>
-                            <input onChange = { canvasOnChangeHandler } value = {`${height}`} name="height" type="number"/>
+                            <input onChange = { canvasOnChangeHandler } value={height} name="height" type="number"/>
                         </div>
                     </fieldset>
                     <CanvasHistoryPanel canvasItems = {canvasItems} />
