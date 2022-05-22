@@ -106,6 +106,7 @@
       "name": "Test1",
       "layoutContent": [
         {
+          "id": "camvas",
           "type": "canvas",
           "width": 800,
           "height": 500
@@ -147,6 +148,7 @@
       "name": "Test2",
       "layoutContent": [
         {
+          "id": "camvas",
           "type": "canvas",
           "width": 800,
           "height": 500
@@ -213,6 +215,38 @@
           "color": "Blue",
           "X": 300,
           "Y": 200,
+          "order": 0
+        }
+      ]
+    },
+    {
+      "id": "xnSDfQ9oRNE10fK1X7-Ad",
+      "name": "Test3",
+      "layoutContent": [
+        {
+          "id": "camvas",
+          "type": "canvas",
+          "width": 500,
+          "height": 500
+        },
+        {
+          "id": "bild1",
+          "type": "img",
+          "X": 100,
+          "Y": 100,
+          "imageWidth": 300,
+          "order": 0
+        },
+        {
+          "id": "Rubrik",
+          "type": "text",
+          "content": "Hej på dig!",
+          "font": "Helvetica",
+          "fontSize": 40,
+          "style": "bold",
+          "color": "Black",
+          "X": 170,
+          "Y": 80,
           "order": 0
         }
       ]

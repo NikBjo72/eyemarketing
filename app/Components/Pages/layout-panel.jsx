@@ -33,7 +33,18 @@ const LayoutPanel = () => {
     const canvasOnChangeHandler = (e) => {
 
         const setItems = (target, value) => {
-            var newCanvasItems = [...canvasItems];
+            if(canvasItems.length === 0) {
+                var newCanvasItems = [
+                    {
+                    id: "camvas",
+                    type: "canvas",
+                    width: 800,
+                    height: 500
+                    }
+                ];
+            } else {
+                var newCanvasItems = [...canvasItems]
+            }
             newCanvasItems.find((i) => i.type)[value] = parseInt(target);
             setCanvasItems(newCanvasItems);
         }
@@ -92,7 +103,7 @@ const LayoutPanel = () => {
     }
 
     useEffect(async () => {
-        console.log('canvasItems i layout-panel: ', canvasItems);
+
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, width, height);
 

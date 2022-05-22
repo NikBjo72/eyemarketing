@@ -186,34 +186,36 @@
       ]
     },
     {
-      "id": "X7lLiqBYyCun17ob4z2jM",
+      "id": "k81hvoCnzdYFf0UokYvW9",
       "name": "Niklas",
       "layoutContent": [
         {
-          "id": "bild1",
-          "type": "img",
-          "X": 0,
-          "Y": 0,
-          "imageWidth": 200,
-          "order": 0
-        },
-        {
-          "id": "bild3",
-          "type": "img",
-          "X": 0,
-          "Y": 200,
-          "imageWidth": 200,
-          "order": 0
-        },
-        {
-          "id": "Text1",
+          "id": "Niklas",
           "type": "text",
           "content": "Niklas",
-          "font": "Verdana",
-          "fontSize": 40,
+          "font": "Comic Sans MS",
+          "fontSize": 60,
           "style": "bold",
-          "color": "Blue",
-          "X": 300,
+          "color": "Red",
+          "X": 100,
+          "Y": 200,
+          "order": 0
+        }
+      ]
+    },
+    {
+      "id": "RYRF3ZUqt-miCNfjc15Du",
+      "name": "Niklas1",
+      "layoutContent": [
+        {
+          "id": "Niklas",
+          "type": "text",
+          "content": "Niklas",
+          "font": "Comic Sans MS",
+          "fontSize": 60,
+          "style": "bold",
+          "color": "Red",
+          "X": 100,
           "Y": 200,
           "order": 0
         }

@@ -7,6 +7,7 @@ import urls from '../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import LayoutDatabaseContext from '../Components/layout-database-context';
+import updateComponent from '../Helpers/update-component';
 
 const CanvasLoadPanel = (props) => {
     const LayoutDatabaseCtx = useContext(LayoutDatabaseContext);
@@ -14,12 +15,6 @@ const CanvasLoadPanel = (props) => {
     const [chosenLayoutName, setchosenLayoutName] = useState();
     const [allLayoutSettings, setAllLayoutSettings] = useState([]);
     const [chosenLayoutSettings, setChosenLayoutSettings] = useState([]);
-
-    const Update = () => {
-        if (update == false) {
-            setUpdate(true);
-        } else setUpdate(false);
-    }
 
     const deleteBtnOnClick = async () => {
         let response = await deleteMyModelData(urls.savedLayouts, chosenLayoutName);
@@ -31,11 +26,11 @@ const CanvasLoadPanel = (props) => {
         else {
             NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte att ta bort!', 5000);
         }
-        Update();
+        updateComponent(update, setUpdate);
     }
 
     const selectOnChangeHandler = (e) => {
-        Update();
+        updateComponent(update, setUpdate);
         if(e.target.name == 'empty') {
             setChosenLayoutSettings([]);
         } else {

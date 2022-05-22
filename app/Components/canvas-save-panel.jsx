@@ -1,28 +1,21 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useContext } from 'react';
 
 const CanvasSavePanel = (props) => {
 
-    const [update, setUpdate] = useState(false);
-    const [name, setName] = useState("");
-
-    const Update = () => {
-        if (update == false) {
-            setUpdate(true);
-        } else setUpdate(false);
-    }
+    const [name, setName] = useState('');
 
     const nameOnChangeHandler = (e) =>  {
-        setName(e.currentTarget.value);
+        setName(e.target.value);
     }
 
     return (
         <fieldset id="fieldsetLoad" className="panelFieldset">
             <legend className="text-white">Spara layout</legend>
             <div className='inputHolder'>
-                <label className="inputlabel text-white" >Layout</label>
-                <input onChange = { nameOnChangeHandler } name='image' id='selectImage' placeholder = "Layoutnamn"></input>
+                <label className="inputlabel text-white" >Layoutnamn</label>
+                <input onChange = { nameOnChangeHandler } value={name} name='save' id='save' placeholder = "Layoutnamn"></input>
             </div>
-            <button onClick = {(e) => props.onClick("saveLayoutBtn", name)} className="addBtn">Spara layout</button>
+            <button onClick = {(e) => {props.onClick("saveLayoutBtn", name); setName('')}} className="addBtn">Spara layout</button>
         </fieldset>
     );
 }
