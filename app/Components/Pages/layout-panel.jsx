@@ -98,6 +98,7 @@ const LayoutPanel = () => {
             let saveLayout = {
                 id: undefined,
                 name: object,
+                removable: true,
                 layoutContent: canvasItems
             }
             let response = await postMyModelData(urls.savedLayouts, saveLayout);

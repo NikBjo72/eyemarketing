@@ -103,7 +103,21 @@
   "savedLayouts": [
     {
       "id": "1",
+      "name": "Tom layout",
+      "removable": false,
+      "layoutContent": [
+        {
+          "id": "canvas",
+          "type": "canvas",
+          "width": 500,
+          "height": 500
+        }
+      ]
+    },
+    {
+      "id": "2",
       "name": "Test1",
+      "removable": true,
       "layoutContent": [
         {
           "id": "canvas",
@@ -144,8 +158,9 @@
       ]
     },
     {
-      "id": "2",
+      "id": "3",
       "name": "Test2",
+      "removable": true,
       "layoutContent": [
         {
           "id": "canvas",
@@ -182,30 +197,6 @@
           "X": 200,
           "Y": 200,
           "order": 1
-        }
-      ]
-    },
-    {
-      "id": "rmau06pp1qtjCoC7LRiyu",
-      "name": "Niklas text",
-      "layoutContent": [
-        {
-          "id": "canvas",
-          "type": "canvas",
-          "width": 500,
-          "height": 500
-        },
-        {
-          "id": "Niklas",
-          "type": "text",
-          "content": "Niklas",
-          "font": "Helvetica",
-          "fontSize": 60,
-          "style": "bold",
-          "color": "Red",
-          "X": 100,
-          "Y": 200,
-          "order": 0
         }
       ]
     }

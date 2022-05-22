@@ -17,15 +17,25 @@ const CanvasLoadPanel = (props) => {
     const [chosenLayoutSettings, setChosenLayoutSettings] = useState([]);
 
     const deleteBtnOnClick = async () => {
-        let response = await deleteMyModelData(urls.savedLayouts, chosenLayoutName);
+        let check = LayoutDatabaseCtx.layoutDatabase
+            .filter(k => k.name === chosenLayoutName)
+            .map(t => t.removable)
+        ;
 
-        if(response === 200) {
-            NotificationManager.success('Layout borttagen');
-            LayoutDatabaseCtx.updateDatabase();
+        if (check[0]) {
+            let response = await deleteMyModelData(urls.savedLayouts, chosenLayoutName);
+
+            if(response === 200) {
+                NotificationManager.success('Layout borttagen');
+                LayoutDatabaseCtx.updateDatabase();
+            }
+            else {
+                NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte att ta bort!', 5000);
+            }
+        } else {
+            NotificationManager.error('Denna layout är skyddad för borttagning.', 'Skyddad!', 5000);
         }
-        else {
-            NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte att ta bort!', 5000);
-        }
+
         updateComponent(update, setUpdate);
     }
 
@@ -51,7 +61,6 @@ const CanvasLoadPanel = (props) => {
                 <div className='inputHolder'>
                     <label className="inputlabel text-white" >Layout</label>
                     <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
-                    <option name={'empty'} value={'Tom layout'}>Tom layout</option>
                         {LayoutDatabaseCtx.layoutNames !== undefined
                         ?
                         LayoutDatabaseCtx.layoutNames.map((object) => {
