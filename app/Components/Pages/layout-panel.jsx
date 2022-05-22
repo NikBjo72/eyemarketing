@@ -32,7 +32,7 @@ const LayoutPanel = () => {
 
     const canvasOnChangeHandler = (e) => {
 
-        const setItems = (target, value) => {
+        const setItems = (value, target) => {
             if(canvasItems.length === 0) {
                 var newCanvasItems = [
                     {
@@ -45,7 +45,7 @@ const LayoutPanel = () => {
             } else {
                 var newCanvasItems = [...canvasItems]
             }
-            newCanvasItems.find((i) => i.type)[value] = parseInt(target);
+            newCanvasItems.find((i) => i.type)[target] = parseInt(value);
             setCanvasItems(newCanvasItems);
         }
 
@@ -60,6 +60,10 @@ const LayoutPanel = () => {
             setItems(e.target.value, e.target.name);
         }
     }
+
+    useEffect(() => {
+        console.log(canvasItems);
+    }, [canvasItems])
 
     const onClickHandler = async (buttonName, object) => {
 
