@@ -6,12 +6,12 @@ import propTypes from 'prop-types';
 * @example
 * const [update, setUpdate] = useState(false);
 */
-const updateComponent = (state, setStateFunction) => {
+const UpdateComponent = (state, setStateFunction) => {
     if (state == false) {
         setStateFunction(true);
     } else setStateFunction(false);
 }
-export default updateComponent;
-updateComponent.propTypes = {
+export default UpdateComponent;
+UpdateComponent.propTypes = {
     setStateFunction: propTypes.func.isRequired
 }

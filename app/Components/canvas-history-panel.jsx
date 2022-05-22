@@ -1,19 +1,13 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import BlinkingEyeBtn from './BlinkingEye/blinking-eye-btn'
+import BlinkingEyeBtn from './BlinkingEye/blinking-eye-btn';
+import UpdateComponent from '../Helpers/update-component';
 
 const CanvasHistoryPanel = (props) => {
 
     const [update, setUpdate] = useState(false);
     const [activeBtn, setActiveBtn] = useState([]);
 
-    const Update = () => {
-        if (update == false) {
-            setUpdate(true);
-        } else setUpdate(false);
-    }
-
-    const handleEvent = (btnName, btnStatus) => {
-        
+    const handleEvent = (btnName, btnStatus) => {  
         activeBtn.forEach((b) => {
             if(b.activeBtnName === btnName) {
                 if(b.activeBtnStatus === false) {
@@ -25,13 +19,12 @@ const CanvasHistoryPanel = (props) => {
                 b.activeBtnStatus = false;
             }
         });
-        Update();
+        UpdateComponent(update, setUpdate);
     }
 
     useEffect(() => {
-
         setActiveBtn(
-            props.canvasItems
+            props.canvasLayoutItems
             .filter(i => i.type !== 'canvas')
             .map(i => {
                 return({
@@ -39,7 +32,7 @@ const CanvasHistoryPanel = (props) => {
                     activeBtnStatus: false,
                 })
             }));
-    },[props.canvasItems]);
+    },[props.canvasLayoutItems]);
 
     return (
         <>
