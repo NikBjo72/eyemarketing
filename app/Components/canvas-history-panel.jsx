@@ -19,14 +19,17 @@ const CanvasHistoryPanel = (props) => {
                         .filter(k => k.btnName === buttonName)
                         .map(i => i.btnStatus = true)
                     ;
-                    let object = props.canvasLayoutItems.filter(k => k.id == buttonName);
-                    ChangeLayoutItemCtx.setItemObject(object);
+                    let objectId = ChangeLayoutItemCtx.canvasLayoutItems
+                        .filter(o => o.id == buttonName)
+                        .map(k => k.id)
+                    ;
+                    ChangeLayoutItemCtx.setIdOfItemToChange(objectId[0]);
                 } else {
                     newButtons
                         .filter(k => k.btnName === buttonName)
                         .map(i => i.btnStatus = false)
                     ;
-                    ChangeLayoutItemCtx.setItemObject(undefined);
+                    ChangeLayoutItemCtx.setIdOfItemToChange(undefined);
                 }
             }
             else {
@@ -42,7 +45,7 @@ const CanvasHistoryPanel = (props) => {
 
     useEffect(() => {
         setButtons(
-            props.canvasLayoutItems
+            ChangeLayoutItemCtx.canvasLayoutItems
             .filter(i => i.type !== 'canvas')
             .map(i => {
                 return({
@@ -50,11 +53,7 @@ const CanvasHistoryPanel = (props) => {
                     btnStatus: false,
                 })
             }));
-    },[props.canvasLayoutItems]);
-
-    useEffect(() => {
-        console.log('ChangeLayoutItemCtx: ',ChangeLayoutItemCtx.itemObject);
-    },[update])
+    },[ChangeLayoutItemCtx.canvasLayoutItems]);
 
     return (
         <>

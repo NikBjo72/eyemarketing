@@ -6,28 +6,28 @@ import deleteMyModelData from '../Model/delete-my-model-data';
 import urls from '../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
-import LayoutDatabaseContext from '../Components/layout-database-context';
+import ChangeLayoutItemContext from './change-layout-item-context';
 import UpdateComponent from '../Helpers/update-component';
+import useDatabase from './custom-hooks/use-database';
 
 const CanvasLoadPanel = (props) => {
-    const LayoutDatabaseCtx = useContext(LayoutDatabaseContext);
+    const ChangeLayoutItemCtx = useContext(ChangeLayoutItemContext);
     const [update, setUpdate] = useState(false);
-    const [chosenLayoutName, setchosenLayoutName] = useState();
-    const [allLayoutSettings, setAllLayoutSettings] = useState([]);
-    const [chosenLayoutSettings, setChosenLayoutSettings] = useState([]);
+    const [chosenLayoutId, setChosenLayoutId] = useState([]);
+    const { layoutDatabase, layoutNames, updateDatabase } = useDatabase();
 
     const deleteBtnOnClick = async () => {
-        let check = LayoutDatabaseCtx.layoutDatabase
-            .filter(k => k.name === chosenLayoutName)
+        let check = layoutDatabase
+            .filter(k => k.name === chosenLayoutId)
             .map(t => t.removable)
         ;
 
         if (check[0]) {
-            let response = await deleteMyModelData(urls.savedLayouts, chosenLayoutName);
+            let response = await deleteMyModelData(urls.savedLayouts, chosenLayoutId);
 
             if(response === 200) {
                 NotificationManager.success('Layout borttagen');
-                LayoutDatabaseCtx.updateDatabase();
+                updateDatabase();
             }
             else {
                 NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte att ta bort!', 5000);
@@ -35,24 +35,16 @@ const CanvasLoadPanel = (props) => {
         } else {
             NotificationManager.error('Denna layout är skyddad för borttagning.', 'Skyddad!', 5000);
         }
-
-        UpdateComponent(update, setUpdate);
     }
 
     const selectOnChangeHandler = (e) => {
         UpdateComponent(update, setUpdate);
         if(e.target.name == 'empty') {
-            setChosenLayoutSettings([]);
+            setChosenLayoutId([]);
         } else {
-            setchosenLayoutName(e.currentTarget.value);
-            const layout = allLayoutSettings.filter(layout => layout.name == e.currentTarget.value);
-            setChosenLayoutSettings(layout);
+            setChosenLayoutId(e.currentTarget.value);
         }
     }
-    
-    useEffect(async () => {
-        setAllLayoutSettings(await GetMyModelData(urls.savedLayouts));
-    }, [update]);
 
     return (
         <>
@@ -61,17 +53,17 @@ const CanvasLoadPanel = (props) => {
                 <div className='inputHolder'>
                     <label className="inputlabel text-white" >Layout</label>
                     <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
-                    <option name={'empty'} value={'Välj en layput'}>Välj en layput</option>
-                        {LayoutDatabaseCtx.layoutNames !== undefined
+                    <option name={'empty'} value={'Välj en layput'}>Välj en layout</option>
+                        {layoutNames !== undefined
                         ?
-                        LayoutDatabaseCtx.layoutNames.map((object) => {
+                        layoutNames.map((object) => {
                             return (<option key={object} value={object}>{object}</option>)
                         })
                         :
                         null}   
                     </select>
                 </div>
-                <button onClick = {(e) => props.onClick("addLayoutBtn", chosenLayoutSettings)} className="addBtn">Öppna</button>
+                <button onClick = {(e) => ChangeLayoutItemCtx.openLayout(chosenLayoutId)} className="addBtn">Öppna</button>
                 <button onClick = { deleteBtnOnClick } className="deleteBtn">Ta bort</button>
             </fieldset>
             <NotificationContainer/>

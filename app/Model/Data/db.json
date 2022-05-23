@@ -199,6 +199,28 @@
           "order": 1
         }
       ]
+    },
+    {
+      "id": "0lM5jF9pF3X_2gARG9Zkz",
+      "name": "Test3",
+      "removable": true,
+      "layoutContent": [
+        {
+          "id": "canvas",
+          "type": "canvas",
+          "width": 500,
+          "height": 500,
+          "undefined": null
+        },
+        {
+          "id": "bild1",
+          "type": "img",
+          "X": 0,
+          "Y": 0,
+          "imageWidth": 300,
+          "order": 0
+        }
+      ]
     }
   ]
 }
