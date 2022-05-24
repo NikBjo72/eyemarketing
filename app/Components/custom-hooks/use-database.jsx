@@ -7,10 +7,16 @@ export const useDatabase = () => {
     const [update, setUpdate] = useState(); 
     const [layoutDatabase, setLayoutDatabase] = useState();
     const [layoutNames, setLayoutNames] = useState();
+    const [loading, setLoading] = useState(true);
+	const [err, setErr] = useState([]);
+
 
     useEffect(async () => {
-        let data = await GetMyModelData(urls.savedLayouts)
+        const [data, err] = await GetMyModelData(urls.savedLayouts)
         setLayoutDatabase(data);
+        setErr(err);
+        setLoading(false);
+
         let layoutNames = data.map(object => {
             return (object.name)
         });
@@ -26,7 +32,7 @@ export const useDatabase = () => {
     }
 
     return (
-        { layoutDatabase, layoutNames, updateDatabase }
+        { layoutDatabase, layoutNames, loading, err, updateDatabase }
     );
 }
 export default useDatabase;

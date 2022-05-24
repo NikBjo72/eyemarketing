@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect, useCallback, useContext} from 'react';
 import urls from '../Model/fetch-url';
-import GetMyModelData from'../Model/get-my-model-data';
 import deleteMyModelData from '../Model/delete-my-model-data';
 import urls from '../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';

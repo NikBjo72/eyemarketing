@@ -16,7 +16,7 @@ const CanvasSavePanel = (props) => {
     }
 
     const onClickHandler = (async () => {
-        debugger
+
         let saveLayout = {
             id: undefined,
             name: name,

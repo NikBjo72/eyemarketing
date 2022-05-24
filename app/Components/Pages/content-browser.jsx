@@ -4,6 +4,7 @@ import  BlinkingEyeBtn  from '../BlinkingEye/blinking-eye-btn';
 import Card from '../card';
 import urls from '../../Model/fetch-url';
 import GetMyModelData from '../../Model/get-my-model-data';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 export class ContentBrowser extends React.Component {
 
@@ -12,11 +13,23 @@ export class ContentBrowser extends React.Component {
         this.state = {
             chosenCards: '',
             category: '',
+            err: '',
+            loading: true
         }
     }
 
     componentDidMount = async () => {
-        this.setState(await GetMyModelData(urls.graphicComponents));
+        const [data, err] = await GetMyModelData(urls.graphicComponents);
+        
+        this.setState({
+            data,
+            err: err,
+            loading: false
+        });
+
+        if (err) {
+            NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Kunde inte hämta innehåll!', 10000);
+        }
     }
 
     changeBtnStatus = (btnState, state) => {
@@ -31,7 +44,7 @@ export class ContentBrowser extends React.Component {
     }
 
     handleClick = (btnName, btnStatus) => {
-        this.browseChosenCards(this.state[btnName], btnStatus);
+        this.browseChosenCards(this.state.data[btnName], btnStatus);
     }
 
     browseChosenCards = (cards, btnStatus) => {
@@ -58,6 +71,7 @@ export class ContentBrowser extends React.Component {
     render() {
         return (
             <div id="contentContainer" className={"row"}>
+                <NotificationContainer/>
                 <div id="browser" className={"colTwo"}>
 
                     {this.state.chosenCards === ""
@@ -71,6 +85,7 @@ export class ContentBrowser extends React.Component {
                     
                 </div>
                 <div id="menu" className={"colOne"}>
+                    {this.state.loading === true ? <p className='text-red'>Vänta, innehåll laddas...</p> : null}
                     <ul>
                         <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="logos" text = 'LOGO' onClick = {this.handleClick} />
                         <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="images" text = 'BILDER' onClick = {this.handleClick} />

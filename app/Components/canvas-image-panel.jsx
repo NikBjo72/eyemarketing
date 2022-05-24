@@ -10,44 +10,6 @@ const CanvasImagePanel = (props) => {
     const [consoleLog, setConsoleLog] = useState(true);
     const [update, setUpdate] = useState(false);
 
-    // useEffect(() => {
-    //     if(ChangeLayoutItemCtx.nameOfItemToChange !== undefined) {
-    //         ChangeLayoutItemCtx.getLayoutFromName()
-    //         if(ChangeLayoutItemCtx.nameOfItemToChange[0].type === 'img') {
-    //             let object = props.canvasLayoutItems
-    //                 .filter(o => o.type === 'img')
-    //                 .filter(k => k.id === ChangeLayoutItemCtx.nameOfItemToChange[0].id)
-    //             ;
-    //             ChangeLayoutItemCtx.setImageSettings(object[0]);
-    //         }
-    //     }
-    //     UpdateComponent(update, setUpdate);
-    // },[ChangeLayoutItemCtx.nameOfItemToChange])
-
-    // useEffect(async () => {
-    //     if(ChangeLayoutItemCtx.itemObject !== undefined) {
-    //         if(ChangeLayoutItemCtx.itemObject[0].type === 'img') {
-    //             let newCanvasLayoutItems = [...props.canvasLayoutItems];
-
-    //             const wait = new Promise((resolve) => {
-    //                 resolve(newCanvasLayoutItems
-    //                     .filter(o => o.type === 'img')
-    //                     .filter(k => k.id === ChangeLayoutItemCtx.itemObject[0].id)[0]
-    //                     = imageSettings)
-    //             });
-    //             wait.then(() => {
-    //                 console.log('',newCanvasLayoutItems);
-    //             });
-                
-
-    //             // console.log('Filtered newCanvasLayoutItems: ', newCanvasLayoutItems
-    //             // .filter(o => o.type === 'img')
-    //             // .filter(k => k.id === ChangeLayoutItemCtx.itemObject[0].id)[0] = imageSettings);
-    //             // console.log('newCanvasLayoutItems: ', newCanvasLayoutItems);
-    //             //props.setCanvasLayoutItems(newCanvasLayoutItems);
-    //         }};
-    // })
-
     const selectOnChangeHandler = (e) =>  { ChangeLayoutItemCtx.setImageSettings(
         { ...ChangeLayoutItemCtx.imageSettings, "id": e.currentTarget.value });
     }

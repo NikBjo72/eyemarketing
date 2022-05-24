@@ -9,10 +9,15 @@ export const LayoutDatabaseContextProvider = (props) => {
     const [update, setUpdate] = useState(); 
     const [layoutDatabase, setLayoutDatabase] = useState();
     const [layoutNames, setLayoutNames] = useState();
+    const [loading, setLoading] = useState(true);
+	const [err, setErr] = useState([]);
 
     useEffect(async () => {
-        let data = await GetMyModelData(urls.savedLayouts)
+        const [data, err] = await GetMyModelData(urls.savedLayouts)
         setLayoutDatabase(data);
+        setMovieList(data);
+        setErr(err);
+        
         let layoutNames = data.map(object => {
             return (object.name)
         });

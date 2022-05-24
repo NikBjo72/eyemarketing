@@ -26,7 +26,7 @@ export const ChangeLayoutItemContextProvider = (props) => {
     }
     const getItemFromId = (id) => {
         return canvasLayoutItems
-            .find(o => o.id === id)
+            .filter(o => o.id === id)
         ;
     }
 
@@ -34,13 +34,11 @@ export const ChangeLayoutItemContextProvider = (props) => {
 
         if(idOfItemToChange) {
             let objectToChange = getItemFromId(idOfItemToChange);
-            console.log(objectToChange);
-            if(objectToChange.type === 'img') {
-                let newObjectToChange = {...objectToChange};
-                setImageSettings(newObjectToChange);
+            if(objectToChange[0].type === 'img') {
+                setImageSettings(objectToChange[0]);
             }
         }
-    }),[idOfItemToChange];
+    });
 
     useEffect(() => {
         console.log('hej!');

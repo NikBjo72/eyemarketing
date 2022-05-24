@@ -2,10 +2,10 @@ import getMyModelData from './get-my-model-data';
 
 const GetIdByName = async (apiUrl, name) => {
 
-    let database = await getMyModelData(apiUrl);
+    const [data, err] = await getMyModelData(apiUrl);
 
     try {
-        const foundObject = database.find(o => o.name === name)
+        const foundObject = data.find(o => o.name === name)
         return foundObject.id;
     } catch (error) {
         console.log(error);

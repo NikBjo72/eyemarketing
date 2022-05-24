@@ -201,8 +201,8 @@
       ]
     },
     {
-      "id": "0lM5jF9pF3X_2gARG9Zkz",
-      "name": "Test3",
+      "id": "Gr0X8pvY2J6JpFqsRxIIe",
+      "name": "Två bilder",
       "removable": true,
       "layoutContent": [
         {
@@ -217,6 +217,14 @@
           "type": "img",
           "X": 0,
           "Y": 0,
+          "imageWidth": 300,
+          "order": 0
+        },
+        {
+          "id": "bild3",
+          "type": "img",
+          "X": 200,
+          "Y": 300,
           "imageWidth": 300,
           "order": 0
         }

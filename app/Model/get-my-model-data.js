@@ -4,12 +4,14 @@ const getMyModelData = async (url) => {
 
     try {
         const response = await fetch(`${url}`);
-        if(!response.ok){
-            throw new Error(response.statusText);
-        }
-        return data = await response.json();
-        } catch(error) {
-            return console.log(error);
+        // if(!response.ok){
+        //     throw new Error(response.statusText);
+        // }
+            data = await response.json();
+            return  [data, null]
+        } catch(err) {
+            //return console.log(err);
+            return  [null, err]
         }
 }
 getMyModelData.propTypes = {
