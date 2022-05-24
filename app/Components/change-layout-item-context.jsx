@@ -30,6 +30,15 @@ export const ChangeLayoutItemContextProvider = (props) => {
         ;
     }
 
+    const updateItemFromId = (id, settings) => {
+        for(const index in canvasLayoutItems) {
+            const item = canvasLayoutItems[index]
+            if(item.id === id) {
+                canvasLayoutItems[index] = settings;
+            }
+        }
+    }
+
     useEffect(() => {
 
         if(idOfItemToChange) {
@@ -38,11 +47,23 @@ export const ChangeLayoutItemContextProvider = (props) => {
                 setImageSettings(objectToChange[0]);
             }
         }
-    });
+    },[idOfItemToChange]);
+
+    // useEffect(() => {
+    //     console.log('hej!');
+    // },[idOfItemToChange])
 
     useEffect(() => {
-        console.log('hej!');
-    },[idOfItemToChange])
+        if(idOfItemToChange) {
+            // 1. Hitta markerat item i canvasLayoutItems
+
+            // 2. Uppdatear objectet med imageSettings
+            updateItemFromId(idOfItemToChange, {...imageSettings});
+            // 3. Spara om canvasLayoutItems
+            setCanvasLayoutItems(canvasLayoutItems);
+            console.log('imageSettings:', imageSettings);
+        }
+    },[imageSettings])
 
     const openLayout = (name) => {
         if(name.length === 0) {
