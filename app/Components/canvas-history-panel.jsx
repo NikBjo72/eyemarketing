@@ -1,52 +1,66 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import BlinkingEyeBtn from './BlinkingEye/blinking-eye-btn'
+import BlinkingEyeBtn from './BlinkingEye/blinking-eye-btn';
+import UpdateComponent from '../Helpers/update-component';
+import ChangeLayoutItemContext from './change-layout-item-context';
 
 const CanvasHistoryPanel = (props) => {
 
+    const ChangeLayoutItemCtx = useContext(ChangeLayoutItemContext);
     const [update, setUpdate] = useState(false);
-    const [activeBtn, setActiveBtn] = useState([]);
+    const [buttons, setButtons] = useState([]);
 
-    const Update = () => {
-        if (update == false) {
-            setUpdate(true);
-        } else setUpdate(false);
-    }
+    const handleEvent = (buttonName, btnStatus) => { 
 
-    const handleEvent = (btnName, btnStatus) => {
-        
-        activeBtn.forEach((b) => {
-            if(b.activeBtnName === btnName) {
-                if(b.activeBtnStatus === false) {
-                    b.activeBtnStatus = true;
+        let newButtons = [...buttons]
+        for (i=0; newButtons.length > i; i++) {
+            if(newButtons[i].btnName === buttonName) {
+                if(newButtons[i].btnStatus === false) {
+                    newButtons
+                        .filter(k => k.btnName === buttonName)
+                        .map(i => i.btnStatus = true)
+                    ;
+                    let objectId = ChangeLayoutItemCtx.canvasLayoutItems
+                        .filter(o => o.id == buttonName)
+                        .map(k => k.id)
+                    ;
+                    ChangeLayoutItemCtx.setIdOfItemToChange(objectId[0]);
                 } else {
-                    b.activeBtnStatus = false;
+                    newButtons
+                        .filter(k => k.btnName === buttonName)
+                        .map(i => i.btnStatus = false)
+                    ;
+                    ChangeLayoutItemCtx.setIdOfItemToChange(undefined);
                 }
-            } else {
-                b.activeBtnStatus = false;
             }
-        });
-        Update();
+            else {
+                newButtons
+                    .filter(k => k.btnName !== buttonName)
+                    .map(i => i.btnStatus = false)
+                ;
+            }
+        };
+        setButtons(newButtons);
+        UpdateComponent(update, setUpdate);
     }
 
     useEffect(() => {
-
-        setActiveBtn(
-            props.canvasItems
+        setButtons(
+            ChangeLayoutItemCtx.canvasLayoutItems
             .filter(i => i.type !== 'canvas')
             .map(i => {
                 return({
-                    activeBtnName: i.id,
-                    activeBtnStatus: false,
+                    btnName: i.id,
+                    btnStatus: false,
                 })
             }));
-    },[props.canvasItems]);
+    },[ChangeLayoutItemCtx.canvasLayoutItems]);
 
     return (
         <>
             <fieldset id="fieldsetLoad" className="panelFieldset">
                 <legend className="text-white">Layoutobjekt</legend>
-                {activeBtn.map(id => {
-                    return (<button key={id.activeBtnName} id="navBtn"><BlinkingEyeBtn type = 'local-scope' handleEvent = {true} onClick={handleEvent} id="smallBtn" name = {id.activeBtnName} text={id.activeBtnName} setStatus = {id.activeBtnStatus}/></button>)
+                {buttons.map(id => {
+                    return (<button key={id.btnName} id="navBtn"><BlinkingEyeBtn type = 'local-scope' handleEvent = {true} onClick={handleEvent} id="smallBtn" name = {id.btnName} text={id.btnName} setStatus = {id.btnStatus}/></button>)
                 })}
             </fieldset>
         </>

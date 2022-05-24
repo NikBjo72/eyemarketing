@@ -8,21 +8,47 @@ import CanvasTextPanel from '../canvas-text-panel';
 import CanvasLoadPanel from '../canvas-load-panel';
 import CanvasSavePanel from '../canvas-save-panel';
 import CanvasHistoryPanel from '../canvas-history-panel';
-import SyncStateToLocalStorage from '../../Model/sync-state-to-local-storage';
 import postMyModelData from '../../Model/post-my-model-data';
 import urls from '../../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
-import LayoutDatabaseContext from '../layout-database-context';
+import FilterAndMap from '../../Helpers/filter-and-map';
+import ChangeLayoutItemContext from '../change-layout-item-context';
+import useDatabase from '../custom-hooks/use-database';
 
 const LayoutPanel = () => {
 
-    const layoutDatabaseCtx = useContext(LayoutDatabaseContext);
-    const didMount = useRef(false);
+    const ChangeLayoutItemCtx = useContext(ChangeLayoutItemContext);
     const [canvasRef, setcanvasRef] = useState(useRef(null));
-    const [width, setWidth] = useState('800');
-    const [height, setHeight] = useState('500');
-    const [canvasItems, setCanvasItems] = SyncStateToLocalStorage('canvasItems', []);
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
+    const { layoutDatabase, layoutNames, updateDatabase } = useDatabase();
+
+    const setCanvasSize = (value, target) => {
+        if(ChangeLayoutItemCtx.canvasLayoutItems.length === 0) {
+            var newCanvasSize = [
+                {
+                id: "canvas",
+                type: "canvas",
+                width: 800,
+                height: 500
+                }
+            ];
+        } else {
+            var newCanvasSize = [...ChangeLayoutItemCtx.canvasLayoutItems]
+        }
+        newCanvasSize.find((i) => i.type)[target] = parseInt(value);
+        ChangeLayoutItemCtx.setCanvasLayoutItems(newCanvasSize);
+    }
+
+    useEffect(() => {
+        setWidth(FilterAndMap(ChangeLayoutItemCtx.canvasLayoutItems, 'canvas', 'width'));
+        setHeight(FilterAndMap(ChangeLayoutItemCtx.canvasLayoutItems, 'canvas', 'height'));
+    }, [ChangeLayoutItemCtx.canvasLayoutItems])
+
+    useEffect(() => {
+        setCanvasSize();
+    }, [])
 
     updateState = (state, setState) => {
         if (state === true){
@@ -32,32 +58,11 @@ const LayoutPanel = () => {
 
     const canvasOnChangeHandler = (e) => {
 
-        const setItems = (target, value) => {
-            if(canvasItems.length === 0) {
-                var newCanvasItems = [
-                    {
-                    id: "camvas",
-                    type: "canvas",
-                    width: 800,
-                    height: 500
-                    }
-                ];
-            } else {
-                var newCanvasItems = [...canvasItems]
-            }
-            newCanvasItems.find((i) => i.type)[value] = parseInt(target);
-            setCanvasItems(newCanvasItems);
-        }
-
         if(e.target.name == 'width') {
-
-            setWidth(e.target.value);
-            setItems(e.target.value, e.target.name);
+            setCanvasSize(e.target.value, e.target.name);
         }
         else if(e.target.name == 'height') {
-
-            setHeight(e.target.value);
-            setItems(e.target.value, e.target.name);
+            setCanvasSize(e.target.value, e.target.name);
         }
     }
 
@@ -70,35 +75,19 @@ const LayoutPanel = () => {
             return
         }
 
-        if(buttonName === 'addLayoutBtn') {
-            if(object[0] === undefined) {
-                setCanvasItems([]);
-            } else
-            setCanvasItems(object[0].layoutContent);
-        }
+        // if(buttonName === 'addLayoutBtn') {
+        //     if(object[0] === undefined) {
+        //         ChangeLayoutItemCtx.setCanvasLayoutItems([]);
+        //     } else
+        //     ChangeLayoutItemCtx.setCanvasLayoutItems(object[0].layoutContent);
 
-        else if (buttonName === 'addImageBtn') {
-            setCanvasItems([...canvasItems, object]);
-        }
+        //     if(object.length === 0) {
+        //         setCanvasSize();
+        //     }
+        // }
 
         else if (buttonName === 'addTextBtn') {
-            setCanvasItems([...canvasItems, object]);
-        }
-        
-        else if (buttonName === 'saveLayoutBtn') {
-            let saveLayout = {
-                id: undefined,
-                name: object,
-                layoutContent: canvasItems
-            }
-            let response = await postMyModelData(urls.savedLayouts, saveLayout);
-            if(response === 201) {
-                NotificationManager.success('Layout sparad');
-                layoutDatabaseCtx.updateDatabase();
-            }
-            else {
-                NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte spara!', 5000);
-            }
+            ChangeLayoutItemCtx.setCanvasLayoutItems([...ChangeLayoutItemCtx.canvasLayoutItems, object]);
         }
     }
 
@@ -107,61 +96,47 @@ const LayoutPanel = () => {
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, width, height);
 
-        for(i=0; i < canvasItems.length; ++i) {
+        for(i=0; i < ChangeLayoutItemCtx.canvasLayoutItems.length; ++i) {
 
-            if(canvasItems[i].type === 'canvas') {
-
-                setWidth(canvasItems[i].width);
-                setHeight(canvasItems[i].height);
-            }
-            else if(canvasItems[i].type == 'img') {
-                const img = new CanvasImage(canvasItems[i]);
-                img.src = url[canvasItems[i].id];
+            if(ChangeLayoutItemCtx.canvasLayoutItems[i].type == 'img') {
+                const img = new CanvasImage(ChangeLayoutItemCtx.canvasLayoutItems[i]);
+                img.src = url[ChangeLayoutItemCtx.canvasLayoutItems[i].id];
                 img.imageHeight = await img.getImageHeight();
                 ctx.drawImage(img.image, img.X, img.Y, img.imageWidth, img.imageHeight);
             }
-            else if(canvasItems[i].type == 'text') {
+            else if(ChangeLayoutItemCtx.canvasLayoutItems[i].type == 'text') {
 
-                ctx.fillStyle = `${canvasItems[i].color}`;
-                ctx.font = `${canvasItems[i].style} ${canvasItems[i].fontSize}px "${canvasItems[i].font}"`;
-                ctx.fillText(`${canvasItems[i].content}`, canvasItems[i].X, canvasItems[i].Y);
+                ctx.fillStyle = `${ChangeLayoutItemCtx.canvasLayoutItems[i].color}`;
+                ctx.font = `${ChangeLayoutItemCtx.canvasLayoutItems[i].style} ${ChangeLayoutItemCtx.canvasLayoutItems[i].fontSize}px "${ChangeLayoutItemCtx.canvasLayoutItems[i].font}"`;
+                ctx.fillText(`${ChangeLayoutItemCtx.canvasLayoutItems[i].content}`, ChangeLayoutItemCtx.canvasLayoutItems[i].X, ChangeLayoutItemCtx.canvasLayoutItems[i].Y);
             }  
         }
     });
 
-    // function Text(ctx) {
-    //     ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
-    //     ctx.font = `bold 48px "verdana"`;
-    //     ctx.fillText('Hello World', 200, 400);
-    // }
-
     return (
         <div id="container" className={"row"}>
-
             <div id="canvasContainer">
                 <canvas id="canvas" ref={canvasRef} height={height} width={width}></canvas>
             </div>
-
             <div id="panelContainer" className={"colOne"}>
                     <fieldset id="fieldsetStorlek" className='panelFieldset'>
                         <legend className="text-white">Storlek layout</legend>
                         <div className='inputHolder'>
                             <label className="inputlabel text-white">Bredd</label>
-                            <input onChange = { canvasOnChangeHandler } value = {`${width}`} name="width" type="number"/>
+                            <input onChange = { canvasOnChangeHandler } value={width} name="width" type="number"/>
                         </div>
                         <div className='inputHolder'>
                             <label className="inputlabel text-white">Höjd</label>
-                            <input onChange = { canvasOnChangeHandler } value = {`${height}`} name="height" type="number"/>
+                            <input onChange = { canvasOnChangeHandler } value={height} name="height" type="number"/>
                         </div>
                     </fieldset>
-                    <CanvasHistoryPanel canvasItems = {canvasItems} />
-                    <CanvasLoadPanel onClick = {onClickHandler} />
-                    <CanvasSavePanel onClick = {onClickHandler} />
-                    <CanvasImagePanel onClick = {onClickHandler} />
+                    <CanvasHistoryPanel />
+                    <CanvasLoadPanel />
+                    <CanvasSavePanel />
+                    <CanvasImagePanel />
                     <CanvasTextPanel onClick = {onClickHandler} />
                     <NotificationContainer />
-            </div>
-            
+            </div> 
         </div>
     );
 }

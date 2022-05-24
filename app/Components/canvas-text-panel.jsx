@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { fonts, color } from '../Helpers/presets';
 import './canvas-text-panel.css'
 

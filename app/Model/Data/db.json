@@ -103,10 +103,24 @@
   "savedLayouts": [
     {
       "id": "1",
-      "name": "Test1",
+      "name": "Tom layout",
+      "removable": false,
       "layoutContent": [
         {
-          "id": "camvas",
+          "id": "canvas",
+          "type": "canvas",
+          "width": 500,
+          "height": 500
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Test1",
+      "removable": true,
+      "layoutContent": [
+        {
+          "id": "canvas",
           "type": "canvas",
           "width": 800,
           "height": 500
@@ -144,11 +158,12 @@
       ]
     },
     {
-      "id": "2",
+      "id": "3",
       "name": "Test2",
+      "removable": true,
       "layoutContent": [
         {
-          "id": "camvas",
+          "id": "canvas",
           "type": "canvas",
           "width": 800,
           "height": 500
@@ -186,37 +201,61 @@
       ]
     },
     {
-      "id": "k81hvoCnzdYFf0UokYvW9",
-      "name": "Niklas",
+      "id": "Gr0X8pvY2J6JpFqsRxIIe",
+      "name": "Två bilder",
+      "removable": true,
       "layoutContent": [
         {
-          "id": "Niklas",
-          "type": "text",
-          "content": "Niklas",
-          "font": "Comic Sans MS",
-          "fontSize": 60,
-          "style": "bold",
-          "color": "Red",
-          "X": 100,
-          "Y": 200,
+          "id": "canvas",
+          "type": "canvas",
+          "width": 500,
+          "height": 500,
+          "undefined": null
+        },
+        {
+          "id": "bild1",
+          "type": "img",
+          "X": 0,
+          "Y": 0,
+          "imageWidth": 300,
+          "order": 0
+        },
+        {
+          "id": "bild3",
+          "type": "img",
+          "X": 200,
+          "Y": 300,
+          "imageWidth": 300,
           "order": 0
         }
       ]
     },
     {
-      "id": "RYRF3ZUqt-miCNfjc15Du",
-      "name": "Niklas1",
+      "id": "-l070tAn-RoH5RAQuadN4",
+      "name": "Ny två bilder",
+      "removable": true,
       "layoutContent": [
         {
-          "id": "Niklas",
-          "type": "text",
-          "content": "Niklas",
-          "font": "Comic Sans MS",
-          "fontSize": 60,
-          "style": "bold",
-          "color": "Red",
-          "X": 100,
-          "Y": 200,
+          "id": "canvas",
+          "type": "canvas",
+          "width": 500,
+          "height": 500,
+          "undefined": null
+        },
+        {
+          "id": "bild1",
+          "type": "img",
+          "X": 53,
+          "Y": 29,
+          "imageWidth": 313,
+          "order": 0
+        },
+        {
+          "id": "bild3",
+          "type": "img",
+          "X": 103,
+          "Y": 292,
+          "imageWidth": 252,
           "order": 0
         }
       ]
