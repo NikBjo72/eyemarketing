@@ -229,6 +229,36 @@
           "order": 0
         }
       ]
+    },
+    {
+      "id": "-l070tAn-RoH5RAQuadN4",
+      "name": "Ny två bilder",
+      "removable": true,
+      "layoutContent": [
+        {
+          "id": "canvas",
+          "type": "canvas",
+          "width": 500,
+          "height": 500,
+          "undefined": null
+        },
+        {
+          "id": "bild1",
+          "type": "img",
+          "X": 53,
+          "Y": 29,
+          "imageWidth": 313,
+          "order": 0
+        },
+        {
+          "id": "bild3",
+          "type": "img",
+          "X": 103,
+          "Y": 292,
+          "imageWidth": 252,
+          "order": 0
+        }
+      ]
     }
   ]
 }

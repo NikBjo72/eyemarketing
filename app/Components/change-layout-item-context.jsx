@@ -29,7 +29,7 @@ export const ChangeLayoutItemContextProvider = (props) => {
             .filter(o => o.id === id)
         ;
     }
-
+    // Get item from canvasLayoutItems with id, and then update with new settings
     const updateItemFromId = (id, settings) => {
         for(const index in canvasLayoutItems) {
             const item = canvasLayoutItems[index]
@@ -40,7 +40,6 @@ export const ChangeLayoutItemContextProvider = (props) => {
     }
 
     useEffect(() => {
-
         if(idOfItemToChange) {
             let objectToChange = getItemFromId(idOfItemToChange);
             if(objectToChange[0].type === 'img') {
@@ -49,19 +48,11 @@ export const ChangeLayoutItemContextProvider = (props) => {
         }
     },[idOfItemToChange]);
 
-    // useEffect(() => {
-    //     console.log('hej!');
-    // },[idOfItemToChange])
-
     useEffect(() => {
         if(idOfItemToChange) {
-            // 1. Hitta markerat item i canvasLayoutItems
-
-            // 2. Uppdatear objectet med imageSettings
             updateItemFromId(idOfItemToChange, {...imageSettings});
-            // 3. Spara om canvasLayoutItems
+            // Resaves the edited canvasLayoutItems
             setCanvasLayoutItems(canvasLayoutItems);
-            console.log('imageSettings:', imageSettings);
         }
     },[imageSettings])
 
