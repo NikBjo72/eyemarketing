@@ -8,14 +8,30 @@ export const ChangeLayoutItemContextProvider = (props) => {
 
     const [canvasLayoutItems, setCanvasLayoutItems] = SyncStateToLocalStorage('canvasItems', []);
     const [idOfItemToChange, setIdOfItemToChange] = useState(undefined);
-    const { layoutDatabase, layoutNames, updateDatabase } = useDatabase();
+    const [dublicatedIdError, setDublicatedIdError] = useState(false);
+    const {layoutDatabase, layoutNames, updateDatabase} = useDatabase();
     const [imageSettings, setImageSettings] = useState(
         {
             "id": "",
+            "imageName": "",
             "type": "img",
             "X": 0,
             "Y": 0,
             "imageWidth": 0,
+            "order": 0
+        }
+    );
+    const [textSettings, setTextSettings] = useState(
+        {
+            "id": "",
+            "type": "text",
+            "content": "",
+            "font": "",
+            "fontSize": 0,
+            "style": "",
+            "color": "",
+            "X": 0,
+            "Y": 0,
             "order": 0
         }
     );
@@ -29,7 +45,7 @@ export const ChangeLayoutItemContextProvider = (props) => {
             .filter(o => o.id === id)
         ;
     }
-    // Get item from canvasLayoutItems with id, and then update with new settings
+    /** Get item from canvasLayoutItems with id, and then update with new settings */ 
     const updateItemFromId = (id, settings) => {
         for(const index in canvasLayoutItems) {
             const item = canvasLayoutItems[index]
@@ -46,6 +62,7 @@ export const ChangeLayoutItemContextProvider = (props) => {
                 setImageSettings(objectToChange[0]);
             }
         }
+        console.log('canvasLayoutItems: ',canvasLayoutItems);
     },[idOfItemToChange]);
 
     useEffect(() => {
@@ -65,8 +82,19 @@ export const ChangeLayoutItemContextProvider = (props) => {
         }
     }
 
+    const checkId = ((object) => {
+        return canvasLayoutItems
+            .filter(item => item.type === object.type)
+            .map(item => item.id === object.id)
+            .find(bool => bool === true)
+    }) 
+
     const addItem = (object) => {
-        setCanvasLayoutItems([...canvasLayoutItems, object]);
+        if(!checkId(object)) {
+            setCanvasLayoutItems([...canvasLayoutItems, object]);
+        } else {
+            setDublicatedIdError(true);
+        }
     };
 
     return (
@@ -77,6 +105,10 @@ export const ChangeLayoutItemContextProvider = (props) => {
          idOfItemToChange: idOfItemToChange,
          imageSettings: imageSettings,
          setImageSettings: setImageSettings,
+         textSettings: textSettings,
+         dublicatedIdError: dublicatedIdError,
+         setDublicatedIdError: setDublicatedIdError,
+         setTextSettings: setTextSettings,
          addItem: addItem,
          openLayout: openLayout
          }}>
