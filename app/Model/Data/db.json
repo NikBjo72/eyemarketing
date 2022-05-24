@@ -117,7 +117,7 @@
     {
       "id": "2",
       "name": "Test1",
-      "removable": true,
+      "removable": false,
       "layoutContent": [
         {
           "id": "canvas",
@@ -160,7 +160,7 @@
     {
       "id": "3",
       "name": "Test2",
-      "removable": true,
+      "removable": false,
       "layoutContent": [
         {
           "id": "canvas",
@@ -197,6 +197,56 @@
           "X": 200,
           "Y": 200,
           "order": 1
+        }
+      ]
+    },
+    {
+      "id": "FNi62AWa0cQycVpdf1Qd9",
+      "name": "Test3",
+      "removable": true,
+      "layoutContent": [
+        {
+          "id": "canvas",
+          "type": "canvas",
+          "width": 800,
+          "height": 500,
+          "undefined": null
+        },
+        {
+          "id": "bild1",
+          "type": "img",
+          "order": 0,
+          "imageName": "bild1",
+          "X": 67,
+          "Y": 50,
+          "imageWidth": 200
+        },
+        {
+          "id": "bild2",
+          "type": "img",
+          "order": 0,
+          "imageName": "bild2",
+          "X": 364,
+          "Y": 50,
+          "imageWidth": 200
+        },
+        {
+          "id": "Ny bild 1",
+          "type": "img",
+          "order": 0,
+          "imageName": "bild1",
+          "X": 364,
+          "Y": 200,
+          "imageWidth": 200
+        },
+        {
+          "id": "Ny bild 1",
+          "type": "img",
+          "order": 0,
+          "imageName": "bild1",
+          "X": 363,
+          "Y": 200,
+          "imageWidth": 200
         }
       ]
     }

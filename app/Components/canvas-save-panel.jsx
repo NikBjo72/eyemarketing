@@ -15,21 +15,31 @@ const CanvasSavePanel = (props) => {
         setName(e.target.value);
     }
 
+    const checkId = (() => {
+        return layoutDatabase
+            .map(layout => layout.name === name)
+            .find(bool => bool === true)
+    });
+
     const onClickHandler = (async () => {
 
-        let saveLayout = {
-            id: undefined,
-            name: name,
-            removable: true,
-            layoutContent: ChangeLayoutItemCtx.canvasLayoutItems
-        }
-
-        let response = await postMyModelData(urls.savedLayouts, saveLayout);
-        if(response === 201) {
-            NotificationManager.success('Layout sparad');
-        }
-        else {
-            NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte spara!', 5000);
+        if(!checkId()) {
+            let saveLayout = {
+                id: undefined,
+                name: name,
+                removable: true,
+                layoutContent: ChangeLayoutItemCtx.canvasLayoutItems
+            }
+    
+            let response = await postMyModelData(urls.savedLayouts, saveLayout);
+            if(response === 201) {
+                NotificationManager.success('Layout sparad');
+            }
+            else {
+                NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte spara!', 5000);
+            }
+        } else {
+            ChangeLayoutItemCtx.setDublicatedIdError(true);
         }
     })
 
