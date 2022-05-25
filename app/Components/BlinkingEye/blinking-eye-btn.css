@@ -23,7 +23,7 @@
     transition: .3s;
 }
 /* Removes dots infront of every list item  */
-ul {
+ul, li {
     list-style-type: none;
 }
 /* Space between small and medium buttons along with pointer as cursor  */

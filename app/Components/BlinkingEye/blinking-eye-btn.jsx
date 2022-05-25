@@ -9,6 +9,8 @@ import closedEye from './default-images/Closed_Eye.svg'
 /**
  * Generates a button that switch two images
  * @param {string} imageActivated - imported image that shows when activated.
+ * @example
+ * <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="colors" text = 'FÄRGER' onClick = {this.handleClick} />
  */
 const BlinkingEyeBtn = (props) => {
 

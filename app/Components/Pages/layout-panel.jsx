@@ -15,6 +15,7 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import FilterAndMap from '../../Helpers/filter-and-map';
 import ChangeLayoutItemContext from '../ContextAndHooks/change-layout-item-context';
 import useDatabase from '../ContextAndHooks/layout-database-context';
+import CollapsableFieldset from '../collapsable-fieldset';
 
 const LayoutPanel = () => {
 
@@ -113,6 +114,7 @@ const LayoutPanel = () => {
                             <input onChange = { canvasOnChangeHandler } value={height} name="height" type="number"/>
                         </div>
                     </fieldset>
+                    <CollapsableFieldset legend='Collapsable test'/>
                     <CanvasHistoryPanel />
                     <CanvasLoadPanel />
                     <CanvasSavePanel />
