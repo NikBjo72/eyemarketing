@@ -62,7 +62,6 @@ export const ChangeLayoutItemContextProvider = (props) => {
                 setImageSettings(objectToChange[0]);
             }
         }
-        console.log('canvasLayoutItems: ',canvasLayoutItems);
     },[idOfItemToChange]);
 
     useEffect(() => {

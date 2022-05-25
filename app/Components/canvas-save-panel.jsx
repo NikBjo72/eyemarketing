@@ -15,10 +15,6 @@ const CanvasSavePanel = (props) => {
         setName(e.target.value);
     }
 
-    useEffect(() => {
-        console.log('layoutDatabase i save: ', layoutDatabase);
-    },[layoutDatabase])
-
     const checkId = (() => {
         return layoutDatabase
             .map(layout => layout.name === name)

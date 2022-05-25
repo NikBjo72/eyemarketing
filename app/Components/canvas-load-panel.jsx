@@ -15,14 +15,6 @@ const CanvasLoadPanel = (props) => {
     const [chosenLayoutId, setChosenLayoutId] = useState([]);
     const { layoutDatabase, layoutNames, updateDatabase } = useDatabase();
 
-    useEffect(() => {
-        console.log('layoutNames i load: ',layoutNames);
-    },[layoutNames])
-
-    useEffect(() => {
-        console.log('layoutDatabase i load: ', layoutDatabase);
-    },[layoutDatabase])
-
     const deleteBtnOnClick = async () => {
         let check = layoutDatabase
             .filter(k => k.name === chosenLayoutId)
