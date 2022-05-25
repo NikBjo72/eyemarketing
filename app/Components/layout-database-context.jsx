@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef,  createContext } from 'react';
-import GetMyModelData from '..//Model/get-my-model-data';
+import React, { useState, useEffect, useContext,  createContext } from 'react';
+import GetMyModelData from '../Model/get-my-model-data';
 import urls from '../Model/fetch-url';
 
 const LayoutDatabaseContext = createContext();
@@ -15,7 +15,7 @@ export const LayoutDatabaseContextProvider = (props) => {
     useEffect(async () => {
         const [data, err] = await GetMyModelData(urls.savedLayouts)
         setLayoutDatabase(data);
-        setMovieList(data);
+        setLoading(false);
         setErr(err);
         
         let layoutNames = data.map(object => {
@@ -31,9 +31,10 @@ export const LayoutDatabaseContextProvider = (props) => {
     }
 
     return (
-     <LayoutDatabaseContext.Provider value={{ layoutDatabase: layoutDatabase, layoutNames: layoutNames, updateDatabase: updateDatabase }}>
+     <LayoutDatabaseContext.Provider value={{ layoutDatabase: layoutDatabase, layoutNames: layoutNames, updateDatabase: updateDatabase, loading: loading, err: err }}>
          {props.children}
      </LayoutDatabaseContext.Provider>
     );
 }
-export default LayoutDatabaseContext;
+//
+export default useDatabase = () => useContext(LayoutDatabaseContext);

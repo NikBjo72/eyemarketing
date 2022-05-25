@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import EyeBtnStatusContext from './eye-btn-status-context';
+import React, { useState, createContext } from 'react';
+
+const EyeBtnStatusContext = createContext();
 
 export const BlinkingEyeProvider = (props) => {
 
@@ -15,3 +16,4 @@ export const BlinkingEyeProvider = (props) => {
      </EyeBtnStatusContext.Provider>
     );
 }
+export default EyeBtnStatusContext;

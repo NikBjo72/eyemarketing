@@ -4,7 +4,7 @@ import urls from '../../Model/fetch-url';
 
 export const useDatabase = () => {
 
-    const [update, setUpdate] = useState(); 
+    const [update, setUpdate] = useState(true); 
     const [layoutDatabase, setLayoutDatabase] = useState();
     const [layoutNames, setLayoutNames] = useState();
     const [loading, setLoading] = useState(true);
@@ -24,8 +24,7 @@ export const useDatabase = () => {
         
     },[update]);
 
-    const updateDatabase = () => {
-        
+    const updateDatabase = () => {   
         if(update === false) {
             setUpdate(true);
         } else setUpdate(false)

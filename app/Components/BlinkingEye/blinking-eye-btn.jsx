@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './blinking-eye-btn.css';
-import EyeBtnStatusContext from './eye-btn-status-context';
+import EyeBtnStatusContext from './blinking-eye-btn-provider';
 import { useLocation } from 'react-router-dom';
 import propTypes from 'prop-types';
 import Eye from './default-images/Eye.svg';
@@ -19,7 +19,6 @@ const BlinkingEyeBtn = (props) => {
     const [btnStatus, setBtnStatus] = useState(false);
 
     const handleEvent = () => {
-
         if (props.type === 'local') {
             if(btnStatus === false) {
                 setBtnImage(props.imageActivated);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef,  createContext } from 'react';
 import SyncStateToLocalStorage from '../Model/sync-state-to-local-storage';
-import useDatabase from './custom-hooks/use-database';
+import useDatabase from './CustomHooks/use-database';
 
 const ChangeLayoutItemContext = createContext();
 

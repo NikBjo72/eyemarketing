@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect, useRef, useContext } from 'rea
 import urls from '../Model/fetch-url';
 import postMyModelData from '../Model/post-my-model-data';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
-import useDatabase from './custom-hooks/use-database';
+import useDatabase from './layout-database-context';
 import ChangeLayoutItemContext from './change-layout-item-context';
 
 const CanvasSavePanel = (props) => {
@@ -14,6 +14,10 @@ const CanvasSavePanel = (props) => {
     const nameOnChangeHandler = (e) =>  {
         setName(e.target.value);
     }
+
+    useEffect(() => {
+        console.log('layoutDatabase i save: ', layoutDatabase);
+    },[layoutDatabase])
 
     const checkId = (() => {
         return layoutDatabase
@@ -30,10 +34,10 @@ const CanvasSavePanel = (props) => {
                 removable: true,
                 layoutContent: ChangeLayoutItemCtx.canvasLayoutItems
             }
-    
             let response = await postMyModelData(urls.savedLayouts, saveLayout);
             if(response === 201) {
                 NotificationManager.success('Layout sparad');
+                updateDatabase();
             }
             else {
                 NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte spara!', 5000);

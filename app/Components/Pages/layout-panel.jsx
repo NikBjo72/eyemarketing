@@ -14,7 +14,7 @@ import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import FilterAndMap from '../../Helpers/filter-and-map';
 import ChangeLayoutItemContext from '../change-layout-item-context';
-import useDatabase from '../custom-hooks/use-database';
+import useDatabase from '../CustomHooks/use-database';
 
 const LayoutPanel = () => {
 
