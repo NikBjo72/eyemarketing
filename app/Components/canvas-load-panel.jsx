@@ -5,9 +5,9 @@ import deleteMyModelData from '../Model/delete-my-model-data';
 import urls from '../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
-import ChangeLayoutItemContext from './change-layout-item-context';
+import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
 import UpdateComponent from '../Helpers/update-component';
-import useDatabase from './layout-database-context';
+import useDatabase from './ContextAndHooks/layout-database-context';
 
 const CanvasLoadPanel = (props) => {
     const ChangeLayoutItemCtx = useContext(ChangeLayoutItemContext);

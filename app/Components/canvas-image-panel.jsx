@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect, useRef, useContext } from 'react';
 import { url } from '../Helpers/images';
-import ChangeLayoutItemContext from './change-layout-item-context';
+import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
 
 const CanvasImagePanel = (props) => {
 

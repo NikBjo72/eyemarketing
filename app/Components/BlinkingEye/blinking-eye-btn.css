@@ -1,31 +1,37 @@
+/* Size of the image inside of the medium button */
 #mediumBtn {
     margin-right: 1rem;
     margin-bottom: -7px;
     width: 3rem;
     height: auto;
 }
+/* Animation of image at hover */
 #mediumBtn:hover {
     transform: scale(1.3, 1.3);
     transition: .3s;
 }
-
+/* Size of the image inside of the small button */
 #smallBtn {
     margin-right: 0.5rem;
     margin-bottom: -4px;
     width: 2rem;
     height: auto;
 }
-
+/* Animation of image at hover */
 #smallBtn:hover {
     transform: scale(1.3, 1.3);
     transition: .3s;
 }
-
+/* Removes dots infront of every list item  */
 ul {
     list-style-type: none;
 }
-
+/* Space between small and medium buttons along with pointer as cursor  */
 #limediumBtn {
     line-height: 3rem;
+    cursor: pointer;
+}
+#lismallBtn {
+    line-height: 2rem;
     cursor: pointer;
 }

@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './blinking-eye-btn.css';
-import EyeBtnStatusContext from './blinking-eye-btn-provider';
+import EyeBtnStatusContext from './blinking-eye-btn-context';
 import { useLocation } from 'react-router-dom';
 import propTypes from 'prop-types';
 import Eye from './default-images/Eye.svg';
 import closedEye from './default-images/Closed_Eye.svg'
 
 /**
- * Generates a buttan that switch two images
+ * Generates a button that switch two images
  * @param {string} imageActivated - imported image that shows when activated.
  */
 const BlinkingEyeBtn = (props) => {

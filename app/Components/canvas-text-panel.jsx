@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import { fonts, color } from '../Helpers/presets';
 import './canvas-text-panel.css'
-import ChangeLayoutItemContext from './change-layout-item-context';
+import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
 
 const CanvasTextPanel = (props) => {
 

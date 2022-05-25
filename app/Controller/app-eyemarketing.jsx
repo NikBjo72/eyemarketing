@@ -4,15 +4,15 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import MyEyeMarketing from "../Components/Pages/my-eye-marketing";
 import { ContentBrowser } from "../Components/Pages/content-browser";
 import LayoutPanel from "../Components/Pages/layout-panel";
-import { BlinkingEyeProvider } from '../Components/BlinkingEye/blinking-eye-btn-provider';
+import { BlinkingEyeProvider } from '../Components/BlinkingEye/blinking-eye-btn-context';
 import BackgroundProvider from "../Components/Background/background-provider";
-import { LayoutDatabaseContextProvider } from "../Components/layout-database-context";
-import { ChangeLayoutItemContextProvider } from '../Components/change-layout-item-context';
+import { LayoutDatabaseContextProvider } from "../Components/ContextAndHooks/layout-database-context";
+import { ChangeLayoutItemContextProvider } from '../Components/ContextAndHooks/change-layout-item-context';
 
 const app = document.getElementById("root");
 ReactDOM.render(
-  <ChangeLayoutItemContextProvider>
-    <LayoutDatabaseContextProvider>
+  <LayoutDatabaseContextProvider>
+    <ChangeLayoutItemContextProvider>
       <BackgroundProvider>
         <BlinkingEyeProvider>
           <HashRouter basename="">
@@ -26,6 +26,6 @@ ReactDOM.render(
           </HashRouter>
         </BlinkingEyeProvider>
       </BackgroundProvider>
-    </LayoutDatabaseContextProvider>
-  </ChangeLayoutItemContextProvider>
+    </ChangeLayoutItemContextProvider>
+  </LayoutDatabaseContextProvider>
 , app);

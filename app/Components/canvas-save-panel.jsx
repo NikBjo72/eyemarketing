@@ -2,8 +2,8 @@ import React, { useState, useCallback, useEffect, useRef, useContext } from 'rea
 import urls from '../Model/fetch-url';
 import postMyModelData from '../Model/post-my-model-data';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
-import useDatabase from './layout-database-context';
-import ChangeLayoutItemContext from './change-layout-item-context';
+import useDatabase from './ContextAndHooks/layout-database-context';
+import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
 
 const CanvasSavePanel = (props) => {
 

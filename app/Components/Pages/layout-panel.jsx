@@ -13,8 +13,8 @@ import urls from '../../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import FilterAndMap from '../../Helpers/filter-and-map';
-import ChangeLayoutItemContext from '../change-layout-item-context';
-import useDatabase from '../CustomHooks/use-database';
+import ChangeLayoutItemContext from '../ContextAndHooks/change-layout-item-context';
+import useDatabase from '../ContextAndHooks/layout-database-context';
 
 const LayoutPanel = () => {
 

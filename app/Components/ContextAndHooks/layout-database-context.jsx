@@ -1,37 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext,  createContext } from 'react';
 import GetMyModelData from '../../Model/get-my-model-data';
 import urls from '../../Model/fetch-url';
 
-export const useDatabase = () => {
+const LayoutDatabaseContext = createContext();
 
-    const [update, setUpdate] = useState(true); 
+export const LayoutDatabaseContextProvider = (props) => {
+
+    const [update, setUpdate] = useState(); 
     const [layoutDatabase, setLayoutDatabase] = useState();
     const [layoutNames, setLayoutNames] = useState();
     const [loading, setLoading] = useState(true);
 	const [err, setErr] = useState([]);
 
-
     useEffect(async () => {
         const [data, err] = await GetMyModelData(urls.savedLayouts)
         setLayoutDatabase(data);
-        setErr(err);
         setLoading(false);
-
+        setErr(err);
+        
         let layoutNames = data.map(object => {
             return (object.name)
         });
         setLayoutNames(layoutNames)
-        
     },[update]);
 
-    const updateDatabase = () => {   
+    const updateDatabase = () => {
         if(update === false) {
             setUpdate(true);
         } else setUpdate(false)
     }
 
     return (
-        { layoutDatabase, layoutNames, loading, err, updateDatabase }
+     <LayoutDatabaseContext.Provider value={{ layoutDatabase: layoutDatabase, layoutNames: layoutNames, updateDatabase: updateDatabase, loading: loading, err: err }}>
+         {props.children}
+     </LayoutDatabaseContext.Provider>
     );
 }
-export default useDatabase;
+//
+export default useDatabase = () => useContext(LayoutDatabaseContext);
