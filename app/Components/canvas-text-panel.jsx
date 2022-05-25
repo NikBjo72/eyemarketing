@@ -9,6 +9,21 @@ const CanvasTextPanel = (props) => {
     const [checkboxBold, setcheckboxBold] = useState(false);
     const [checkboxItalic, setcheckboxItalic] = useState(false);
 
+    useEffect(() => {
+        if(ChangeLayoutItemCtx.textSettings.style === 'bold') {
+            setcheckboxBold(true);
+            setcheckboxItalic(false);  
+        }
+        else if (ChangeLayoutItemCtx.textSettings.style === 'italic') {
+            setcheckboxBold(false);
+            setcheckboxItalic(true);
+        }
+        else if (ChangeLayoutItemCtx.textSettings.style === '') {
+            setcheckboxBold(false);
+            setcheckboxItalic(false);
+        }
+    },[ChangeLayoutItemCtx.textSettings])
+
     const onChangeTextHandler = (e) =>  {ChangeLayoutItemCtx.setTextSettings(
         { ...ChangeLayoutItemCtx.textSettings, [e.currentTarget.name]: e.currentTarget.value });
     }
@@ -16,23 +31,11 @@ const CanvasTextPanel = (props) => {
         { ...ChangeLayoutItemCtx.textSettings, [e.currentTarget.name]: parseInt(e.currentTarget.value) });
     }
     const styleOnChangeHandler = (e) =>  {
-        if(e.currentTarget.checked == true && e.currentTarget.value == 'bold') {
-            ChangeLayoutItemCtx.setTextSettings({ ...ChangeLayoutItemCtx.textSettings, "style": e.currentTarget.value });
-            setcheckboxBold(true);
-            setcheckboxItalic(false);
+        if(ChangeLayoutItemCtx.textSettings.style === '' || ChangeLayoutItemCtx.textSettings.style !== e.currentTarget.name){
+            ChangeLayoutItemCtx.setTextSettings({ ...ChangeLayoutItemCtx.textSettings, "style": e.currentTarget.name });        
         }
-        else if (e.currentTarget.checked == false && e.currentTarget.value == 'bold') {
-            ChangeLayoutItemCtx.setTextSettings({ ...ChangeLayoutItemCtx.textSettings, "style": "" });
-            setcheckboxBold(false);
-        }
-        if(e.currentTarget.checked == true && e.currentTarget.value == 'italic') {
-            ChangeLayoutItemCtx.setTextSettings({ ...ChangeLayoutItemCtx.textSettings, "style": e.currentTarget.value });
-            setcheckboxBold(false);
-            setcheckboxItalic(true);
-        }
-        else if (e.currentTarget.checked == false && e.currentTarget.value == 'italic') {
-            ChangeLayoutItemCtx.setTextSettings({ ...ChangeLayoutItemCtx.textSettings, "style": "" });
-            setcheckboxItalic(false);
+        if(ChangeLayoutItemCtx.textSettings.style === e.currentTarget.name){
+            ChangeLayoutItemCtx.setTextSettings({ ...ChangeLayoutItemCtx.textSettings, "style": '' });        
         }
     }
 
@@ -41,18 +44,18 @@ const CanvasTextPanel = (props) => {
             <legend className="text-white">Lägg till text</legend>
             <div className='inputHolder'>
                 <label className="inputlabel text-white">Namn</label>
-                <input onChange = { onChangeTextHandler } name='id' id='selectImage' placeholder = "Namn på textobjekt"></input>
+                <input onChange = { onChangeTextHandler } value={ChangeLayoutItemCtx.textSettings.id} name='id' id='selectImage' placeholder = "Namn på textobjekt"></input>
             </div>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Text</label>
-                <textarea onChange = { onChangeTextHandler } name = "content" type = "text" value={ChangeLayoutItemCtx.textSettings.content} placeholder='Skriv din text här'/>
+                <textarea onChange = { onChangeTextHandler } value={ChangeLayoutItemCtx.textSettings.content} name = "content" type = "text" placeholder='Skriv din text här'/>
             </div>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Typsnitt</label> 
-                <select onChange = { onChangeTextHandler } name='font' id='selectFont'>
+                <select onChange = { onChangeTextHandler } value={ChangeLayoutItemCtx.textSettings.font} name='font' id='selectFont'>
                 <option>Välj typsnitt</option>
                     {fonts.map((i) => {
-                        return (<option key={i} value={i}>{i}</option>)
+                        return (<option key={i} name={i} value={ChangeLayoutItemCtx.textSettings.font}>{i}</option>)
                     })}
                 </select>
             </div>
@@ -62,18 +65,18 @@ const CanvasTextPanel = (props) => {
             </div>
 
             <div id="checkboxContainer">
-                <input className="checkbox" onChange = { styleOnChangeHandler } value={'bold'} checked={checkboxBold} name="Bold" type="checkbox"/>
+                <input className="checkbox" onChange = { styleOnChangeHandler } value={ChangeLayoutItemCtx.textSettings.style} checked={checkboxBold} name="bold" type="checkbox"/>
                 <label className="text-white checkboxLabel" >Bold</label>
-                <input className="checkbox" onChange = { styleOnChangeHandler } value={'italic'} checked={checkboxItalic} name="Italic" type="checkbox"/>
+                <input className="checkbox" onChange = { styleOnChangeHandler } value={ChangeLayoutItemCtx.textSettings.style} checked={checkboxItalic} name="italic" type="checkbox"/>
                 <label className="text-white checkboxLabel" >Italic</label>
             </div>
 
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Textfärg</label>
-                <select onChange = { onChangeTextHandler } name='color' id='selectFont'>
+                <select onChange = { onChangeTextHandler } value={ChangeLayoutItemCtx.textSettings.color} name='color' id='selectFont'>
                 <option>Välj färg</option>
                     {color.map((i) => {
-                        return (<option key={i} value={i}>{i}</option>)
+                        return (<option key={i} name={i} value={ChangeLayoutItemCtx.textSettings.color}>{i}</option>)
                     })}
                 </select>
             </div>

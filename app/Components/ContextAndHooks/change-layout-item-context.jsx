@@ -8,6 +8,7 @@ export const ChangeLayoutItemContextProvider = (props) => {
 
     const [canvasLayoutItems, setCanvasLayoutItems] = SyncStateToLocalStorage('canvasItems', []);
     const [idOfItemToChange, setIdOfItemToChange] = useState(undefined);
+    const [objectToChange, setObjectToChange] = useState({});
     const [dublicatedIdError, setDublicatedIdError] = useState(false);
     const {layoutDatabase, layoutNames, updateDatabase} = useDatabase();
     const [imageSettings, setImageSettings] = useState(
@@ -35,6 +36,10 @@ export const ChangeLayoutItemContextProvider = (props) => {
             "order": 0
         }
     );
+
+    useEffect(() => {
+        console.log('textSettings: ', textSettings);
+    },[textSettings])
     const getLayoutFromName = (name) => {
         return layoutDatabase
             .find(o => o.name === name)
@@ -54,23 +59,34 @@ export const ChangeLayoutItemContextProvider = (props) => {
             }
         }
     }
+    useEffect(() => {
+        setObjectToChange(getItemFromId(idOfItemToChange));
+    }, [idOfItemToChange])
 
     useEffect(() => {
+        console.log('objectToChange: ', objectToChange);
         if(idOfItemToChange) {
-            let objectToChange = getItemFromId(idOfItemToChange);
             if(objectToChange[0].type === 'img') {
                 setImageSettings(objectToChange[0]);
             }
+            if(objectToChange[0].type === 'text') {
+                setTextSettings(objectToChange[0]);
+            }
         }
-    },[idOfItemToChange]);
+    },[objectToChange]);
 
     useEffect(() => {
         if(idOfItemToChange) {
-            updateItemFromId(idOfItemToChange, {...imageSettings});
+            if(objectToChange[0].type === 'img') {
+                updateItemFromId(idOfItemToChange, {...imageSettings});
+            }
+            if(objectToChange[0].type === 'text') {
+                updateItemFromId(idOfItemToChange, {...textSettings});
+            }
             // Resaves the edited canvasLayoutItems
             setCanvasLayoutItems(canvasLayoutItems);
         }
-    },[imageSettings])
+    },[imageSettings, textSettings])
 
     const openLayout = (name) => {
         if(name.length === 0) {
