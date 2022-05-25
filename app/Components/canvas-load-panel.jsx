@@ -5,15 +5,23 @@ import deleteMyModelData from '../Model/delete-my-model-data';
 import urls from '../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
-import ChangeLayoutItemContext from './change-layout-item-context';
+import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
 import UpdateComponent from '../Helpers/update-component';
-import useDatabase from './custom-hooks/use-database';
+import useDatabase from './ContextAndHooks/layout-database-context';
 
 const CanvasLoadPanel = (props) => {
     const ChangeLayoutItemCtx = useContext(ChangeLayoutItemContext);
     const [update, setUpdate] = useState(false);
     const [chosenLayoutId, setChosenLayoutId] = useState([]);
     const { layoutDatabase, layoutNames, updateDatabase } = useDatabase();
+
+    useEffect(() => {
+        console.log('layoutNames i load: ',layoutNames);
+    },[layoutNames])
+
+    useEffect(() => {
+        console.log('layoutDatabase i load: ', layoutDatabase);
+    },[layoutDatabase])
 
     const deleteBtnOnClick = async () => {
         let check = layoutDatabase

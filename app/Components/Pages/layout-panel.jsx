@@ -13,8 +13,8 @@ import urls from '../../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import FilterAndMap from '../../Helpers/filter-and-map';
-import ChangeLayoutItemContext from '../change-layout-item-context';
-import useDatabase from '../custom-hooks/use-database';
+import ChangeLayoutItemContext from '../ContextAndHooks/change-layout-item-context';
+import useDatabase from '../ContextAndHooks/layout-database-context';
 
 const LayoutPanel = () => {
 
@@ -50,6 +50,14 @@ const LayoutPanel = () => {
         setCanvasSize();
     }, [])
 
+    useEffect(() => {
+        if (ChangeLayoutItemCtx.dublicatedIdError) {
+            NotificationManager.error('Byt namn och försök igen.', 'Ej unikt namn!', 5000);
+            ChangeLayoutItemCtx.setDublicatedIdError(false);
+        }
+
+    },[ChangeLayoutItemCtx.dublicatedIdError])
+
     updateState = (state, setState) => {
         if (state === true){
             setState(false);
@@ -66,31 +74,6 @@ const LayoutPanel = () => {
         }
     }
 
-    const onClickHandler = async (buttonName, object) => {
-
-        if (buttonName === 'deleteImageBtn' ||
-            buttonName === 'deleteTextBtn')
-        {
-            window.alert("Denna funktion är under utveckling");
-            return
-        }
-
-        // if(buttonName === 'addLayoutBtn') {
-        //     if(object[0] === undefined) {
-        //         ChangeLayoutItemCtx.setCanvasLayoutItems([]);
-        //     } else
-        //     ChangeLayoutItemCtx.setCanvasLayoutItems(object[0].layoutContent);
-
-        //     if(object.length === 0) {
-        //         setCanvasSize();
-        //     }
-        // }
-
-        else if (buttonName === 'addTextBtn') {
-            ChangeLayoutItemCtx.setCanvasLayoutItems([...ChangeLayoutItemCtx.canvasLayoutItems, object]);
-        }
-    }
-
     useEffect(async () => {
 
         const ctx = canvasRef.current.getContext('2d');
@@ -100,7 +83,7 @@ const LayoutPanel = () => {
 
             if(ChangeLayoutItemCtx.canvasLayoutItems[i].type == 'img') {
                 const img = new CanvasImage(ChangeLayoutItemCtx.canvasLayoutItems[i]);
-                img.src = url[ChangeLayoutItemCtx.canvasLayoutItems[i].id];
+                img.src = url[ChangeLayoutItemCtx.canvasLayoutItems[i].imageName];
                 img.imageHeight = await img.getImageHeight();
                 ctx.drawImage(img.image, img.X, img.Y, img.imageWidth, img.imageHeight);
             }
@@ -134,7 +117,7 @@ const LayoutPanel = () => {
                     <CanvasLoadPanel />
                     <CanvasSavePanel />
                     <CanvasImagePanel />
-                    <CanvasTextPanel onClick = {onClickHandler} />
+                    <CanvasTextPanel />
                     <NotificationContainer />
             </div> 
         </div>

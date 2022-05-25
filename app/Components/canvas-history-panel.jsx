@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import BlinkingEyeBtn from './BlinkingEye/blinking-eye-btn';
 import UpdateComponent from '../Helpers/update-component';
-import ChangeLayoutItemContext from './change-layout-item-context';
+import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
 
 const CanvasHistoryPanel = (props) => {
 
