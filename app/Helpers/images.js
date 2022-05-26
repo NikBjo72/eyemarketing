@@ -7,6 +7,7 @@ import * as logo3 from '../images/Logo3.svg'
 import * as color1 from '../images/Color1.svg'
 import * as color2 from '../images/Color2.svg'
 import * as color3 from '../images/Color3.svg'
+import * as ideaBulb from '../images/idea_bulb_791x1025px.png'
 
 export const url = {
 bild1,
@@ -17,5 +18,6 @@ logo2,
 logo3,
 color1,
 color2,
-color3
+color3,
+ideaBulb
 }

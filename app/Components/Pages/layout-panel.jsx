@@ -8,8 +8,6 @@ import CanvasTextPanel from '../canvas-text-panel';
 import CanvasLoadPanel from '../canvas-load-panel';
 import CanvasSavePanel from '../canvas-save-panel';
 import CanvasHistoryPanel from '../canvas-history-panel';
-import postMyModelData from '../../Model/post-my-model-data';
-import urls from '../../Model/fetch-url';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import FilterAndMap from '../../Helpers/filter-and-map';

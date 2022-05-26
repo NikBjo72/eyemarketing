@@ -1,7 +1,7 @@
 import React, { useState, createContext } from 'react';
 
 const EyeBtnStatusContext = createContext();
-/**Context provider
+/**Context provider -> provides components with button status.
  * Wrap component tree that you would lik to use BlinkingEye button.
  * You only need to use context if you use button type="global".
  * @example
