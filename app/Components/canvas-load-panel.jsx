@@ -51,7 +51,7 @@ const CanvasLoadPanel = (props) => {
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Layout</label>
                 <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
-                <option name={'empty'} value={'Välj en layput'}>Välj en layout</option>
+                <option name={'empty'} value={[]}>Välj en layout</option>
                     {layoutNames !== undefined
                     ?
                     layoutNames.map((object) => {
