@@ -47,7 +47,7 @@ const CanvasLoadPanel = (props) => {
     }
 
     return (     
-        <CollapsableFieldset legend='Öppna/Ta bort layout' className='panelFieldset' classNameLegend='text-white'>
+        <CollapsableFieldset legend='Öppna/Ta bort layout' className='panelFieldset' classNameLegend='text-white' activated={true}>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Layout</label>
                 <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>

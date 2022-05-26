@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
 
 export const CollapsableFieldset = (props) => {
 
-    const [collapse, setCollapse] = useState(false);
+    const [collapse, setCollapse] = useState(props.activated);
 
     const onClickHandler = () => {
         if(collapse === true) {
@@ -19,7 +19,7 @@ export const CollapsableFieldset = (props) => {
          <fieldset className={props.className}>
             <legend className={props.classNameLegend}>
                 <a onClick={ onClickHandler }>
-                    <BlinkingEyeBtn type = 'local' handleEvent = {false} id="smallBtn" name="collapse" text={props.legend}/>
+                    <BlinkingEyeBtn type = 'local' handleEvent = {false} id="smallBtn" name="collapse" text={props.legend} setStatus= {props.activated}/>
                 </a>
             </legend>
             {collapse
@@ -30,6 +30,9 @@ export const CollapsableFieldset = (props) => {
             }
          </fieldset>
     );
+}
+CollapsableFieldset.defaultProps = {
+    activated: false
 }
 CollapsableFieldset.propTypes = {
     legend: propTypes.string,

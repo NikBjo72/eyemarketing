@@ -18,7 +18,7 @@ const BlinkingEyeBtn = (props) => {
     const location = useLocation();
     
     const [btnImage, setBtnImage] = useState(props.imageDeactivated);
-    const [btnStatus, setBtnStatus] = useState(false);
+    const [btnStatus, setBtnStatus] = useState(props.setStatus);
 
     const handleEvent = () => {
         if (props.type === 'local') {
@@ -71,6 +71,7 @@ const BlinkingEyeBtn = (props) => {
 BlinkingEyeBtn.defaultProps = {
     imageActivated: Eye,
     imageDeactivated: closedEye,
+    setStatus: false
 }
 BlinkingEyeBtn.propTypes = {
     type: propTypes.string.isRequired,
@@ -79,7 +80,8 @@ BlinkingEyeBtn.propTypes = {
     name: propTypes.string.isRequired,
     text: propTypes.string.isRequired,
     imageActivated: propTypes.string,
-    imageDeactivated: propTypes.string
+    imageDeactivated: propTypes.string,
+    setStatus: propTypes.bool
 
 };
 export default BlinkingEyeBtn;
