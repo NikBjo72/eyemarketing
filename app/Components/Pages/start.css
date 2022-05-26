@@ -25,10 +25,6 @@ select {
     height: 2.6rem;
     background-color: #4d5059;
 }
-fieldset {
-    min-width: 13rem;
-}
-
 .checkbox {
     width: 1.5rem;
 }

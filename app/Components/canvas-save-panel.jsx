@@ -4,6 +4,7 @@ import postMyModelData from '../Model/post-my-model-data';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import useDatabase from './ContextAndHooks/layout-database-context';
 import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
+import CollapsableFieldset from './collapsable-fieldset';
 
 const CanvasSavePanel = (props) => {
 
@@ -44,14 +45,13 @@ const CanvasSavePanel = (props) => {
     })
 
     return (
-        <fieldset id="fieldsetLoad" className="panelFieldset">
-            <legend className="text-white">Spara layout</legend>
+        <CollapsableFieldset legend='Spara layout' className='panelFieldset' classNameLegend='text-white'>
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Layoutnamn</label>
                 <input onChange = { nameOnChangeHandler } value={name} name='save' id='save' placeholder = "Layoutnamn"></input>
             </div>
             <button onClick = { onClickHandler } className="addBtn">Spara layout</button>
-        </fieldset>
+        </CollapsableFieldset>
     );
 }
 

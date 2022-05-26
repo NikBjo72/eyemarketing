@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from 'react';
 import { fonts, color } from '../Helpers/presets';
 import './canvas-text-panel.css'
 import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
+import CollapsableFieldset from './collapsable-fieldset';
 
 const CanvasTextPanel = (props) => {
 
@@ -40,8 +41,7 @@ const CanvasTextPanel = (props) => {
     }
 
     return (
-        <fieldset id="fieldsetText" className="panelFieldset">
-            <legend className="text-white">Lägg till text</legend>
+        <CollapsableFieldset legend='Lägg till text' className='panelFieldset' classNameLegend='text-white'>
             <div className='inputHolder'>
                 <label className="inputlabel text-white">Namn</label>
                 <input onChange = { onChangeTextHandler } value={ChangeLayoutItemCtx.textSettings.id} name='id' id='selectImage' placeholder = "Namn på textobjekt"></input>
@@ -97,7 +97,7 @@ const CanvasTextPanel = (props) => {
             </div>
 
             <button onClick = { (e) => ChangeLayoutItemCtx.addItem(ChangeLayoutItemCtx.textSettings) } className="addBtn">Lägg till</button>
-        </fieldset>
+        </CollapsableFieldset>
     );
 }
 

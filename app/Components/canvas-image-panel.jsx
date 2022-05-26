@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect, useRef, useContext } from 'react';
 import { url } from '../Helpers/images';
 import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
+import CollapsableFieldset from './collapsable-fieldset';
 
 const CanvasImagePanel = (props) => {
 
@@ -19,8 +20,7 @@ const CanvasImagePanel = (props) => {
     let images = Object.keys(url);
 
     return (
-        <fieldset id="fieldsetImage" className="panelFieldset">
-            <legend className="text-white">Lägg till bild</legend>
+        <CollapsableFieldset legend='Lägg till bild' className='panelFieldset' classNameLegend='text-white'>
             <div className='inputHolder'>
                 <label className="inputlabel text-white">Namn</label>
                 <input onChange = { textOnChangeHandler } name='id' value = {ChangeLayoutItemCtx.imageSettings.id} id='id' placeholder = "Namn på bildobjekt"></input>
@@ -51,7 +51,7 @@ const CanvasImagePanel = (props) => {
                 <input onChange = { NumberOnChangeHandler } name='order' value = {ChangeLayoutItemCtx.imageSettings.order} type="number" placeholder='Ordning'/>
             </div>
             <button onClick = {(e) => ChangeLayoutItemCtx.addItem(ChangeLayoutItemCtx.imageSettings)} className="addBtn">Lägg till</button>
-        </fieldset>
+        </CollapsableFieldset>
     );
 }
 

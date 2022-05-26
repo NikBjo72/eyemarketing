@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import BlinkingEyeBtn from './BlinkingEye/blinking-eye-btn';
 import UpdateComponent from '../Helpers/update-component';
 import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
+import CollapsableFieldset from './collapsable-fieldset';
 
 const CanvasHistoryPanel = (props) => {
 
@@ -56,14 +57,11 @@ const CanvasHistoryPanel = (props) => {
     },[ChangeLayoutItemCtx.canvasLayoutItems]);
 
     return (
-        <>
-            <fieldset id="fieldsetLoad" className="panelFieldset">
-                <legend className="text-white">Layoutobjekt</legend>
-                {buttons.map(id => {
-                    return (<button key={id.btnName} id="navBtn"><BlinkingEyeBtn type = 'local-scope' handleEvent = {true} onClick={handleEvent} id="smallBtn" name = {id.btnName} text={id.btnName} setStatus = {id.btnStatus}/></button>)
-                })}
-            </fieldset>
-        </>
+        <CollapsableFieldset legend='Layoutobjekt' className='panelFieldset' classNameLegend='text-white'>
+            {buttons.map(id => {
+                return (<button key={id.btnName} id="navBtn"><BlinkingEyeBtn type = 'local-scope' handleEvent = {true} onClick={handleEvent} id="smallBtn" name = {id.btnName} text={id.btnName} setStatus = {id.btnStatus}/></button>)
+            })}
+        </CollapsableFieldset>
     );
 }
 

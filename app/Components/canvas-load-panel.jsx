@@ -8,6 +8,7 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
 import UpdateComponent from '../Helpers/update-component';
 import useDatabase from './ContextAndHooks/layout-database-context';
+import CollapsableFieldset from './collapsable-fieldset';
 
 const CanvasLoadPanel = (props) => {
     const ChangeLayoutItemCtx = useContext(ChangeLayoutItemContext);
@@ -45,28 +46,24 @@ const CanvasLoadPanel = (props) => {
         }
     }
 
-    return (
-        <>
-            <fieldset id="fieldsetLoad" className="panelFieldset">
-                <legend className="text-white">Öppna/Ta bort layout</legend>
-                <div className='inputHolder'>
-                    <label className="inputlabel text-white" >Layout</label>
-                    <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
-                    <option name={'empty'} value={'Välj en layput'}>Välj en layout</option>
-                        {layoutNames !== undefined
-                        ?
-                        layoutNames.map((object) => {
-                            return (<option key={object} value={object}>{object}</option>)
-                        })
-                        :
-                        null}   
-                    </select>
-                </div>
-                <button onClick = {(e) => ChangeLayoutItemCtx.openLayout(chosenLayoutId)} className="addBtn">Öppna</button>
-                <button onClick = { deleteBtnOnClick } className="deleteBtn">Ta bort</button>
-            </fieldset>
-            <NotificationContainer/>
-        </>
+    return (     
+        <CollapsableFieldset legend='Öppna/Ta bort layout' className='panelFieldset' classNameLegend='text-white'>
+            <div className='inputHolder'>
+                <label className="inputlabel text-white" >Layout</label>
+                <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
+                <option name={'empty'} value={'Välj en layput'}>Välj en layout</option>
+                    {layoutNames !== undefined
+                    ?
+                    layoutNames.map((object) => {
+                        return (<option key={object} value={object}>{object}</option>)
+                    })
+                    :
+                    null}   
+                </select>
+            </div>
+            <button onClick = {(e) => ChangeLayoutItemCtx.openLayout(chosenLayoutId)} className="addBtn">Öppna</button>
+            <button onClick = { deleteBtnOnClick } className="deleteBtn">Ta bort</button>
+        </CollapsableFieldset>
     );
 };
 export default CanvasLoadPanel;

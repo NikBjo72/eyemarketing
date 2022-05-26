@@ -1,0 +1,7 @@
+
+.panelFieldset {
+    margin: 0.5rem ;
+    width: min-content;
+    border-radius: 5px;
+    min-width: 13rem;
+}
