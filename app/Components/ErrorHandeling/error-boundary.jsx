@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ErrorView from './error-view';
 
 class ErrorBoundary extends Component {
 
@@ -17,7 +18,8 @@ class ErrorBoundary extends Component {
 
     render() {
         if (this.state.hasError) {
-            return <h1>Some error spotted here!</h1>
+            
+            return <ErrorView />
         }
         return this.props.children;
     }

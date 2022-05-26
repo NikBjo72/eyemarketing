@@ -32,17 +32,6 @@ export class ContentBrowser extends React.Component {
         }
     }
 
-    changeBtnStatus = (btnState, state) => {
-
-        if(btnState === 'on'){
-            this.setState({[state]: 'off'}, () => {
-            })
-        } else {
-            this.setState({[state]: 'on'}, () => {
-            })
-        } 
-    }
-
     handleClick = (btnName, btnStatus) => {
         this.browseChosenCards(this.state.data[btnName], btnStatus);
     }
@@ -89,7 +78,7 @@ export class ContentBrowser extends React.Component {
                     <ul>
                         <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="logos" text = 'LOGO' onClick = {this.handleClick} />
                         <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="images" text = 'BILDER' onClick = {this.handleClick} />
-                        <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="colors" text = 'FÄRGER' onClick = {this.handleClick} />                 
+                        <BlinkingEyeBtn type = 'local' handleEvent = {true} id="mediumBtn" name="colors" text = 'FÄRGER' onClick = {this.handleClick} />               
                     </ul>
                 </div>
             </div>
