@@ -95,7 +95,7 @@ const LayoutPanel = () => {
                     ctx.fillText(`${ChangeLayoutItemCtx.canvasLayoutItems[i].content}`, ChangeLayoutItemCtx.canvasLayoutItems[i].X, ChangeLayoutItemCtx.canvasLayoutItems[i].Y);
                 }  
             }
-        }),0;
+        },0);
     });
 
     return (
