@@ -141,7 +141,6 @@ export const ChangeLayoutItemContextProvider = (props) => {
          deleteItem: deleteItem,
          updateHistoryOnDelete: update
          }}>
-
          {props.children}
      </ChangeLayoutItemContext.Provider>
     );
