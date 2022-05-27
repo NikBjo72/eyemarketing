@@ -1,6 +1,16 @@
-#outOfOrder {
+#outOfOrderOne {
     margin-top: 35vh;
     font-size: 6.5vw;
     color:red;
+    text-align: center;
+}
+#outOfOrderTwo {
+    margin-top: 2rem;
+    font-size: 1.9vw;
+    text-align: center;
+}
+#outOfOrderThree {
+    margin-top: 1rem;
+    font-size: 1.3vw;
     text-align: center;
 }
