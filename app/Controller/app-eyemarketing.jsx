@@ -8,24 +8,26 @@ import { BlinkingEyeProvider } from '../Components/BlinkingEye/blinking-eye-btn-
 import BackgroundProvider from "../Components/Background/background-provider";
 import { LayoutDatabaseContextProvider } from "../Components/ContextAndHooks/layout-database-context";
 import { ChangeLayoutItemContextProvider } from '../Components/ContextAndHooks/change-layout-item-context';
+import AppErrorBoundary from '../Components/ErrorHandeling/app-error-boundary';
 
 const app = document.getElementById("root");
 ReactDOM.render(
-  <LayoutDatabaseContextProvider>
-    <ChangeLayoutItemContextProvider>
-      <BackgroundProvider>
-        <BlinkingEyeProvider>
-          <HashRouter basename="">
-            <Routes>
-              <Route path='/' element={<Start/>}>
-                {/* <Route path="/my-eye-marketing" element={<MyEyeMarketing />} /> */}
-                <Route path="/browser" element={<ContentBrowser />} />
-                <Route path="/layout" element={<LayoutPanel />} />
-              </Route>
-            </Routes>
-          </HashRouter>
-        </BlinkingEyeProvider>
-      </BackgroundProvider>
-    </ChangeLayoutItemContextProvider>
-  </LayoutDatabaseContextProvider>
+  <AppErrorBoundary>
+    <LayoutDatabaseContextProvider>
+      <ChangeLayoutItemContextProvider>
+        <BackgroundProvider>
+          <BlinkingEyeProvider>
+            <HashRouter basename="">
+              <Routes>
+                <Route path='/' element={<Start/>}>
+                  <Route path="/browser" element={<ContentBrowser />} />
+                  <Route path="/layout" element={<LayoutPanel />} />
+                </Route>
+              </Routes>
+            </HashRouter>
+          </BlinkingEyeProvider>
+        </BackgroundProvider>
+      </ChangeLayoutItemContextProvider>
+    </LayoutDatabaseContextProvider>
+  </AppErrorBoundary>
 , app);

@@ -1,0 +1,23 @@
+
+#historyBtn {
+    color: white;
+    border: solid 2px rgb(215, 215, 215);
+    border-radius: 5px;
+    width: auto;
+    height: auto;
+    padding: 5px 15px 5px 15px;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+#historyDeleteBtn {
+    color: rgb(255, 0, 0);
+    border: none;
+    min-width: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#historyDeleteBtn:hover {
+    transform: scale(1.4, 1.4);
+    transition: .3s;
+}

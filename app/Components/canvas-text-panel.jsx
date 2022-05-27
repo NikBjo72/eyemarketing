@@ -55,7 +55,7 @@ const CanvasTextPanel = (props) => {
                 <select onChange = { onChangeTextHandler } value={ChangeLayoutItemCtx.textSettings.font} name='font' id='selectFont'>
                 <option>Välj typsnitt</option>
                     {fonts.map((i) => {
-                        return (<option key={i} name={i} value={ChangeLayoutItemCtx.textSettings.font}>{i}</option>)
+                        return (<option key={i} name={i} value={i}>{i}</option>)
                     })}
                 </select>
             </div>
@@ -76,7 +76,7 @@ const CanvasTextPanel = (props) => {
                 <select onChange = { onChangeTextHandler } value={ChangeLayoutItemCtx.textSettings.color} name='color' id='selectFont'>
                 <option>Välj färg</option>
                     {color.map((i) => {
-                        return (<option key={i} name={i} value={ChangeLayoutItemCtx.textSettings.color}>{i}</option>)
+                        return (<option key={i} name={i} value={i}>{i}</option>)
                     })}
                 </select>
             </div>

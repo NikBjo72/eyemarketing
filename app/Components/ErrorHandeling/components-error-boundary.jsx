@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ErrorView from './error-view';
+import ErrorView from './components-error-view';
 
-class ErrorBoundary extends Component {
+class ComponentsErrorBoundary extends Component {
 
     constructor(props) {
         super(props)
@@ -24,4 +24,4 @@ class ErrorBoundary extends Component {
         return this.props.children;
     }
 }
-export default ErrorBoundary;
+export default ComponentsErrorBoundary;

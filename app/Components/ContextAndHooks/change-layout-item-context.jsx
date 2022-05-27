@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef,  createContext } from 'react';
 import SyncStateToLocalStorage from '../../Model/sync-state-to-local-storage';
 import useDatabase from './layout-database-context';
+import UpdateComponent from '../../Helpers/update-component';
 
 const ChangeLayoutItemContext = createContext();
 
 export const ChangeLayoutItemContextProvider = (props) => {
 
+    const [update, setUpdate] = useState(false);
     const [canvasLayoutItems, setCanvasLayoutItems] = SyncStateToLocalStorage('canvasItems', []);
     const [idOfItemToChange, setIdOfItemToChange] = useState(undefined);
     const [objectToChange, setObjectToChange] = useState({});
@@ -38,7 +40,11 @@ export const ChangeLayoutItemContextProvider = (props) => {
     );
 
     useEffect(() => {
-        console.log('textSettings: ', textSettings);
+        setCanvasLayoutItems(canvasLayoutItems);
+        updateDatabase();
+    },[update])
+
+    useEffect(() => {
     },[textSettings])
     const getLayoutFromName = (name) => {
         return layoutDatabase
@@ -59,12 +65,12 @@ export const ChangeLayoutItemContextProvider = (props) => {
             }
         }
     }
+
     useEffect(() => {
         setObjectToChange(getItemFromId(idOfItemToChange));
     }, [idOfItemToChange])
 
     useEffect(() => {
-        console.log('objectToChange: ', objectToChange);
         if(idOfItemToChange) {
             if(objectToChange[0].type === 'img') {
                 setImageSettings(objectToChange[0]);
@@ -112,6 +118,12 @@ export const ChangeLayoutItemContextProvider = (props) => {
         }
     };
 
+    const deleteItem = ((id) => {
+        const index = canvasLayoutItems.findIndex(i => i.id === id);
+        canvasLayoutItems.splice(index, index);
+        UpdateComponent(update, setUpdate);
+    })
+
     return (
      <ChangeLayoutItemContext.Provider value={{
          canvasLayoutItems: canvasLayoutItems,
@@ -125,9 +137,10 @@ export const ChangeLayoutItemContextProvider = (props) => {
          setDublicatedIdError: setDublicatedIdError,
          setTextSettings: setTextSettings,
          addItem: addItem,
-         openLayout: openLayout
+         openLayout: openLayout,
+         deleteItem: deleteItem,
+         updateHistoryOnDelete: update
          }}>
-
          {props.children}
      </ChangeLayoutItemContext.Provider>
     );

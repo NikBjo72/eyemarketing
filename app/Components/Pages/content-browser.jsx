@@ -29,6 +29,7 @@ export class ContentBrowser extends React.Component {
 
         if (err) {
             NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Kunde inte hämta innehåll!', 10000);
+            console.log(err);
         }
     }
 

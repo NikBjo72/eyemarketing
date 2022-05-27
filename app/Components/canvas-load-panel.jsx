@@ -23,14 +23,14 @@ const CanvasLoadPanel = (props) => {
         ;
 
         if (check[0]) {
-            let response = await deleteMyModelData(urls.savedLayouts, chosenLayoutId);
-
-            if(response === 200) {
+            let [response, err] = await deleteMyModelData(urls.savedLayouts, chosenLayoutId);
+            if(response.status === 200) {
                 NotificationManager.success('Layout borttagen');
                 updateDatabase();
             }
             else {
                 NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte att ta bort!', 5000);
+                console.log(err);
             }
         } else {
             NotificationManager.error('Denna layout är skyddad för borttagning.', 'Skyddad!', 5000);
@@ -51,7 +51,7 @@ const CanvasLoadPanel = (props) => {
             <div className='inputHolder'>
                 <label className="inputlabel text-white" >Layout</label>
                 <select onChange = { selectOnChangeHandler } name='image' id='selectImage'>
-                <option name={'empty'} value={'Välj en layput'}>Välj en layout</option>
+                <option name={'empty'} value={[]}>Välj en layout</option>
                     {layoutNames !== undefined
                     ?
                     layoutNames.map((object) => {

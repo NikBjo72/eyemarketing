@@ -4,7 +4,7 @@ import { Background } from '../Background/background';
 import Login from '../login';
 import MyEyeMarketing from './my-eye-marketing'
 import { Footer } from '../footer';
-import ErrorBoundary from '../ErrorHandeling/error-boundary';
+import ComponentsErrorBoundary from '../ErrorHandeling/components-error-boundary';
 import BackgroundStatusContext from '../Background/background-status-context';
 
 export class Start extends React.Component {
@@ -41,20 +41,18 @@ export class Start extends React.Component {
 
   render() {
     return (
-      <div id="start">
-        <ErrorBoundary>
-
-          {!this.state.isLoggedIn
-            ?
-            <Login clearLoSt = {this.clearLocalStorage} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
-            :
-            <MyEyeMarketing onClick = {this.handleClick}/>
-          }
-          <Footer />
-          {this.context.background ? <Background /> : null}
-
-        </ErrorBoundary>   
-      </div>
+      <ComponentsErrorBoundary>
+        <div id="start">
+            {!this.state.isLoggedIn
+              ?
+              <Login clearLoSt = {this.clearLocalStorage} email = {'1'} password = {'1'} onClick = {this.handleClick}/>
+              :
+              <MyEyeMarketing onClick = {this.handleClick}/>
+            }
+            <Footer />
+            {this.context.background ? <Background /> : null}  
+        </div>
+      </ComponentsErrorBoundary>
     );
   } 
 };

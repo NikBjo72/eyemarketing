@@ -3,6 +3,7 @@ import BlinkingEyeBtn from './BlinkingEye/blinking-eye-btn';
 import UpdateComponent from '../Helpers/update-component';
 import ChangeLayoutItemContext from './ContextAndHooks/change-layout-item-context';
 import CollapsableFieldset from './collapsable-fieldset';
+import './canvas-history-panel.css';
 
 const CanvasHistoryPanel = (props) => {
 
@@ -11,7 +12,6 @@ const CanvasHistoryPanel = (props) => {
     const [buttons, setButtons] = useState([]);
 
     const handleEvent = (buttonName, btnStatus) => { 
-
         let newButtons = [...buttons]
         for (i=0; newButtons.length > i; i++) {
             if(newButtons[i].btnName === buttonName) {
@@ -44,6 +44,10 @@ const CanvasHistoryPanel = (props) => {
         UpdateComponent(update, setUpdate);
     }
 
+    const handleDeleteEvent = ((e) => {
+        ChangeLayoutItemCtx.deleteItem(e.target.name)
+    })
+
     useEffect(() => {
         setButtons(
             ChangeLayoutItemCtx.canvasLayoutItems
@@ -54,12 +58,19 @@ const CanvasHistoryPanel = (props) => {
                     btnStatus: false,
                 })
             }));
-    },[ChangeLayoutItemCtx.canvasLayoutItems]);
+    },[ChangeLayoutItemCtx.canvasLayoutItems, ChangeLayoutItemCtx.updateHistoryOnDelete]);
 
     return (
         <CollapsableFieldset legend='Layoutobjekt' className='panelFieldset' classNameLegend='text-white'>
             {buttons.map(id => {
-                return (<button key={id.btnName} id="navBtn"><BlinkingEyeBtn type = 'local-scope' handleEvent = {true} onClick={handleEvent} id="smallBtn" name = {id.btnName} text={id.btnName} setStatus = {id.btnStatus}/></button>)
+                return (
+                    <div key={id.btnName}>
+                        <button id="historyBtn">
+                            <BlinkingEyeBtn type = 'local-scope' handleEvent = {true} onClick={handleEvent} id="smallBtn" name = {id.btnName} text={id.btnName} setStatus = {id.btnStatus} />
+                        </button>
+                        <button onClick={(e) => {handleDeleteEvent(e)} } id="historyDeleteBtn" name = {id.btnName}>X</button>
+                    </div>
+                )
             })}
         </CollapsableFieldset>
     );
