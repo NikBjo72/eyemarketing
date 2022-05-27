@@ -73,27 +73,29 @@ const LayoutPanel = () => {
         }
     }
 
-    useEffect(async () => {
-        console.log('canvasLayoutItems: ',ChangeLayoutItemCtx.canvasLayoutItems);
+    useEffect(() => {
+        setTimeout(() => {
+            const ctx = canvasRef.current.getContext('2d');
+            ctx.clearRect(0, 0, width, height);
 
-        const ctx = canvasRef.current.getContext('2d');
-        ctx.clearRect(0, 0, width, height);
+            for(i=0; i < ChangeLayoutItemCtx.canvasLayoutItems.length; ++i) {
 
-        for(i=0; i < ChangeLayoutItemCtx.canvasLayoutItems.length; ++i) {
+                if(ChangeLayoutItemCtx.canvasLayoutItems[i].type == 'img') {
+                    const img = new CanvasImage(ChangeLayoutItemCtx.canvasLayoutItems[i]);
+                    img.src = url[ChangeLayoutItemCtx.canvasLayoutItems[i].imageName];
+                    (async () => {
+                        img.imageHeight = await img.getImageHeight();
+                        ctx.drawImage(img.image, img.X, img.Y, img.imageWidth, img.imageHeight);
+                    })();
+                }
+                else if(ChangeLayoutItemCtx.canvasLayoutItems[i].type == 'text') {
 
-            if(ChangeLayoutItemCtx.canvasLayoutItems[i].type == 'img') {
-                const img = new CanvasImage(ChangeLayoutItemCtx.canvasLayoutItems[i]);
-                img.src = url[ChangeLayoutItemCtx.canvasLayoutItems[i].imageName];
-                img.imageHeight = await img.getImageHeight();
-                ctx.drawImage(img.image, img.X, img.Y, img.imageWidth, img.imageHeight);
+                    ctx.fillStyle = `${ChangeLayoutItemCtx.canvasLayoutItems[i].color}`;
+                    ctx.font = `${ChangeLayoutItemCtx.canvasLayoutItems[i].style} ${ChangeLayoutItemCtx.canvasLayoutItems[i].fontSize}px "${ChangeLayoutItemCtx.canvasLayoutItems[i].font}"`;
+                    ctx.fillText(`${ChangeLayoutItemCtx.canvasLayoutItems[i].content}`, ChangeLayoutItemCtx.canvasLayoutItems[i].X, ChangeLayoutItemCtx.canvasLayoutItems[i].Y);
+                }  
             }
-            else if(ChangeLayoutItemCtx.canvasLayoutItems[i].type == 'text') {
-
-                ctx.fillStyle = `${ChangeLayoutItemCtx.canvasLayoutItems[i].color}`;
-                ctx.font = `${ChangeLayoutItemCtx.canvasLayoutItems[i].style} ${ChangeLayoutItemCtx.canvasLayoutItems[i].fontSize}px "${ChangeLayoutItemCtx.canvasLayoutItems[i].font}"`;
-                ctx.fillText(`${ChangeLayoutItemCtx.canvasLayoutItems[i].content}`, ChangeLayoutItemCtx.canvasLayoutItems[i].X, ChangeLayoutItemCtx.canvasLayoutItems[i].Y);
-            }  
-        }
+        }),0;
     });
 
     return (

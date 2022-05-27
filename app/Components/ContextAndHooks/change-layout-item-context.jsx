@@ -45,7 +45,6 @@ export const ChangeLayoutItemContextProvider = (props) => {
     },[update])
 
     useEffect(() => {
-        console.log('textSettings: ', textSettings);
     },[textSettings])
     const getLayoutFromName = (name) => {
         return layoutDatabase
