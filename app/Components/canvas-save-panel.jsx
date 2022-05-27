@@ -31,13 +31,14 @@ const CanvasSavePanel = (props) => {
                 removable: true,
                 layoutContent: ChangeLayoutItemCtx.canvasLayoutItems
             }
-            let response = await postMyModelData(urls.savedLayouts, saveLayout);
-            if(response === 201) {
+            let [response, err] = await postMyModelData(urls.savedLayouts, saveLayout);
+            if(response.status === 201) {
                 NotificationManager.success('Layout sparad');
                 updateDatabase();
             }
             else {
                 NotificationManager.error('Prova att uppdatera sidan och försök igen.', 'Gick inte spara!', 5000);
+                console.log(err);
             }
         } else {
             ChangeLayoutItemCtx.setDublicatedIdError(true);

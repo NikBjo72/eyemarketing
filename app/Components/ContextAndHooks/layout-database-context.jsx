@@ -7,21 +7,34 @@ const LayoutDatabaseContext = createContext();
 export const LayoutDatabaseContextProvider = (props) => {
 
     const [update, setUpdate] = useState(); 
-    const [layoutDatabase, setLayoutDatabase] = useState();
-    const [layoutNames, setLayoutNames] = useState();
+    const [layoutDatabase, setLayoutDatabase] = useState(
+        [
+            {
+              "id": "canvas",
+              "type": "canvas",
+              "width": 500,
+              "height": 500
+            }
+        ]
+    );
+    const [layoutNames, setLayoutNames] = useState([]);
     const [loading, setLoading] = useState(true);
-	const [err, setErr] = useState([]);
+	const [err, setErr] = useState();
 
     useEffect(async () => {
         const [data, err] = await GetMyModelData(urls.savedLayouts)
-        setLayoutDatabase(data);
+
+        if(data) {
+            setLayoutDatabase(data);
+            let layoutNames = data.map(object => {
+                return (object.name)
+            });
+            setLayoutNames(layoutNames)
+        }
+
         setLoading(false);
         setErr(err);
         
-        let layoutNames = data.map(object => {
-            return (object.name)
-        });
-        setLayoutNames(layoutNames)
     },[update]);
 
     const updateDatabase = () => {
@@ -31,10 +44,10 @@ export const LayoutDatabaseContextProvider = (props) => {
     }
 
     return (
-     <LayoutDatabaseContext.Provider value={{ layoutDatabase: layoutDatabase, layoutNames: layoutNames, updateDatabase: updateDatabase, loading: loading, err: err }}>
+     <LayoutDatabaseContext.Provider value={{ layoutDatabase: layoutDatabase, layoutNames: layoutNames, updateDatabase: updateDatabase, loading: loading, err: err, setErr: setErr }}>
          {props.children}
      </LayoutDatabaseContext.Provider>
     );
 }
-//
+
 export default useDatabase = () => useContext(LayoutDatabaseContext);

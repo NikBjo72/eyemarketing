@@ -21,7 +21,7 @@ const LayoutPanel = () => {
     const [canvasRef, setcanvasRef] = useState(useRef(null));
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
-    const { layoutDatabase, layoutNames, updateDatabase } = useDatabase();
+    const { err, setErr } = useDatabase();
 
     const setCanvasSize = (value, target) => {
         if(ChangeLayoutItemCtx.canvasLayoutItems.length === 0) {
@@ -54,8 +54,14 @@ const LayoutPanel = () => {
             NotificationManager.error('Byt namn och försök igen.', 'Ej unikt namn!', 5000);
             ChangeLayoutItemCtx.setDublicatedIdError(false);
         }
+        
+        if (err) {
+            console.log(err);
+            NotificationManager.error('Prova att ladda om sidan. Funkar inte det, försök igen senare.', 'Problem att ladda databasen!', 10000);
+            setErr(false);
+        }
 
-    },[ChangeLayoutItemCtx.dublicatedIdError])
+    },[ChangeLayoutItemCtx.dublicatedIdError, err])
 
     updateState = (state, setState) => {
         if (state === true){

@@ -18,14 +18,10 @@ const postMyModelData = async (url, object) => {
 
     try {
         const response = await fetch(`${url}`, requestOptions);
-        if(!response.ok){
-            throw new Error(response.status);
-        }
-        return response.status;
+        return [response, null];
     }
-    catch(error) {
-        console.log(error);
-        return error;
+    catch(err) {
+        return [null, err];
     }
 }
 postMyModelData.propTypes = {
