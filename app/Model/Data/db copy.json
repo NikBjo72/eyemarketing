@@ -35,6 +35,16 @@
           "möte",
           "dator"
         ]
+      },
+      {
+        "id": "4",
+        "name": "ideaBulb",
+        "tags": [
+          "foto",
+          "idé",
+          "glödlampa",
+          "glad"
+        ]
       }
     ],
     "logos": [

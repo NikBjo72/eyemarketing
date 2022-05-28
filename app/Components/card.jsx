@@ -12,6 +12,7 @@ class Card extends React.Component {
     render() {
         return (
             <div className={'card'}>
+                <h4 className={'bg-transp text-black'} id="cardHeader">{this.props.name}</h4>
                 <img className={"cardImg"} src = {url[this.props.url]} />
                 <h4 className={'bg-transp text-black'} id="cardHeader">Beskrivningstaggar</h4>
 
@@ -30,6 +31,7 @@ class Card extends React.Component {
 }
 Card.propTypes = {
    url: propTypes.string.isRequired,
-   tags: propTypes.array.isRequired 
+   tags: propTypes.array.isRequired,
+   name: propTypes.array.isRequired 
 }
 export default Card;
