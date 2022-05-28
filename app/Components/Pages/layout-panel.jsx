@@ -84,6 +84,8 @@ const LayoutPanel = () => {
             const ctx = canvasRef.current.getContext('2d');
             ctx.clearRect(0, 0, width, height);
 
+            ChangeLayoutItemCtx.canvasLayoutItems.sort((a,b) => a.order - b.order);
+
             for(i=0; i < ChangeLayoutItemCtx.canvasLayoutItems.length; ++i) {
 
                 if(ChangeLayoutItemCtx.canvasLayoutItems[i].type == 'img') {
