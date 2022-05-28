@@ -13,7 +13,9 @@ class Card extends React.Component {
         return (
             <div className={'card'}>
                 <h4 className={'bg-transp text-black'} id="cardHeader">{this.props.name}</h4>
-                <img className={"cardImg"} src = {url[this.props.url]} />
+                <div id="imageHolder">
+                    <img className={"cardImg"} src = {url[this.props.url]} />
+                </div>
                 <h4 className={'bg-transp text-black'} id="cardHeader">Beskrivningstaggar</h4>
 
                 {this.props.tags != undefined

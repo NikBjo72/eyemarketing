@@ -7,9 +7,17 @@
 }
 .cardImg {
     max-width: 100%;
+    max-height: 15rem;
     height: auto;
     border: solid 1px black;
 }
 #cardHeader {
     margin-bottom: 0.5rem;
+}
+#imageHolder {
+    display: flex;
+    justify-content: center;
+    size: 100%;
+    margin-bottom: 0.5rem;
+
 }
