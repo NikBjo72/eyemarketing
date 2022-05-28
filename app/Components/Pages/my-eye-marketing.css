@@ -41,3 +41,8 @@
     list-style-type: none;
     cursor: pointer;
 }
+#headerLogo {
+    height: 60px;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}

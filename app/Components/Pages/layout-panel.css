@@ -21,3 +21,7 @@ canvas{
     font-size: small;
     margin-left: 23px;
 }
+#canvasContainer {
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+}

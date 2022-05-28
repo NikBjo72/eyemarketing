@@ -5,6 +5,7 @@ import BlinkingEyeBtn  from '../BlinkingEye/blinking-eye-btn';
 import BackgroundStatusContext from '../Background/background-status-context';
 import Eye from "../../images/eye.svg";
 import closedEye from "../../images/Closed_Eye.svg";
+import {url} from '../../Helpers/images';
 
 const MyEyeMarketing = (props) => {
   const backgroundCtx = useContext(BackgroundStatusContext);
@@ -20,6 +21,7 @@ const MyEyeMarketing = (props) => {
   return (
     <div id="myEyeMarketing">
       <div id="menuContainer">
+        <img id="headerLogo" src = {url.logo1} />
         <Link id="navLink" to="/"><button id="navBtn"><BlinkingEyeBtn imageActivated = {Eye} imageDeactivated = {closedEye} type = 'global' handleEvent = {false} id="smallBtn" name="/" text="HEM" /></button></Link>
         <Link id="navLink" to="/browser"><button id="navBtn"><BlinkingEyeBtn imageActivated = {Eye} imageDeactivated = {closedEye} type = 'global' handleEvent = {false} id="smallBtn" name="/browser" text="MARKNADSMATERIAL" /></button></Link>
         <Link id="navLink" to="/layout"><button id="navBtn"><BlinkingEyeBtn imageActivated = {Eye} imageDeactivated = {closedEye} type = 'global' handleEvent = {false} id="smallBtn" name ="/layout" text="LAYOUT PANEL" /></button></Link>
