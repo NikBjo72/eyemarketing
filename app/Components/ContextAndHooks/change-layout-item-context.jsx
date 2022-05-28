@@ -91,6 +91,7 @@ export const ChangeLayoutItemContextProvider = (props) => {
             }
             // Resaves the edited canvasLayoutItems
             setCanvasLayoutItems(canvasLayoutItems);
+            updateDatabase();
         }
     },[imageSettings, textSettings])
 
