@@ -22,7 +22,7 @@ const MyEyeMarketing = (props) => {
     <div id="myEyeMarketing">
       <div id="menuContainer">
         <img id="headerLogo" src = {url.logo1} />
-        <Link id="navLink" to="/"><button id="navBtn"><BlinkingEyeBtn imageActivated = {Eye} imageDeactivated = {closedEye} type = 'global' handleEvent = {false} id="smallBtn" name="/" text="HEM" /></button></Link>
+        <Link id="navLink" to="/home"><button id="navBtn"><BlinkingEyeBtn imageActivated = {Eye} imageDeactivated = {closedEye} type = 'global' handleEvent = {false} id="smallBtn" name="/home" text="HEM" /></button></Link>
         <Link id="navLink" to="/browser"><button id="navBtn"><BlinkingEyeBtn imageActivated = {Eye} imageDeactivated = {closedEye} type = 'global' handleEvent = {false} id="smallBtn" name="/browser" text="MARKNADSMATERIAL" /></button></Link>
         <Link id="navLink" to="/layout"><button id="navBtn"><BlinkingEyeBtn imageActivated = {Eye} imageDeactivated = {closedEye} type = 'global' handleEvent = {false} id="smallBtn" name ="/layout" text="LAYOUT PANEL" /></button></Link>
         <div id="logoutBtnContainer">

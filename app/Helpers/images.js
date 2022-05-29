@@ -8,6 +8,8 @@ import * as color1 from '../images/Color1.svg'
 import * as color2 from '../images/Color2.svg'
 import * as color3 from '../images/Color3.svg'
 import * as ideaBulb from '../images/idea_bulb_791x1025px.png'
+import * as visitkort from '../images/visitkort_600x320px.png'
+import * as eyeLogo from '../images/Eye_Marketing_logo_600x287px.png'
 
 export const url = {
 bild1,
@@ -19,5 +21,7 @@ logo3,
 color1,
 color2,
 color3,
-ideaBulb
+ideaBulb,
+visitkort,
+eyeLogo
 }
