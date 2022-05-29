@@ -47,3 +47,11 @@
     margin-bottom: 1rem;
 
 }
+.contentTextThree {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+#mailTo {
+    cursor: pointer;
+    color: rgb(33, 220, 20);
+}

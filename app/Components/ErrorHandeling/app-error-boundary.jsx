@@ -23,7 +23,13 @@ class AppErrorBoundary extends Component {
                 <>
                     <div id="outOfOrderOne">Tjänsten är tyvärr ur funktion!</div>
                     <div id="outOfOrderTwo" className='text-white'>Stäng webbläsaren och försök igen om en stund så hoppas vi att applikationen är igång igen.</div>
-                    <div id="outOfOrderThree" className='text-white'>Skicka gärna ett mail till oss och beskriv vad som hände, eller att applikationen inte funkar: error@eyemarketing.se</div>  
+                    <div id="outOfOrderThree" className='text-white'>Skicka gärna ett mail till oss och beskriv vad som hände, eller att applikationen inte funkar:
+                    <a id='mailTo' onClick={(e) => {
+                    window.location.href = 'mailto:error@eyemarketing.se';
+                    e.preventDefault();
+                    }}> error@eyamarketing.se </a>
+                    <div id="updateBtnContainer"><button onClick = {() => {window.location.reload()}} id="updateButton">Prova att uppdatera sidan</button></div>
+                    </div>  
                 </>
             );
         }

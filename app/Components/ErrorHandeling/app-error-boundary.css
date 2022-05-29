@@ -14,3 +14,10 @@
     font-size: 1.3vw;
     text-align: center;
 }
+#mailTo {
+    cursor: pointer;
+    color: rgb(33, 220, 20);
+}
+#updateBtnContainer {
+    margin-top: 2rem;
+}
