@@ -1,6 +1,6 @@
 # eyemarketing  
 ### Pitchsida för Eye Marketing samt en MVC applikation av eyemarketing.se  
-`*
+
 ## Förbered dator 
 >1. Börja med att installera npm globalt genom att öppna ett terminalfönster och skriv:  
 npm install -g npm  
@@ -35,10 +35,10 @@ Parcel innehåler också Babel som traspilerar koden till ES5.
 
 ## Etrerna bibliotek -- app.html
 >`parcel` --> byggsystem och transpilering.  
-`react` --> javascripsbibliotek för SPA-applikationer.
-`json-server` --> används för att simulera ett REST-API från en json-fil. Körs på port 3000.   
-`concurrently` --> används för att kunna starta två servrar (parcel och json-server) med ett kommando.   
-Gör det enklare för dem som ska utvärdera applikationen.  
+`react` --> javascripsbibliotek för SPA-applikationer.  
+`json-server` --> används för att simulera ett REST-API från en json-fil. Körs på port 3000.    
+`concurrently` --> används för att kunna starta två servrar (parcel och json-server) med ett kommando.
+Gör det enklare för dem som ska starta applikationen.  
 `react-router-dom` --> används för att kunna spara url:er vid navigering mellan sidorna. Gör också så att det går att använda pilarna i browsern för att bläddra mellan besökta sidor.  
 `prop-types` --> används för att dokumentera typer av props för en specifik komponent(funktion).  
 `nanoid` --> används för att skapa unika id till sparade objekt i api:et.  
@@ -58,10 +58,10 @@ Api:et är ett simulerat REST-api med hjälp av json-server. För att titta på 
 ## Återanvändningsbara komponenter
 >### `blinking-eye-btn.js` --> en komponent som renderar knappar som togglar mellan två bilder vid klick. En grundlig beskrivning för användnig finns i readme.md- filen i mappen app/Components/BlinkingEye där också komponenten finns. Återanvänds i nedan komponenter:
 >=> `canvas-history-panel.jsx`  
-=> `collapsable-fieldset.jsx` 
+=> `collapsable-fieldset.jsx`  
 => `content-browser.jsx`  
 => `my-eye-marketing.jsx`
->### `collapsable-fieldset.js` --> en komponent som döljer och visar inställningspaneler för olika layout-objekt.
+>### `collapsable-fieldset.js` --> en komponent som döljer och visar inställningspaneler för olika layout-objekt. Kan också återanvändas på andra komponener för att t.ex. dölja och visa text.
 >=> `canvas-history-panel.jsx`  
 => `canvas-image-panel.jsx`  
 => `canvas-load-panel.jsx`  
