@@ -1,5 +1,5 @@
 # eyemarketing  
-### Pitchsida för Eye Marketing samt en MVC applikation av eyemarketing.se  
+### Pitchsida för Eye Marketing samt en MVP SPA applikation med React av eyemarketing.se 
 
 ## Förbered dator 
 >1. Börja med att installera npm globalt genom att öppna ett terminalfönster och skriv:  
@@ -68,5 +68,6 @@ Api:et är ett simulerat REST-api med hjälp av json-server. För att titta på 
 => `canvas-save-panel.jsx`  
 => `canvas-text-panel.jsx`   
 => `layout-panel.jsx`  
-
-## God utvärdering!
+# Uppgiften
+### I mappen `/*the-assignment` hittar du beskrivning av uppgiften, inlämningsrapport samt bedömning.   
+Denna uppgiften är gjort i fyra olika steg. Stegen finns sparade som releaser.

@@ -1,0 +1,23 @@
+1: 5/5p 
+2: 5/5p 
+3: 2/3p — Ok! React saknas 
+4: 3/3p — Bra! 
+5: 4/4p — Bra! Taggar används för detta. 
+6: 6/6p 
+7: 6/6p — Bra, paket finns i package.json 
+8: 5/5p — Bra 
+9: 6/6p — Bra! 
+10: 0/6p — Hittar inget exempel på detta 
+11: 6/6p — Bra! Men URL:en kanske inte heller borde vara komponentens uppgift att ange 
+12: 0/5p — Hittar inget exempel på detta, React Router används enligt rapport men ingen information sparas i url:en ? 
+13: 5/5p 
+14: 5/5p 
+15: 5/5p — Bra 
+16: 5/5p — Bra! En notering är dock att react är synkront! och kan därför inte vänta in asynkrona anrop 
+17: 5/5p — Helt rätt! 
+18: 5/5p — Mycket bra! 
+19: 5/5p — Mycket bra! 
+20: 2/5p — Bra, men ditt svar är inte kopplat till användarupplevelsen - hur påverkar localstorage/api:er användarens upplevelse? Överlag mycket bra rapport POÄNG: 81p
+
+POÄNG: 85p
+Omdöme: VG (100 möjliga poäng)

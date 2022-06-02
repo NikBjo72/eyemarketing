@@ -1,0 +1,19 @@
+1: 1/1p 
+2: 1/1p 
+3: 5/5p 
+4: 5/5p 5: 5/5p 
+6: 2/2p 7: 12/12p 
+8: 5/5p 
+9: 6/6p 
+10: 10/10p 
+11: 2/2p 
+12: 2/2p 
+13: 2/2p 
+14: 5/5p — Bra struktur enligt Pluralsight, något complex men lärorik 
+15: 2/2p 
+16: 5/5p — Klockrent. Fundera på om din "Gitflow-ish" inte finns som en egen namngiven metodtik 
+17: 18/20p — Mycket bra! Om något saknar jag konkreta tankar om när exempelvis brancher ska skapas - enligt gitflow är detta i princip alltid ~ fundera själv på om du följer detta en bit in i projektet. 
+18: 10/10p — Mycket bra. Exemplariskt svar.
+
+POÄNG: 98p
+Omdöme: G (100 möjliga poäng) 

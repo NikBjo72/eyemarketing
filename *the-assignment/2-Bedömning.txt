@@ -1,0 +1,18 @@
+1: 5/5p 
+2: 7/7p — Gott utvärderat! 
+3: 3/3p 
+4: 5/5p — Bra! 
+5: 5/5p 
+6: 5/5p 
+7: 15/15p — Bra! 
+8: 5/5p 
+9: 5/5p 
+10: 5/5p 
+11: 10/10p — Bra, görs när login/logout mountas - påverkar startsidans tillstånd 
+12: 10/10p 
+13: 10/10p 
+14: 5/5p 
+15: 5/5p
+
+POÄNG: 100p Tycker allt är med och lite till Niklas :) Mycket bra!
+Omdöme: G (100 möjliga poäng) 
